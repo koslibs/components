@@ -1,0 +1,7 @@
+:root {
+    --spinner-display-visible: inline-block;
+    --spinner-animation-duration: 0.8s;
+    --spinner-animation-timing-function: linear;
+
+    --spinner-default-color: rgba(3, 3, 6, 0.88);
+}

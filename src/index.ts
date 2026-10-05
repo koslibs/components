@@ -1,2 +1,4 @@
-// Component exports will be added as components are moved into this package.
-export {};
+export { Button } from './components/Button';
+export type { ButtonProps } from './components/Button';
+export { Spinner } from './components/Spinner';
+export type { SpinnerProps } from './components/Spinner';

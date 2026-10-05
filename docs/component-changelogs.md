@@ -19,27 +19,40 @@ API и миграции для пользователя компонента. Н
 
 ## Как показать историю в Docs
 
-Пример ниже описывает будущий Button; компонент в каркасе не реализован.
+Для каждого компонента используйте общую оболочку `ComponentDocs` из
+`src/docs/component-docs.tsx`. Она создаёт вкладки «Документация», «Разработчику»
+и «Обновления» с доступным переключением мышью и клавиатурой.
 Файлы размещаются в `src/components/Button`: `button.docs.tsx`, `button.stories.tsx`
 и `CHANGELOG.md`. Публичный импорт компонента — `@koslibs/components/Button`.
 
 ```tsx
 // button.docs.tsx
-import { ArgTypes, Canvas, Markdown, Title } from '@koslibs/builder/storybook/blocks';
+import { Description, Primary } from '@koslibs/builder/storybook/blocks';
 
+import { ComponentDocs } from '../../docs/component-docs';
 import changelog from './CHANGELOG.md?raw';
-import * as stories from './button.stories';
+import colors from './colors.module.css?raw';
+import styles from './index.module.css?raw';
+import variables from './vars.css?raw';
 
 export function ButtonDocs() {
     return (
-        <>
-            <Title />
-            <p>Назначение компонента и рекомендации по использованию.</p>
-            <Canvas of={stories.Playground} />
-            <ArgTypes />
-            {/* Варианты и дополнительные примеры показывайте здесь. */}
-            <Markdown>{changelog}</Markdown>
-        </>
+        <ComponentDocs
+            componentName="Button"
+            documentation={
+                <>
+                    <Description />
+                    <Primary />
+                    {/* Варианты и дополнительные примеры показывайте здесь. */}
+                </>
+            }
+            changelog={changelog}
+            cssSources={[
+                { name: 'Button/colors.module.css', content: colors },
+                { name: 'Button/index.module.css', content: styles },
+                { name: 'Button/vars.css', content: variables },
+            ]}
+        />
     );
 }
 ```
@@ -64,8 +77,15 @@ export default meta;
 export const Playground: StoryObj<typeof meta> = {};
 ```
 
-История отображается в Docs, поэтому дополнительных stories и пунктов навигации
-для неё не требуется. Блоки Docs и типы stories импортируются из builder,
+Вкладка «Разработчику» автоматически показывает импорт с регистром `componentName`,
+таблицу Props из Storybook и CSS-переменные, которые используются в `cssSources`.
+Передавайте все CSS-файлы компонента: стили и определения переменных. Если компонент
+использует другой компонент (как Button использует Spinner), передавайте и его CSS,
+чтобы таблица показывала все настройки. Значения по умолчанию берутся из определений
+переменных и fallback-значений в `var()`.
+
+История отображается во вкладке «Обновления» внутри Docs, поэтому дополнительных
+stories и пунктов навигации для неё не требуется. Блоки Docs и типы stories импортируются из builder,
 который управляет версией и подключением addon-docs.
 
 ## Пример Markdown

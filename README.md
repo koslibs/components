@@ -20,18 +20,18 @@ src/components/Button/
    также добавить реэкспорт в `src/index.ts`; отдельный импорт компонента его не использует.
 3. Общий шаблон в `package.json` → `exports` уже связывает каждый компонент с его файлами:
 
-   ```json
-   {
-       "./*": {
-           "types": "./dist/components/*/index.d.ts",
-           "import": "./dist/components/*/index.js"
-       }
-   }
-   ```
+    ```json
+    {
+        "./*": {
+            "types": "./dist/components/*/index.d.ts",
+            "import": "./dist/components/*/index.js"
+        }
+    }
+    ```
 
 4. Добавьте Docs, Playground и `CHANGELOG.md` по [примеру документации](https://github.com/koslibs/components/blob/main/docs/component-changelogs.md).
-5. Добавьте тесты поведения. Unit-тесты можно запускать через `koslibs-builder lib:test`;
-   в каркасе unit-suite отсутствует, потому что runtime-компонентов пока нет.
+5. Добавьте тесты поведения. `npm run test:unit` запускает unit-тесты через
+   `koslibs-builder lib:test`; `npm test` также проверяет отдельные импорты.
 6. Выполните сборку и проверьте реальные пути JS, деклараций и CSS в `dist`.
 
 После публикации предполагается такой импорт:
@@ -53,10 +53,11 @@ Builder сохраняет отдельные JS-модули и отдельн�
 
 Тест `tests/component-imports.test.mjs` запускается через Node.js test runner командой
 `npm test` (или отдельно `npm run test:imports`) и проверяет схему через builder:
-собирает временную библиотеку с Button
-и Spinner, затем приложение с импортом только `@koslibs/components/Button`.
-Проверка подтверждает наличие Button и его CSS и отсутствие Spinner и его CSS
-в production-бандле. Временные компоненты находятся в `.cache` и не публикуются.
+собирает временную библиотеку с настоящим Button и независимым тестовым Spinner,
+затем приложение с импортом только `@koslibs/components/Button`.
+Проверка подтверждает наличие Button, его внутреннего спиннера загрузки и их CSS
+и отсутствие независимого Spinner в production-бандле.
+Временная библиотека находится в `.cache` и не публикуется.
 
 Пакет выпускается в ESM. CSS помечен как side effect, чтобы оптимизация потребителя
 не удаляла стили. Builder сохраняет структуру модулей; Docs, stories и Markdown

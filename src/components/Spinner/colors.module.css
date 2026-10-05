@@ -1,0 +1,5 @@
+@import './vars.css';
+
+.component {
+    color: var(--spinner-default-color);
+}

@@ -1,0 +1,51 @@
+.tabs {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    border-bottom: 1px solid #c3c5cc;
+    margin: 24px 0;
+}
+
+.tab {
+    position: relative;
+    flex-shrink: 0;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 12px 0 16px;
+    color: #717580;
+    font: inherit;
+    font-size: 16px;
+    cursor: pointer;
+
+    &[aria-selected='true'] {
+        color: #17191c;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #ff3b30;
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid #1679a3;
+        outline-offset: -2px;
+    }
+}
+
+.panel[hidden] {
+    display: none;
+}
+
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.variables {
+    width: 100%;
+}
