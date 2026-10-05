@@ -1,0 +1,265 @@
+@import './vars.css';
+
+.component {
+    box-sizing: border-box;
+    position: relative;
+    width: fit-content;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    vertical-align: middle;
+
+    font-family: var(--font-ubuntu, 'Ubuntu', sans-serif);
+    font-size: var(--size-16, 16px);
+    text-align: center;
+    text-decoration: none;
+
+    margin: var(--size-0, 0px);
+    padding: var(--size-0, 0px) var(--size-24, 24px);
+
+    transition:
+        background-color 0.1s ease-in-out,
+        color 0.1s ease-in-out,
+        box-shadow 0.1s ease-in-out;
+    cursor: pointer;
+
+    border: none;
+    outline: none;
+    user-select: none;
+}
+
+.size-32,
+.size-40 {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    font-family: var(--font-family-system, system-ui, sans-serif);
+}
+
+.size-32 {
+    min-width: 80px;
+    min-height: 32px;
+
+    padding: var(--size-0, 0px) var(--size-16, 16px);
+}
+
+.size-40 {
+    min-width: 88px;
+    min-height: 40px;
+
+    padding: var(--size-0, 0px) var(--size-20, 20px);
+}
+
+.size-48,
+.size-56 {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    font-family: var(--font-family-system, system-ui, sans-serif);
+}
+
+.size-48 {
+    min-width: 104px;
+    min-height: 48px;
+
+    padding: var(--size-0, 0px) var(--size-24, 24px);
+}
+
+.size-56 {
+    min-width: 128px;
+    min-height: 56px;
+
+    padding: var(--size-0, 0px) var(--size-28, 28px);
+}
+
+.size-64,
+.size-72 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    font-family: var(--font-family-system, system-ui, sans-serif);
+}
+
+.size-64 {
+    min-width: 160px;
+    min-height: 64px;
+
+    padding: var(--size-0, 0px) var(--size-32, 32px);
+}
+
+.size-72 {
+    min-width: 168px;
+    min-height: 72px;
+
+    padding: var(--size-0, 0px) var(--size-36, 36px);
+}
+
+.withRightAddon {
+    &.size-32 {
+        padding-right: var(--size-12, 12px);
+    }
+
+    &.size-40 {
+        padding-right: var(--size-16, 16px);
+    }
+
+    &.size-48 {
+        padding-right: var(--size-20, 20px);
+    }
+
+    &.size-56 {
+        padding-right: var(--size-24, 24px);
+    }
+
+    &.size-64 {
+        padding-right: var(--size-28, 28px);
+    }
+
+    &.size-72 {
+        padding-right: var(--size-32, 32px);
+    }
+
+    &.text {
+        padding-right: var(--size-0, 0px);
+    }
+}
+
+.withLeftAddon {
+    &.size-32 {
+        padding-left: var(--size-12, 12px);
+    }
+
+    &.size-40 {
+        padding-left: var(--size-16, 16px);
+    }
+
+    &.size-48 {
+        padding-left: var(--size-20, 20px);
+    }
+
+    &.size-56 {
+        padding-left: var(--size-24, 24px);
+    }
+
+    &.size-64 {
+        padding-left: var(--size-28, 28px);
+    }
+
+    &.size-72 {
+        padding-left: var(--size-32, 32px);
+    }
+
+    &.text {
+        padding-left: var(--size-0, 0px);
+    }
+}
+
+.text {
+    min-width: 0;
+    min-height: 0;
+    padding: var(--size-0, 0px);
+    border: none;
+    appearance: none;
+
+    &.size-48,
+    &.size-56 {
+        min-height: 24px;
+    }
+}
+
+.size-48,
+.size-56 {
+    & .addons:first-child {
+        margin-right: var(--size-8, 8px);
+    }
+
+    & .addons:last-child {
+        margin-left: var(--size-8, 8px);
+    }
+
+    & .addons:only-child {
+        margin: var(--size-0, 0px);
+    }
+}
+
+.size-64,
+.size-72 {
+    & .addons:first-child {
+        margin-right: var(--size-12, 12px);
+    }
+
+    & .addons:last-child {
+        margin-left: var(--size-12, 12px);
+    }
+
+    & .addons:only-child {
+        margin: var(--size-0, 0px);
+    }
+}
+
+.block {
+    display: flex;
+    width: 100%;
+}
+
+.rectangular {
+    border-radius: var(--border-radius-8, 8px);
+}
+
+.rounded {
+    border-radius: var(--border-radius-pill, 99px);
+}
+
+/* Addons */
+
+.addons {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    margin: var(--size-0, 0px);
+
+    &:first-child {
+        margin-right: var(--size-6, 6px);
+    }
+
+    &:last-child {
+        margin-left: var(--size-6, 6px);
+    }
+
+    &:only-child {
+        margin: var(--size-0, 0px);
+    }
+}
+
+.loading .label,
+.loading .addons {
+    opacity: 0;
+}
+
+.stretchText {
+    flex-grow: 1;
+}
+
+.hint {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    font-family: var(--font-primary, 'Inter', sans-serif);
+    color: var(--button-hint-color);
+
+    display: block;
+}
+
+.loader {
+    position: absolute;
+    left: var(--size-0, 0px);
+    right: var(--size-0, 0px);
+    margin: var(--size-0, 0px) auto;
+}
+
+.transparent {
+    min-width: 0;
+}

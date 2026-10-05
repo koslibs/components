@@ -5,5 +5,5 @@
         "types": ["@koslibs/builder/client", "node"],
         "jsx": "react-jsx"
     },
-    "include": ["src", ".storybook", "koslibs-builder.ts"]
+    "include": ["src", ".storybook", "koslibs-builder.ts", "rstest.config.ts"]
 }
