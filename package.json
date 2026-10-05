@@ -1,0 +1,80 @@
+{
+    "name": "@koslibs/components",
+    "version": "0.0.0",
+    "description": "Shared React components for koslibs projects",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        },
+        "./*": {
+            "types": "./dist/components/*/index.d.ts",
+            "import": "./dist/components/*/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "CHANGELOG.md"
+    ],
+    "sideEffects": [
+        "**/*.css"
+    ],
+    "engines": {
+        "node": ">=24.13.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/koslibs/components.git"
+    },
+    "homepage": "https://koslibs.github.io/components/",
+    "bugs": {
+        "url": "https://github.com/koslibs/components/issues"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "start": "koslibs-builder lib:start",
+        "watch": "koslibs-builder lib:watch",
+        "build": "koslibs-builder lib:build",
+        "typecheck": "koslibs-builder lib:typecheck",
+        "lint": "koslibs-lint lint",
+        "lint:fix": "koslibs-lint lint:fix",
+        "format": "koslibs-lint format",
+        "format:check": "koslibs-lint format:check",
+        "storybook": "koslibs-builder storybook:start",
+        "build-storybook": "koslibs-builder storybook:build",
+        "test": "node --test tests/*.test.mjs",
+        "test:imports": "node --test tests/component-imports.test.mjs",
+        "prepack": "koslibs-builder lib:build",
+        "changeset": "koslibs-release add",
+        "changeset:check": "koslibs-release check",
+        "version-package": "koslibs-release version",
+        "release": "koslibs-release publish",
+        "prepare": "koslibs-release hooks:install"
+    },
+    "prettier": "@koslibs/configs/prettier",
+    "commitlint": {
+        "extends": [
+            "@koslibs/configs/commitlint"
+        ]
+    },
+    "devDependencies": {
+        "@koslibs/builder": "^1.0.0",
+        "@koslibs/configs": "^1.0.0",
+        "@types/node": "^24.19.0",
+        "@types/react": "^18.3.18",
+        "@types/react-dom": "^18.3.5",
+        "react": "18.3.1",
+        "react-dom": "18.3.1"
+    },
+    "peerDependencies": {
+        "react": "^18.3.1 || ^19.0.0",
+        "react-dom": "^18.3.1 || ^19.0.0"
+    }
+}

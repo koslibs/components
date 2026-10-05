@@ -1,0 +1,6 @@
+dist/
+storybook-static/
+.cache/
+node_modules/
+package-lock.json
+coverage/

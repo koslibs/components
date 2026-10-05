@@ -1,0 +1,9 @@
+{
+    "extends": "@koslibs/configs/tsconfig",
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "types": ["@koslibs/builder/client", "node"],
+        "jsx": "react-jsx"
+    },
+    "include": ["src", ".storybook", "koslibs-builder.ts"]
+}
