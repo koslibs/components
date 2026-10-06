@@ -9,3 +9,5 @@ export type {
     TypographyColor,
     TypographyWeight,
 } from './components/Typography';
+export { Popover } from './components/Popover';
+export type { PopoverProps, PopoverPosition } from './components/Popover';

@@ -7,14 +7,13 @@ import {
 } from '@koslibs/builder/storybook/blocks';
 import type { CSSProperties, ReactNode } from 'react';
 
-import { ComponentDocs } from '../../docs/component-docs';
-import theme from '../../styles/theme.css?raw';
-
-import changelog from './CHANGELOG.md?raw';
-import colors from './colors.module.css?raw';
-import typographyStyles from './index.module.css?raw';
-import presets from './preset.module.css?raw';
-import variables from './vars.css?raw';
+import { ComponentDocs } from '../../../docs/component-docs';
+import theme from '../../../styles/theme.css?raw';
+import changelog from '../CHANGELOG.md?raw';
+import colors from '../colors.module.css?raw';
+import typographyStyles from '../index.module.css?raw';
+import presets from '../preset.module.css?raw';
+import variables from '../vars.css?raw';
 
 import {
     TypographyText,
@@ -22,7 +21,7 @@ import {
     type TextProps,
     type TypographyColor,
     type TypographyWeight,
-} from '.';
+} from '..';
 
 const figmaPresets: { size: NonNullable<TextProps['size']>; weight: TypographyWeight }[] = [
     { size: 8, weight: 'regular' },

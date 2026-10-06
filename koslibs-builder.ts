@@ -7,7 +7,7 @@ const config: KoslibsBuilderConfig = {
             entry: {
                 index: [
                     './src/**',
-                    '!./src/docs/**',
+                    '!./src/**/docs/**',
                     '!./src/**/*.stories.*',
                     '!./src/**/*.docs.*',
                     '!./src/**/*.test.*',

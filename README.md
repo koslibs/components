@@ -39,9 +39,11 @@ src/components/Button/
     index.ts
     button.tsx
     button.module.css
-    button.stories.tsx
-    button.docs.tsx
     CHANGELOG.md
+    docs/
+        button.stories.tsx
+        button.docs.tsx
+        examples.module.css
 ```
 
 1. Перенесите компонент в `src/components/<Name>`; имя папки — PascalCase, например `Button`.
@@ -59,7 +61,9 @@ src/components/Button/
     }
     ```
 
-4. Добавьте Docs, Playground и `CHANGELOG.md` по [примеру документации](https://github.com/koslibs/components/blob/main/docs/component-changelogs.md).
+4. Добавьте Docs и Playground в папку компонента `docs`, а `CHANGELOG.md` оставьте
+   рядом с реализацией, по [примеру документации](https://github.com/koslibs/components/blob/main/docs/component-changelogs.md).
+   Папки `src/**/docs` исключены из npm-сборки. Общие блоки Storybook находятся в `src/docs`.
 5. Добавьте тесты поведения. `npm run test:unit` запускает unit-тесты через
    `koslibs-builder lib:test`; `npm test` также проверяет отдельные импорты.
 6. Выполните сборку и проверьте реальные пути JS, деклараций и CSS в `dist`.

@@ -90,7 +90,7 @@ export async function createImportFixture(root, scenarios) {
             filter: (source) => {
                 const path = relative(join(root, 'src'), source).replaceAll('\\', '/');
                 return (
-                    path !== 'docs' &&
+                    !path.split('/').includes('docs') &&
                     !/\.(?:stories|docs|test|spec)\./.test(path) &&
                     !path.endsWith('.md')
                 );

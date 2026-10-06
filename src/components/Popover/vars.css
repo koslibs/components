@@ -1,0 +1,4 @@
+:root {
+    --popover-z-index: 1100;
+    --popover-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
