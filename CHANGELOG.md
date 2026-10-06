@@ -1,5 +1,23 @@
 # @koslibs/components
 
+## 1.2.0
+
+### Minor Changes
+
+- [#3](https://github.com/koslibs/components/pull/3) [`a618f52`](https://github.com/koslibs/components/commit/a618f526010adc6203a708e73fac3906b555ac78) Thanks [@holypower777](https://github.com/holypower777)! - Перенесён Popover из GullEye с отдельным импортом `@koslibs/components/Popover`,
+  стилями, Docs и Playground. Сохранены управляемая видимость, позиционирование,
+  ограничение размеров и способы закрытия. Портал и позиционирование адаптированы
+  для самостоятельного использования в React 18 и 19.
+
+    Popover управляет позицией и размерами и рендерит children напрямую. Оформление
+    и прокрутка содержимого задаются вызывающим компонентом; colors и contentClassName
+    не входят в API. Прежнее оформление Storybook-примеров сохранено в их содержимом.
+    Тень задаёт сам Popover через CSS-переменную --popover-shadow.
+    Offset по умолчанию равен `[0, 0]`, без смещения и зазора между якорем и содержимым.
+
+    Документация каждого компонента собрана в его папке docs: stories, страницы Docs
+    и стили примеров. Папки документации исключены из JS-сборки и деклараций npm-пакета.
+
 ## 1.1.0
 
 ### Minor Changes
