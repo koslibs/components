@@ -1,19 +1,18 @@
 import { Controls, Description, Primary } from '@koslibs/builder/storybook/blocks';
 import type { CSSProperties, ReactNode } from 'react';
 
-import { ComponentDocs } from '../../docs/component-docs';
-import theme from '../../styles/theme.css?raw';
-import spinnerColors from '../Spinner/colors.module.css?raw';
-import spinnerStyles from '../Spinner/index.module.css?raw';
-import spinnerPresets from '../Spinner/preset.module.css?raw';
-import spinnerVars from '../Spinner/vars.css?raw';
+import { ComponentDocs } from '../../../docs/component-docs';
+import theme from '../../../styles/theme.css?raw';
+import spinnerColors from '../../Spinner/colors.module.css?raw';
+import spinnerStyles from '../../Spinner/index.module.css?raw';
+import spinnerPresets from '../../Spinner/preset.module.css?raw';
+import spinnerVars from '../../Spinner/vars.css?raw';
+import changelog from '../CHANGELOG.md?raw';
+import colors from '../colors.module.css?raw';
+import buttonStyles from '../index.module.css?raw';
+import variables from '../vars.css?raw';
 
-import changelog from './CHANGELOG.md?raw';
-import colors from './colors.module.css?raw';
-import buttonStyles from './index.module.css?raw';
-import variables from './vars.css?raw';
-
-import { Button } from '.';
+import { Button } from '..';
 
 const sizes = [32, 40, 48, 56, 64, 72] as const;
 const views = ['primary', 'secondary', 'accent', 'outlined', 'transparent', 'text'] as const;

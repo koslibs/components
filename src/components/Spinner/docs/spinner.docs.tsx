@@ -1,15 +1,14 @@
 import { Controls, Description, Primary } from '@koslibs/builder/storybook/blocks';
 import type { ReactNode } from 'react';
 
-import { ComponentDocs } from '../../docs/component-docs';
+import { ComponentDocs } from '../../../docs/component-docs';
+import changelog from '../CHANGELOG.md?raw';
+import colors from '../colors.module.css?raw';
+import spinnerStyles from '../index.module.css?raw';
+import presets from '../preset.module.css?raw';
+import variables from '../vars.css?raw';
 
-import changelog from './CHANGELOG.md?raw';
-import colors from './colors.module.css?raw';
-import spinnerStyles from './index.module.css?raw';
-import presets from './preset.module.css?raw';
-import variables from './vars.css?raw';
-
-import { Spinner } from '.';
+import { Spinner } from '..';
 
 function Example({
     name,

@@ -49,18 +49,23 @@ Changesets создаёт общую историю релиза; истории
 Для каждого компонента используйте общую оболочку `ComponentDocs` из
 `src/docs/component-docs.tsx`. Она создаёт вкладки «Документация», «Разработчику»
 и «Обновления» с доступным переключением мышью и клавиатурой.
-Файлы размещаются в `src/components/Button`: `button.docs.tsx`, `button.stories.tsx`
-и `CHANGELOG.md`. Публичный импорт компонента — `@koslibs/components/Button`.
+Страницы и stories размещаются в `src/components/Button/docs`: `button.docs.tsx`,
+`button.stories.tsx` и стили примеров `examples.module.css`, если они нужны.
+Суффикс `.stories.tsx` позволяет builder автоматически находить stories.
+`CHANGELOG.md` остаётся в `src/components/Button`, рядом с реализацией.
+Публичный импорт компонента — `@koslibs/components/Button`.
+Папки `src/**/docs` исключены из сборки JS и деклараций npm-пакета.
+`src/docs` содержит общие блоки Storybook и вводную страницу.
 
 ```tsx
 // button.docs.tsx
 import { Description, Primary } from '@koslibs/builder/storybook/blocks';
 
-import { ComponentDocs } from '../../docs/component-docs';
-import changelog from './CHANGELOG.md?raw';
-import colors from './colors.module.css?raw';
-import styles from './index.module.css?raw';
-import variables from './vars.css?raw';
+import { ComponentDocs } from '../../../docs/component-docs';
+import changelog from '../CHANGELOG.md?raw';
+import colors from '../colors.module.css?raw';
+import styles from '../index.module.css?raw';
+import variables from '../vars.css?raw';
 
 export function ButtonDocs() {
     return (
@@ -88,7 +93,7 @@ export function ButtonDocs() {
 // button.stories.tsx
 import type { Meta, StoryObj } from '@koslibs/builder/storybook';
 
-import { Button } from './button';
+import { Button } from '..';
 import { ButtonDocs } from './button.docs';
 
 const meta = {

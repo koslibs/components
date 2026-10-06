@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@koslibs/builder/storybook';
 
 import { SpinnerDocs } from './spinner.docs';
 
-import { Spinner } from '.';
+import { Spinner } from '..';
 
 const meta = {
     title: 'Components/Spinner',

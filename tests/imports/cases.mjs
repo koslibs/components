@@ -1,6 +1,33 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Popover',
+        render: '<Popover open anchorElement={document.body}>IMPORT_TEST_POPOVER</Popover>',
+        includes: {
+            js: [/IMPORT_TEST_POPOVER/, /availableSize/],
+            css: [
+                /--popover-z-index/,
+                /--popover-available-height/,
+                /--popover-shadow\s*:/,
+                /box-shadow\s*:\s*var\(--popover-shadow\)/,
+            ],
+        },
+        excludes: {
+            js: [/displayName\s*=\s*["'](?:Button|Spinner|TypographyText|TypographyTitle)["']/],
+            css: [
+                /--button-/,
+                /--spinner-/,
+                /--typography-/,
+                /--popover-(?:background|color|inverted|border|padding)/,
+                /background-color\s*:/,
+                /border-radius\s*:/,
+                /font-family\s*:/,
+                /@font-face/,
+            ],
+            assets: [/\.woff2$/m],
+        },
+    },
+    {
         component: 'Button',
         render: '<Button loading>IMPORT_TEST_BUTTON</Button>',
         includes: {
@@ -18,7 +45,7 @@ export const importCases = [
         },
         excludes: {
             js: [/displayName\s*=\s*["']Typography(?:Text|Title)["']/],
-            css: [/--typography-/],
+            css: [/--typography-/, /--popover-/],
         },
     },
     {
@@ -30,7 +57,7 @@ export const importCases = [
         },
         excludes: {
             js: [/displayName\s*=\s*["'](?:Button|TypographyText|TypographyTitle)["']/],
-            css: [/--button-/, /--typography-/, /--font-primary/, /@font-face/],
+            css: [/--button-/, /--typography-/, /--popover-/, /--font-primary/, /@font-face/],
             assets: [/\.woff2$/m],
         },
     },
@@ -53,7 +80,7 @@ export const importCases = [
         },
         excludes: {
             js: [/displayName\s*=\s*["'](?:Button|Spinner)["']/, /conic-gradient/],
-            css: [/--button-/, /--spinner-/],
+            css: [/--button-/, /--spinner-/, /--popover-/],
         },
     },
 ];

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@koslibs/builder/storybook';
 
 import { ButtonDocs } from './button.docs';
 
-import { Button } from '.';
+import { Button } from '..';
 
 const addon = <span aria-hidden="true">★</span>;
 

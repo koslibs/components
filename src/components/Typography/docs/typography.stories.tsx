@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@koslibs/builder/storybook';
 
 import { TypographyDocs } from './typography.docs';
 
-import { TypographyText } from '.';
+import { TypographyText } from '..';
 
 const meta = {
     title: 'Components/Typography',

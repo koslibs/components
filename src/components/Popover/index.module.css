@@ -1,0 +1,14 @@
+@import './vars.css';
+
+.component {
+    box-sizing: border-box;
+    position: fixed;
+    z-index: var(--popover-z-index);
+    max-width: calc(100vw - var(--popover-viewport-padding, 8px) * 2);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    max-height: var(--popover-available-height, none);
+    box-shadow: var(--popover-shadow);
+}
