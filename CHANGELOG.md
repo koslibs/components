@@ -1,5 +1,25 @@
 # @koslibs/components
 
+## 1.3.0
+
+### Minor Changes
+
+- [#4](https://github.com/koslibs/components/pull/4) [`b37f3b0`](https://github.com/koslibs/components/commit/b37f3b008be8ffea80908557c13ea77d6d55c792) Thanks [@holypower777](https://github.com/holypower777)! - Перенесён Collapse из core-components GullEye с отдельным импортом
+  `@koslibs/components/Collapse`, внутренним и внешним управлением, сохранением
+  содержимого, анимацией и поддержкой reduced motion. Проп `colors` убран:
+  оформление кнопки настраивается через CSS-переменные. Добавлены документация
+  с тремя вкладками, Playground и история компонента. Стрелка подключается
+  отдельным импортом из `@koslibs/icons`.
+
+    Подписи `collapsedLabel` и `expandedLabel` не имеют дефолтных значений.
+    Добавлены `showRightChevron` (по умолчанию `true`) и `showLeftChevron`
+    (по умолчанию `false`): можно независимо показывать шевроны или скрыть оба.
+    Левый шеврон смотрит вправо в закрытом состоянии и вниз в раскрытом,
+    правый сохраняет поворот вниз → вверх.
+
+    Комментарии публичных пропсов приведены к единому многострочному формату JSDoc
+    с отдельной строкой для `@default`.
+
 ## 1.2.0
 
 ### Minor Changes
