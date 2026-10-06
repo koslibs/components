@@ -2,6 +2,7 @@ import { Controls, Description, Primary } from '@koslibs/builder/storybook/block
 import type { CSSProperties, ReactNode } from 'react';
 
 import { ComponentDocs } from '../../docs/component-docs';
+import theme from '../../styles/theme.css?raw';
 import spinnerColors from '../Spinner/colors.module.css?raw';
 import spinnerStyles from '../Spinner/index.module.css?raw';
 import spinnerPresets from '../Spinner/preset.module.css?raw';
@@ -154,6 +155,7 @@ export function ButtonDocs() {
                 { name: 'Button/colors.module.css', content: colors },
                 { name: 'Button/index.module.css', content: buttonStyles },
                 { name: 'Button/vars.css', content: variables },
+                { name: 'styles/theme.css', content: theme },
                 { name: 'Spinner/colors.module.css', content: spinnerColors },
                 { name: 'Spinner/index.module.css', content: spinnerStyles },
                 { name: 'Spinner/preset.module.css', content: spinnerPresets },

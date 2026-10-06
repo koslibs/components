@@ -1,9 +1,13 @@
-.tabs {
+:global(html) {
+    scrollbar-gutter: stable;
+}
+
+.tabs[role='tablist'] {
     display: flex;
     gap: 32px;
     overflow-x: auto;
     border-bottom: 1px solid #c3c5cc;
-    margin: 24px 0;
+    margin: 24px 0 0;
 }
 
 .tab {
@@ -38,7 +42,16 @@
     }
 }
 
-.panel[hidden] {
+.panel[role='tabpanel'] {
+    display: flow-root;
+    padding-top: 24px;
+
+    & > :first-child {
+        margin-top: 0;
+    }
+}
+
+.panel[role='tabpanel'][hidden] {
     display: none;
 }
 

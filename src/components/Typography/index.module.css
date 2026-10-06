@@ -1,0 +1,57 @@
+@import '../../styles/theme.css';
+@import './vars.css';
+
+.component {
+    margin: var(--size-0, 0px);
+    padding: var(--size-0, 0px);
+    font-family: var(--font-primary);
+    font-style: normal;
+    line-height: var(--typography-line-height);
+    letter-spacing: var(--typography-letter-spacing);
+}
+
+.weight-regular {
+    font-weight: var(--typography-regular-font-weight);
+}
+
+.weight-medium {
+    font-weight: var(--typography-medium-font-weight);
+}
+
+.weight-semibold {
+    font-weight: var(--typography-semibold-font-weight);
+}
+
+.weight-bold {
+    font-weight: var(--typography-bold-font-weight);
+}
+
+.caps {
+    text-transform: uppercase;
+}
+
+.monospaceNumbers {
+    font-variant-numeric: tabular-nums lining-nums;
+}
+
+.rowLimit1 {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.rowLimit2,
+.rowLimit3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.rowLimit2 {
+    -webkit-line-clamp: 2;
+}
+
+.rowLimit3 {
+    -webkit-line-clamp: 3;
+}

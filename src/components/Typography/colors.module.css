@@ -1,0 +1,25 @@
+@import './vars.css';
+
+.inherit {
+    color: inherit;
+}
+
+.primary {
+    color: var(--typography-primary-color);
+}
+
+.secondary {
+    color: var(--typography-secondary-color);
+}
+
+.inverse {
+    color: var(--typography-inverse-color);
+}
+
+.positive {
+    color: var(--typography-positive-color);
+}
+
+.negative {
+    color: var(--typography-negative-color);
+}

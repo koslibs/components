@@ -1,3 +1,4 @@
+@import '../../styles/theme.css';
 @import './vars.css';
 
 .component {
@@ -247,7 +248,7 @@
     font-size: 14px;
     line-height: 18px;
     font-weight: 400;
-    font-family: var(--font-primary, 'Inter', sans-serif);
+    font-family: var(--font-primary);
     color: var(--button-hint-color);
 
     display: block;
