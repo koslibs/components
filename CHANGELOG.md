@@ -1,5 +1,23 @@
 # @koslibs/components
 
+## 1.1.0
+
+### Minor Changes
+
+- [#2](https://github.com/koslibs/components/pull/2) [`b09aeff`](https://github.com/koslibs/components/commit/b09aeffe06d9267aad1f689deb91a19412ff8448) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен публичный Typography из GullEye: Text и Title, типы, CSS Modules,
+  Docs и Playground. Импорт из `@koslibs/components/Typography` подключает
+  только Typography и его стили.
+
+    Исправлены отступы содержимого вкладок Docs и сдвиг страницы при появлении
+    или исчезновении полосы прокрутки.
+
+    Закреплены правила историй компонентов: запись добавляется только для изменённого
+    компонента; общие изменения инфраструктуры и Storybook описываются в истории пакета.
+
+    Добавлена общая тема с `--font-primary: 'Inter', sans-serif` и локальными
+    WOFF2-файлами Inter. Typography и подпись Button подключают её автоматически;
+    приложение может переопределить семейство шрифта через CSS.
+
 ## 1.0.0
 
 ### Major Changes
