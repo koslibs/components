@@ -24,7 +24,7 @@ test('public component imports', async (context) => {
     for (const scenario of importCases) {
         await context.test(scenario.component, async () => {
             const bundle = await readBundle(fixture.output(scenario.component));
-            for (const kind of ['js', 'css']) {
+            for (const kind of ['js', 'css', 'assets']) {
                 assert.doesNotMatch(
                     bundle[kind],
                     unusedMarker,

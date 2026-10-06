@@ -13,11 +13,20 @@ const config: KoslibsBuilderConfig = {
                     '!./src/**/*.test.*',
                     '!./src/**/*.spec.*',
                     '!./src/**/*.md',
+                    '!./src/styles/fonts/**',
                 ],
             },
             tsconfigPath: './tsconfig.build.json',
         },
-        output: { sourceMap: { js: false, css: false } },
+        output: {
+            sourceMap: { js: false, css: false },
+            copy: [
+                {
+                    from: './src/styles/fonts/inter/LICENSE.txt',
+                    to: 'styles/fonts/inter/LICENSE.txt',
+                },
+            ],
+        },
         tools: {
             swc: { jsc: { transform: { react: { runtime: 'automatic' } } } },
         },

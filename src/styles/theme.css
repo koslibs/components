@@ -1,0 +1,7 @@
+@import './fonts.css';
+
+@layer koslibs {
+    :root {
+        --font-primary: 'Inter', sans-serif;
+    }
+}

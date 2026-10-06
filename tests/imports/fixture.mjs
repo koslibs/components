@@ -34,17 +34,19 @@ function build(root, project, command) {
 }
 
 export async function readBundle(directory) {
-    const result = { js: '', css: '' };
+    const result = { js: '', css: '', assets: '' };
     for (const entry of await readdir(directory, { withFileTypes: true })) {
         const path = join(directory, entry.name);
         if (entry.isDirectory()) {
             const nested = await readBundle(path);
             result.js += nested.js;
             result.css += nested.css;
+            result.assets += nested.assets;
         } else {
             const kind = extname(entry.name).slice(1);
             if (kind === 'js' || kind === 'css')
                 result[kind] += `\n${await readFile(path, 'utf8')}`;
+            else result.assets += `\n${path}`;
         }
     }
     return result;
@@ -180,6 +182,7 @@ export default {
     rsbuildConfig: {
         ...base.rsbuildConfig,
         source: { ...base.rsbuildConfig.source, entry: ${JSON.stringify(client.source.entry)} },
+        output: { ...base.rsbuildConfig.output, copy: [] },
         environments: ${JSON.stringify(otherEnvironments)},
     },
     clientConfig: ${JSON.stringify(client)},

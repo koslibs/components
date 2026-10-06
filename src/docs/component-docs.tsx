@@ -7,6 +7,7 @@ type CssSource = { name: string; content: string };
 type ComponentDocsProps = {
     componentName: string;
     documentation: ReactNode;
+    props?: ReactNode;
     changelog: string;
     cssSources: CssSource[];
 };
@@ -43,6 +44,7 @@ function cssVariables(sources: CssSource[]) {
 export function ComponentDocs({
     componentName,
     documentation,
+    props,
     changelog,
     cssSources,
 }: ComponentDocsProps) {
@@ -111,7 +113,7 @@ export function ComponentDocs({
                         language="tsx"
                     />
                     <h2>Props</h2>
-                    <ArgTypes />
+                    {props ?? <ArgTypes />}
                     <h2>CSS-переменные</h2>
                     <p>
                         Используемые переменные и значения по умолчанию. Их можно переопределить в
