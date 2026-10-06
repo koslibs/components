@@ -11,3 +11,5 @@ export type {
 } from './components/Typography';
 export { Popover } from './components/Popover';
 export type { PopoverProps, PopoverPosition } from './components/Popover';
+export { Collapse } from './components/Collapse';
+export type { CollapseProps } from './components/Collapse';

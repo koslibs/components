@@ -1,6 +1,21 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Collapse',
+        render: '<Collapse defaultExpanded collapsedLabel="Details" showLeftChevron>IMPORT_TEST_COLLAPSE</Collapse>',
+        includes: {
+            js: [/IMPORT_TEST_COLLAPSE/, /M4 6L8 10L12 6/],
+            css: [/--collapse-color/, /grid-template-rows/, /prefers-reduced-motion/, /@font-face/],
+            assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
+        },
+        excludes: {
+            js: [
+                /displayName\s*=\s*["'](?:Button|Spinner|Popover|TypographyText|TypographyTitle)["']/,
+            ],
+            css: [/--button-/, /--spinner-/, /--popover-/, /--typography-/, /--collapse-inverted-/],
+        },
+    },
+    {
         component: 'Popover',
         render: '<Popover open anchorElement={document.body}>IMPORT_TEST_POPOVER</Popover>',
         includes: {

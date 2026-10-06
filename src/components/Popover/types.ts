@@ -7,7 +7,9 @@ export type PopoverProps = Omit<
     HTMLAttributes<HTMLDivElement>,
     'children' | 'className' | 'style'
 > & {
-    /** Содержимое поповера. Оформление и прокрутка задаются вызывающим компонентом. */
+    /**
+     * Содержимое поповера. Оформление и прокрутка задаются вызывающим компонентом.
+     */
     children?: ReactNode;
 
     /**

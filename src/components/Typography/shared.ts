@@ -18,13 +18,19 @@ export type BaseProps = Omit<
     HTMLAttributes<HTMLElement>,
     'color' | 'children' | 'className' | 'style'
 > & {
-    /** Содержимое текста или заголовка. */
+    /**
+     * Содержимое текста или заголовка.
+     */
     children?: ReactNode;
 
-    /** Дополнительный CSS-класс корневого элемента. */
+    /**
+     * Дополнительный CSS-класс корневого элемента.
+     */
     className?: string;
 
-    /** Инлайн-стили корневого элемента. */
+    /**
+     * Инлайн-стили корневого элемента.
+     */
     style?: CSSProperties;
 
     /**
