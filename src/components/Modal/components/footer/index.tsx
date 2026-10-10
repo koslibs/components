@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { forwardRef, useContext, type HTMLAttributes } from 'react';
 
+import { useDataTestId } from '../../../../hooks/use-data-test-id';
 import { ModalContext } from '../../context';
 
 import styles from './index.module.css';
@@ -16,14 +17,14 @@ export type FooterProps = HTMLAttributes<HTMLDivElement> & {
 export const Footer = forwardRef<HTMLDivElement, FooterProps>(
     ({ children, className, dataTestId, ...restProps }, ref) => {
         const { dataTestId: modalDataTestId } = useContext(ModalContext);
-        const testId = dataTestId ?? modalDataTestId;
+        const getDataTestId = useDataTestId(dataTestId ?? modalDataTestId);
 
         return (
             <div
                 {...restProps}
                 ref={ref}
                 className={cn(styles.component, className)}
-                data-test-id={testId ? `${testId}-footer` : undefined}
+                data-test-id={getDataTestId('footer')}
             >
                 {children}
             </div>

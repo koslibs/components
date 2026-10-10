@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { forwardRef, useContext, type HTMLAttributes, type ReactNode } from 'react';
 import React from 'react';
 
+import { useDataTestId } from '../../../../hooks/use-data-test-id';
 import { ModalContext } from '../../context';
 
 import styles from './index.module.css';
@@ -53,14 +54,14 @@ export const Controls = forwardRef<HTMLDivElement, ControlsProps>(
         ref
     ) => {
         const { dataTestId: modalDataTestId } = useContext(ModalContext);
-        const testId = dataTestId ?? modalDataTestId;
+        const getDataTestId = useDataTestId(dataTestId ?? modalDataTestId);
 
         return (
             <div
                 {...restProps}
                 ref={ref}
                 className={cn(styles.component, styles[layout], styles[`gap-${gap}`], className)}
-                data-test-id={testId ? `${testId}-controls` : undefined}
+                data-test-id={getDataTestId('controls')}
             >
                 {children ?? (
                     <React.Fragment>

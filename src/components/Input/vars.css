@@ -1,0 +1,31 @@
+:root {
+    --input-primary-background-color: #ffffff;
+    --input-secondary-background-color: #f5f3ec;
+    --input-color: #1c1a18;
+    --input-placeholder-color: #736554;
+    --input-label-color: #736554;
+    --input-hint-color: #736554;
+    --input-icon-color: #736554;
+    --input-border-color: transparent;
+    --input-hover-border-color: #c8beaa;
+    --input-focus-border-color: #d95300;
+    --input-error-border-color: #ef5350;
+    --input-error-message-color: #b42318;
+    --input-disabled-background-color: #cfd1cb;
+    --input-disabled-color: #858981;
+    --input-read-only-border-color: #c8beaa;
+    --input-border-radius: 8px;
+    --input-gap: 8px;
+    --input-icon-size: 16px;
+    --input-width: 320px;
+    --input-font-size-40: 13px;
+    --input-font-size-48: 13px;
+    --input-font-size-56: 14px;
+    --input-font-size-64: 14px;
+    --input-font-size-72: 16px;
+    --input-padding-40: 12px;
+    --input-padding-48: 12px;
+    --input-padding-56: 16px;
+    --input-padding-64: 16px;
+    --input-padding-72: 20px;
+}

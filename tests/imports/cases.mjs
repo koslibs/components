@@ -6,10 +6,23 @@ export const importCases = [
         includes: { js: [/IMPORT_TEST_PORTAL/] },
         excludes: {
             js: [
-                /displayName\s*=\s*["'](?:Modal|Popover|Collapse|Button|Spinner|TypographyText|TypographyTitle)["']/,
+                /displayName\s*=\s*["'](?:Input|Modal|Popover|Collapse|Button|Spinner|TypographyText|TypographyTitle)["']/,
             ],
-            css: [/--(?:modal|popover|collapse|button|spinner|typography)-/, /@font-face/],
+            css: [/--(?:input|modal|popover|collapse|button|spinner|typography)-/, /@font-face/],
             assets: [/\.woff2$/m],
+        },
+    },
+    {
+        component: 'Input',
+        render: '<Input label="IMPORT_TEST_INPUT" defaultValue="Value" clear />',
+        includes: {
+            js: [/IMPORT_TEST_INPUT/, /Очистить поле/, /M7\.5 9L2\.25 4\.125/],
+            css: [/--input-primary-background-color/, /--input-error-border-color/, /@font-face/],
+            assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
+        },
+        excludes: {
+            js: [/displayName\s*=\s*["'](?:Modal|Popover|Collapse|TypographyTitle)["']/],
+            css: [/--modal-/, /--popover-/, /--collapse-/],
         },
     },
     {
@@ -29,7 +42,7 @@ export const importCases = [
         component: 'Collapse',
         render: '<Collapse defaultExpanded collapsedLabel="Details" showLeftChevron>IMPORT_TEST_COLLAPSE</Collapse>',
         includes: {
-            js: [/IMPORT_TEST_COLLAPSE/, /M4 6L8 10L12 6/],
+            js: [/IMPORT_TEST_COLLAPSE/, /M4\.5 6\.75L9 11\.25L13\.5 6\.75/],
             css: [/--collapse-color/, /grid-template-rows/, /prefers-reduced-motion/, /@font-face/],
             assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
         },

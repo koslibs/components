@@ -1,0 +1,311 @@
+@import '../../styles/theme.css';
+@import './vars.css';
+
+.component {
+    --field-background: var(--input-primary-background-color);
+    --field-border: var(--input-border-color);
+    --field-color: var(--input-color);
+    --field-label-color: var(--input-label-color);
+    --field-placeholder-color: var(--input-placeholder-color);
+    --field-icon-color: var(--input-icon-color);
+
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--input-gap);
+    width: var(--input-width);
+    max-width: 100%;
+    min-width: 0;
+    vertical-align: top;
+    font-family: var(--font-primary);
+    color: var(--field-color);
+
+    &[data-block] {
+        display: flex;
+        width: 100%;
+    }
+
+    &[data-view='secondary'] {
+        --field-background: var(--input-secondary-background-color);
+    }
+
+    &[data-read-only] {
+        --field-border: var(--input-read-only-border-color);
+    }
+
+    &[data-error] {
+        --field-border: var(--input-error-border-color);
+    }
+
+    &[data-disabled] {
+        --field-background: var(--input-disabled-background-color);
+        --field-border: transparent;
+        --field-color: var(--input-disabled-color);
+        --field-label-color: var(--input-disabled-color);
+        --field-placeholder-color: var(--input-disabled-color);
+        --field-icon-color: var(--input-disabled-color);
+    }
+}
+
+.size-40 {
+    --field-height: 40px;
+    --field-padding: var(--input-padding-40);
+    --field-font-size: var(--input-font-size-40);
+    --field-line-height: 17px;
+}
+
+.size-48 {
+    --field-height: 48px;
+    --field-padding: var(--input-padding-48);
+    --field-font-size: var(--input-font-size-48);
+    --field-line-height: 17px;
+}
+
+.size-56 {
+    --field-height: 56px;
+    --field-padding: var(--input-padding-56);
+    --field-font-size: var(--input-font-size-56);
+    --field-line-height: 17px;
+}
+
+.size-64 {
+    --field-height: 64px;
+    --field-padding: var(--input-padding-64);
+    --field-font-size: var(--input-font-size-64);
+    --field-line-height: 17px;
+}
+
+.size-72 {
+    --field-height: 72px;
+    --field-padding: var(--input-padding-72);
+    --field-font-size: var(--input-font-size-72);
+    --field-line-height: 20px;
+}
+
+.field {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: var(--input-gap);
+    width: 100%;
+    height: var(--field-height);
+    padding: 0 var(--field-padding);
+    border-radius: var(--input-border-radius);
+    background: var(--field-background);
+    box-shadow: inset 0 0 0 1px var(--field-border);
+    cursor: text;
+}
+
+@media (hover: hover) {
+    .component:not([data-disabled], [data-read-only], [data-error]) .field:hover {
+        box-shadow: inset 0 0 0 1px var(--input-hover-border-color);
+    }
+}
+
+.component:not([data-disabled]) .field:focus-within {
+    box-shadow: none;
+    outline: 2px solid var(--input-focus-border-color);
+    outline-offset: 0;
+}
+
+.component[data-error]:not([data-disabled]) .field:focus-within {
+    outline-color: var(--input-error-border-color);
+}
+
+.component[data-disabled] .field,
+.input:disabled {
+    cursor: not-allowed;
+}
+
+.value {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--input-gap);
+    min-width: 0;
+}
+
+.innerHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.component .counter {
+    flex-shrink: 0;
+    margin-left: auto;
+    color: var(--field-label-color);
+    line-height: 16px;
+    white-space: nowrap;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.innerHeader .counter {
+    line-height: 15px;
+}
+
+.label {
+    flex: 1;
+    min-width: 0;
+    display: block;
+    color: var(--field-label-color);
+    overflow-wrap: anywhere;
+    font-size: 13px;
+    line-height: 16px;
+    cursor: inherit;
+}
+
+.component[data-inner-label] .label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: var(--field-font-size);
+    line-height: var(--field-line-height);
+    transform: translateY(7.5px);
+    transition:
+        transform 180ms ease,
+        font-size 180ms ease,
+        line-height 180ms ease;
+
+    & > span {
+        font-size: inherit;
+        line-height: inherit;
+    }
+}
+
+.component[data-inner-label][data-filled] .label,
+.component[data-inner-label]:not([data-disabled], [data-read-only]) .value:focus-within .label,
+.component[data-inner-label] .value:has(.input:autofill) .label {
+    font-size: 12px;
+    line-height: 15px;
+    transform: translateY(0);
+}
+
+.component[data-inner-label] .input {
+    margin-top: 15px;
+
+    &::placeholder {
+        opacity: 0;
+        transition: opacity 180ms ease;
+    }
+}
+
+.component[data-inner-label]:not([data-disabled], [data-read-only]) .input:focus::placeholder {
+    opacity: 1;
+}
+
+.component[data-inner-counter]:not([data-inner-label]) .input {
+    margin-top: 15px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .component[data-inner-label] .label,
+    .component[data-inner-label] .input::placeholder {
+        transition: none;
+    }
+}
+
+.input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: var(--field-line-height);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    color: var(--field-color);
+    font-family: var(--font-primary);
+    font-size: var(--field-font-size);
+    font-weight: 400;
+    line-height: var(--field-line-height);
+    text-overflow: ellipsis;
+    appearance: none;
+
+    &:focus {
+        text-overflow: clip;
+    }
+
+    &::placeholder {
+        color: var(--field-placeholder-color);
+        opacity: 1;
+    }
+
+    &:disabled {
+        opacity: 1;
+        -webkit-text-fill-color: var(--field-color);
+    }
+
+    &:-webkit-autofill {
+        -webkit-text-fill-color: var(--field-color);
+        box-shadow: inset 0 0 0 1000px var(--field-background);
+    }
+
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+        appearance: none;
+    }
+}
+
+.addon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--input-gap);
+    color: var(--field-icon-color);
+    font-size: var(--field-font-size);
+    line-height: var(--field-line-height);
+}
+
+.component .clear {
+    flex: 0 0 24px;
+    width: 24px;
+    min-width: 0;
+    height: 24px;
+    min-height: 0;
+    margin: 0 -4px;
+    padding: 0;
+    background: transparent;
+    color: var(--field-icon-color);
+
+    &:hover,
+    &:active {
+        color: var(--field-icon-color);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--input-focus-border-color);
+        outline-offset: 2px;
+    }
+
+    & svg {
+        display: block;
+        width: var(--input-icon-size);
+        height: var(--input-icon-size);
+    }
+}
+
+.component .message {
+    color: var(--input-hint-color);
+    line-height: 15px;
+    overflow-wrap: anywhere;
+}
+
+.component[data-error] .message {
+    color: var(--input-error-message-color);
+}
+
+.component[data-disabled] .message {
+    color: var(--input-disabled-color);
+}
