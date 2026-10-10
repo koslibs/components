@@ -2,6 +2,7 @@ import { CrossHeavyMIcon } from '@koslibs/icons/CrossHeavyMIcon';
 import cn from 'classnames';
 import { forwardRef, useContext, type HTMLAttributes } from 'react';
 
+import { useDataTestId } from '../../../../hooks/use-data-test-id';
 import { Button } from '../../../Button';
 import { TypographyText } from '../../../Typography';
 import { ModalContext } from '../../context';
@@ -36,7 +37,7 @@ export type HeaderProps = Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'onClos
 export const Header = forwardRef<HTMLDivElement, HeaderProps>(
     ({ title, subtitle, hasCloser = true, className, dataTestId, ...restProps }, ref) => {
         const { onClose, dataTestId: modalDataTestId } = useContext(ModalContext);
-        const testId = dataTestId ?? modalDataTestId;
+        const getDataTestId = useDataTestId(dataTestId ?? modalDataTestId);
 
         const handleClick = () => {
             onClose?.();
@@ -47,7 +48,7 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(
                 {...restProps}
                 ref={ref}
                 className={cn(styles.component, className)}
-                data-test-id={testId ? `${testId}-header` : undefined}
+                data-test-id={getDataTestId('header')}
             >
                 <div className={styles.content}>
                     {Boolean(title) && (
