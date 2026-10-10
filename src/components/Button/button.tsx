@@ -203,6 +203,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     className
                 )}
                 data-test-id={dataTestId}
+                data-block={block || undefined}
                 type={type}
                 disabled={disabled || showLoader}
                 aria-busy={showLoader}

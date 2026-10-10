@@ -1,0 +1,8 @@
+:root {
+    --modal-background-color: #f5f3ec;
+    --modal-color: #1c1a18;
+    --modal-backdrop-color: rgba(0, 0, 0, 0.7);
+    --modal-backdrop-blur: 2px;
+    --modal-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.2);
+    --modal-padding: var(--size-24, 24px);
+}

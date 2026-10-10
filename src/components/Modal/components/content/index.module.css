@@ -1,0 +1,11 @@
+.component {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    gap: var(--size-24, 24px);
+    padding: var(--modal-padding);
+    overflow: auto;
+    overscroll-behavior: contain;
+    overflow-wrap: anywhere;
+}

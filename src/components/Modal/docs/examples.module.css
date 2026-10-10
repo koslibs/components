@@ -1,0 +1,15 @@
+.examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.popover {
+    display: grid;
+    gap: 12px;
+    max-width: 280px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #212512;
+    color: #f5f3ec;
+}

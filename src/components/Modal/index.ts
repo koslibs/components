@@ -1,0 +1,10 @@
+export { Modal, Modal as ModalComponent } from './modal';
+export type { ModalProps } from './types';
+export { Header, Header as ModalHeader } from './components/header';
+export type { HeaderProps } from './components/header';
+export { Content, Content as ModalContent } from './components/content';
+export type { ContentProps } from './components/content';
+export { Footer, Footer as ModalFooter } from './components/footer';
+export type { FooterProps } from './components/footer';
+export { Controls, Controls as ModalControls } from './components/controls';
+export type { ControlsProps } from './components/controls';
