@@ -1,0 +1,8 @@
+.component {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--size-12, 12px);
+    padding: 0 var(--modal-padding) var(--modal-padding);
+}

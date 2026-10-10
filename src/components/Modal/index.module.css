@@ -1,0 +1,45 @@
+@import '../../styles/theme.css';
+@import './vars.css';
+
+.component {
+    padding: 0;
+    margin: auto;
+    border: none;
+    border-radius: var(--border-radius-12, 12px);
+    max-width: calc(100vw - var(--size-32, 32px));
+    max-height: calc(100dvh - var(--size-32, 32px));
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+    font-family: var(--font-primary);
+    box-shadow: var(--modal-shadow);
+
+    &[open] {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.size-480 {
+    width: 480px;
+}
+
+.size-600 {
+    width: 600px;
+}
+
+.size-720 {
+    width: 720px;
+}
+
+.size-960 {
+    width: 960px;
+}
+
+.size-fullscreen {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+}

@@ -1,6 +1,31 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Portal',
+        render: '<Portal><span>IMPORT_TEST_PORTAL</span></Portal>',
+        includes: { js: [/IMPORT_TEST_PORTAL/] },
+        excludes: {
+            js: [
+                /displayName\s*=\s*["'](?:Modal|Popover|Collapse|Button|Spinner|TypographyText|TypographyTitle)["']/,
+            ],
+            css: [/--(?:modal|popover|collapse|button|spinner|typography)-/, /@font-face/],
+            assets: [/\.woff2$/m],
+        },
+    },
+    {
+        component: 'Modal',
+        render: '<Modal open aria-label="Import test">IMPORT_TEST_MODAL</Modal>',
+        includes: {
+            js: [/IMPORT_TEST_MODAL/, /showModal/],
+            css: [/--modal-background-color/, /::backdrop/, /--modal-padding/, /@font-face/],
+            assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
+        },
+        excludes: {
+            js: [/displayName\s*=\s*["'](?:Popover|Collapse|TypographyTitle)["']/],
+            css: [/--popover-/, /--collapse-/],
+        },
+    },
+    {
         component: 'Collapse',
         render: '<Collapse defaultExpanded collapsedLabel="Details" showLeftChevron>IMPORT_TEST_COLLAPSE</Collapse>',
         includes: {

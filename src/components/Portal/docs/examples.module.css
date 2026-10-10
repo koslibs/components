@@ -1,0 +1,27 @@
+.examples {
+    display: grid;
+    gap: 16px;
+    max-width: 640px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.target {
+    min-height: 88px;
+    padding: 16px;
+    border: 1px dashed #858981;
+    border-radius: 8px;
+}
+
+.content {
+    display: grid;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f5f3ec;
+    color: #1c1a18;
+}

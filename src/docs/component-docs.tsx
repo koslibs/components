@@ -115,36 +115,45 @@ export function ComponentDocs({
                     <h2>Props</h2>
                     {props ?? <ArgTypes />}
                     <h2>CSS-переменные</h2>
-                    <p>
-                        Используемые переменные и значения по умолчанию. Их можно переопределить в
-                        стилях приложения.
-                        {componentName === 'Button' &&
-                            ' Для Button также показаны переменные Spinner, который отображает загрузку.'}
-                    </p>
-                    <div className={styles.tableWrapper}>
-                        <table className={styles.variables}>
-                            <thead>
-                                <tr>
-                                    <th>Переменная</th>
-                                    <th>По умолчанию</th>
-                                    <th>Используется в</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {variables.map((variable) => (
-                                    <tr key={variable.name}>
-                                        <td>
-                                            <code>{variable.name}</code>
-                                        </td>
-                                        <td>
-                                            <code>{variable.value}</code>
-                                        </td>
-                                        <td>{variable.sources}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                    {variables.length === 0 ? (
+                        <p>
+                            Компонент не использует CSS-переменные и не задаёт оформление
+                            содержимого.
+                        </p>
+                    ) : (
+                        <>
+                            <p>
+                                Используемые переменные и значения по умолчанию. Их можно
+                                переопределить в стилях приложения.
+                                {componentName === 'Button' &&
+                                    ' Для Button также показаны переменные Spinner, который отображает загрузку.'}
+                            </p>
+                            <div className={styles.tableWrapper}>
+                                <table className={styles.variables}>
+                                    <thead>
+                                        <tr>
+                                            <th>Переменная</th>
+                                            <th>По умолчанию</th>
+                                            <th>Используется в</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {variables.map((variable) => (
+                                            <tr key={variable.name}>
+                                                <td>
+                                                    <code>{variable.name}</code>
+                                                </td>
+                                                <td>
+                                                    <code>{variable.value}</code>
+                                                </td>
+                                                <td>{variable.sources}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </>
+                    )}
                 </>,
                 <Markdown>{changelog}</Markdown>,
             ].map((content, index) => (
