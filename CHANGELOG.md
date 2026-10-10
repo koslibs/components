@@ -1,5 +1,13 @@
 # @koslibs/components
 
+## 1.6.0
+
+### Minor Changes
+
+- [#7](https://github.com/koslibs/components/pull/7) [`4e937d7`](https://github.com/koslibs/components/commit/4e937d7e18b3c7d592e3b8cb161817d482bf2c55) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен Textarea по документации Figma: primary/secondary, inner/outer label,
+  Typography, hint/error, счётчик длины, очистка, autosize и вертикальный resize.
+  Внутренний скроллбар оформлен без стрелок и фона, с тонким закруглённым ползунком.
+
 ## 1.5.0
 
 ### Minor Changes
