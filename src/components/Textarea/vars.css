@@ -1,0 +1,8 @@
+@import '../Input/vars.css';
+
+:root {
+    --textarea-width: var(--input-width);
+    --textarea-padding: var(--input-padding-40);
+    --textarea-font-size: var(--input-font-size-40);
+    --textarea-line-height: 17px;
+}

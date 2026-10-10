@@ -1,0 +1,275 @@
+@import '../../styles/theme.css';
+@import './vars.css';
+
+.component {
+    --field-background: var(--input-primary-background-color);
+    --field-border: var(--input-border-color);
+    --field-color: var(--input-color);
+    --field-label-color: var(--input-label-color);
+    --field-placeholder-color: var(--input-placeholder-color);
+    --field-icon-color: var(--input-icon-color);
+
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--input-gap);
+    width: var(--textarea-width);
+    max-width: 100%;
+    min-width: 0;
+    vertical-align: top;
+    font-family: var(--font-primary);
+    color: var(--field-color);
+
+    &[data-block] {
+        display: flex;
+        width: 100%;
+    }
+
+    &[data-view='secondary'] {
+        --field-background: var(--input-secondary-background-color);
+    }
+
+    &[data-read-only] {
+        --field-border: var(--input-read-only-border-color);
+    }
+
+    &[data-error] {
+        --field-border: var(--input-error-border-color);
+    }
+
+    &[data-disabled] {
+        --field-background: var(--input-disabled-background-color);
+        --field-border: transparent;
+        --field-color: var(--input-disabled-color);
+        --field-label-color: var(--input-disabled-color);
+        --field-placeholder-color: var(--input-disabled-color);
+        --field-icon-color: var(--input-disabled-color);
+    }
+}
+
+.field {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--input-gap);
+    width: 100%;
+    padding: var(--textarea-padding);
+    border-radius: var(--input-border-radius);
+    background: var(--field-background);
+    box-shadow: inset 0 0 0 1px var(--field-border);
+    cursor: text;
+}
+
+@media (hover: hover) {
+    .component:not([data-disabled], [data-read-only], [data-error]) .field:hover {
+        box-shadow: inset 0 0 0 1px var(--input-hover-border-color);
+    }
+}
+
+.component:not([data-disabled]) .field:focus-within {
+    box-shadow: none;
+    outline: 2px solid var(--input-focus-border-color);
+    outline-offset: 0;
+}
+
+.component[data-error]:not([data-disabled]) .field:focus-within {
+    outline-color: var(--input-error-border-color);
+}
+
+.component[data-disabled] .field,
+.textarea:disabled {
+    cursor: not-allowed;
+}
+
+.value {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--input-gap);
+    min-width: 0;
+}
+
+.innerHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+}
+
+.component .counter {
+    flex-shrink: 0;
+    margin-left: auto;
+    color: var(--field-label-color);
+    line-height: 16px;
+    white-space: nowrap;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.innerHeader .counter {
+    line-height: 15px;
+}
+
+.label {
+    display: block;
+    flex: 1;
+    min-width: 0;
+    color: var(--field-label-color);
+    overflow-wrap: anywhere;
+    font-size: 13px;
+    line-height: 16px;
+    cursor: inherit;
+}
+
+.component[data-inner-label] .label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: var(--textarea-font-size);
+    line-height: var(--textarea-line-height);
+    transform: translateY(7.5px);
+    transition:
+        transform 180ms ease,
+        font-size 180ms ease,
+        line-height 180ms ease;
+
+    & > span {
+        font-size: inherit;
+        line-height: inherit;
+    }
+}
+
+.component[data-inner-label][data-filled] .label,
+.component[data-inner-label]:not([data-disabled], [data-read-only]) .value:focus-within .label,
+.component[data-inner-label] .value:has(.textarea:autofill) .label {
+    font-size: 12px;
+    line-height: 15px;
+    transform: translateY(0);
+}
+
+.component[data-inner-header] .textarea {
+    margin-top: 15px;
+}
+
+.component[data-inner-label] .textarea::placeholder {
+    opacity: 0;
+    transition: opacity 180ms ease;
+}
+
+.component[data-inner-label]:not([data-disabled], [data-read-only]) .textarea:focus::placeholder {
+    opacity: 1;
+}
+
+.textarea {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: calc(var(--textarea-rows) * var(--textarea-line-height));
+    min-height: calc(var(--textarea-rows) * var(--textarea-line-height));
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    color: var(--field-color);
+    font-family: var(--font-primary);
+    font-size: var(--textarea-font-size);
+    font-weight: 400;
+    line-height: var(--textarea-line-height);
+    overflow: auto;
+    overflow-wrap: break-word;
+    resize: none;
+    appearance: none;
+    scrollbar-color: auto;
+    scrollbar-width: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-track-piece,
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 999px;
+        background: var(--field-icon-color);
+    }
+
+    &::placeholder {
+        color: var(--field-placeholder-color);
+        opacity: 1;
+    }
+
+    &:disabled {
+        opacity: 1;
+        -webkit-text-fill-color: var(--field-color);
+    }
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    .textarea {
+        scrollbar-width: thin;
+        scrollbar-color: var(--field-icon-color) transparent;
+    }
+}
+
+.component[data-resize] .textarea {
+    resize: vertical;
+}
+
+.component .clear {
+    flex: 0 0 24px;
+    width: 24px;
+    min-width: 0;
+    height: 24px;
+    min-height: 0;
+    margin: 0 -4px;
+    padding: 0;
+    background: transparent;
+    color: var(--field-icon-color);
+
+    &:hover,
+    &:active {
+        color: var(--field-icon-color);
+    }
+
+    & svg {
+        display: block;
+        width: var(--input-icon-size);
+        height: var(--input-icon-size);
+    }
+}
+
+.component .message {
+    color: var(--input-hint-color);
+    line-height: 15px;
+    overflow-wrap: anywhere;
+}
+
+.component[data-error] .message {
+    color: var(--input-error-message-color);
+}
+
+.component[data-disabled] .message {
+    color: var(--input-disabled-color);
+}

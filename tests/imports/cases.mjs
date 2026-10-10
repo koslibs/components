@@ -6,9 +6,12 @@ export const importCases = [
         includes: { js: [/IMPORT_TEST_PORTAL/] },
         excludes: {
             js: [
-                /displayName\s*=\s*["'](?:Input|Modal|Popover|Collapse|Button|Spinner|TypographyText|TypographyTitle)["']/,
+                /displayName\s*=\s*["'](?:Input|Textarea|Modal|Popover|Collapse|Button|Spinner|TypographyText|TypographyTitle)["']/,
             ],
-            css: [/--(?:input|modal|popover|collapse|button|spinner|typography)-/, /@font-face/],
+            css: [
+                /--(?:input|textarea|modal|popover|collapse|button|spinner|typography)-/,
+                /@font-face/,
+            ],
             assets: [/\.woff2$/m],
         },
     },
@@ -21,7 +24,20 @@ export const importCases = [
             assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
         },
         excludes: {
-            js: [/displayName\s*=\s*["'](?:Modal|Popover|Collapse|TypographyTitle)["']/],
+            js: [/displayName\s*=\s*["'](?:Textarea|Modal|Popover|Collapse|TypographyTitle)["']/],
+            css: [/--modal-/, /--popover-/, /--collapse-/],
+        },
+    },
+    {
+        component: 'Textarea',
+        render: '<Textarea label="IMPORT_TEST_TEXTAREA" defaultValue="Value" clear autosize />',
+        includes: {
+            js: [/IMPORT_TEST_TEXTAREA/, /Очистить поле/, /M7\.5 9L2\.25 4\.125/],
+            css: [/--textarea-line-height/, /--input-primary-background-color/, /@font-face/],
+            assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
+        },
+        excludes: {
+            js: [/displayName\s*=\s*["'](?:Input|Modal|Popover|Collapse|TypographyTitle)["']/],
             css: [/--modal-/, /--popover-/, /--collapse-/],
         },
     },
