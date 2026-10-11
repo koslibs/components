@@ -1,6 +1,24 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Status',
+        render: '<Status color="sand" message="IMPORT_TEST_STATUS" uppercase />',
+        includes: {
+            js: [/IMPORT_TEST_STATUS/, /TypographyText/],
+            css: [
+                /--status-color-sand-background/,
+                /--status-geometry-height-20/,
+                /text-overflow:\s*ellipsis/,
+                /@font-face/,
+            ],
+            assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
+        },
+        excludes: {
+            js: [/displayName\s*=\s*["'](?:Button|Spinner|TypographyTitle|Tabs|Input)["']/],
+            css: [/--button-/, /--spinner-/, /--tabs-/, /--input-/],
+        },
+    },
+    {
         component: 'Tabs',
         imports: ['Tabs', 'Tab'],
         render: '<Tabs><Tab id="overview" title="IMPORT_TEST_TABS" count={0} /></Tabs>',

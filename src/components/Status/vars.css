@@ -1,0 +1,36 @@
+:root {
+    --status-color-green-background: #d1f1d7;
+    --status-color-green-foreground: #08752a;
+    --status-color-orange-background: #ffe6cc;
+    --status-color-orange-foreground: #9a4600;
+    --status-color-red-background: #fde0df;
+    --status-color-red-foreground: #b42318;
+    --status-color-blue-background: #ddebff;
+    --status-color-blue-foreground: #175cd3;
+    --status-color-grey-background: #e9eaec;
+    --status-color-grey-foreground: #535862;
+    --status-color-teal-background: #d4f1ed;
+    --status-color-teal-foreground: #0b6b60;
+    --status-color-purple-background: #e9e2ff;
+    --status-color-purple-foreground: #6941c6;
+    --status-color-sand-background: #ede9de;
+    --status-color-sand-foreground: #736554;
+
+    --status-geometry-height-20: var(--size-20);
+    --status-geometry-height-24: var(--size-24);
+    --status-geometry-height-32: var(--size-32);
+    --status-geometry-height-40: var(--size-40);
+    --status-geometry-padding-20: var(--size-8);
+    --status-geometry-padding-24: var(--size-12);
+    --status-geometry-padding-32: var(--size-16);
+    --status-geometry-padding-40: var(--size-20);
+    --status-geometry-radius-rectangular-20: var(--border-radius-6);
+    --status-geometry-radius-rectangular-24: var(--border-radius-6);
+    --status-geometry-radius-rectangular-32: var(--border-radius-10);
+    --status-geometry-radius-rectangular-40: var(--border-radius-12);
+    --status-geometry-radius-rounded-20: var(--border-radius-10);
+    --status-geometry-radius-rounded-24: var(--border-radius-12);
+    --status-geometry-radius-rounded-32: var(--border-radius-16);
+    --status-geometry-radius-rounded-40: var(--border-radius-20);
+    --status-geometry-gap: var(--size-6);
+}

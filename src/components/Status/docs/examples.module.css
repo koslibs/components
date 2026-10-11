@@ -1,0 +1,53 @@
+.preview {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--size-16);
+    padding: var(--size-24);
+    border-radius: var(--border-radius-12);
+    background: #f5f3ec;
+    color: #1c1a18;
+    font: 14px/20px var(--font-primary);
+}
+
+.matrix {
+    display: grid;
+    gap: var(--size-16);
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: var(--size-12);
+    width: max-content;
+}
+
+.rowLabel {
+    width: 120px;
+    flex-shrink: 0;
+}
+
+.dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--border-radius-circle);
+    background: currentColor;
+}
+
+.preview .spinner {
+    color: inherit;
+}
+
+.preview .constrained {
+    width: 220px;
+}
+
+.process {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--size-12);
+}

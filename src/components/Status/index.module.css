@@ -1,0 +1,108 @@
+@import '../../styles/theme.css';
+@import './vars.css';
+
+.component {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: fit-content;
+    min-width: 0;
+    max-width: 100%;
+    height: var(--status-height);
+    padding: 0 var(--status-padding);
+    gap: var(--status-geometry-gap);
+    border-radius: var(--status-radius);
+}
+
+.size-20 {
+    --status-height: var(--status-geometry-height-20);
+    --status-padding: var(--status-geometry-padding-20);
+    --status-rectangular-radius: var(--status-geometry-radius-rectangular-20);
+    --status-rounded-radius: var(--status-geometry-radius-rounded-20);
+}
+
+.size-24 {
+    --status-height: var(--status-geometry-height-24);
+    --status-padding: var(--status-geometry-padding-24);
+    --status-rectangular-radius: var(--status-geometry-radius-rectangular-24);
+    --status-rounded-radius: var(--status-geometry-radius-rounded-24);
+}
+
+.size-32 {
+    --status-height: var(--status-geometry-height-32);
+    --status-padding: var(--status-geometry-padding-32);
+    --status-rectangular-radius: var(--status-geometry-radius-rectangular-32);
+    --status-rounded-radius: var(--status-geometry-radius-rounded-32);
+}
+
+.size-40 {
+    --status-height: var(--status-geometry-height-40);
+    --status-padding: var(--status-geometry-padding-40);
+    --status-rectangular-radius: var(--status-geometry-radius-rectangular-40);
+    --status-rounded-radius: var(--status-geometry-radius-rounded-40);
+}
+
+.rectangular {
+    --status-radius: var(--status-rectangular-radius);
+}
+
+.rounded {
+    --status-radius: var(--status-rounded-radius);
+}
+
+.green {
+    background-color: var(--status-color-green-background);
+    color: var(--status-color-green-foreground);
+}
+
+.orange {
+    background-color: var(--status-color-orange-background);
+    color: var(--status-color-orange-foreground);
+}
+
+.red {
+    background-color: var(--status-color-red-background);
+    color: var(--status-color-red-foreground);
+}
+
+.blue {
+    background-color: var(--status-color-blue-background);
+    color: var(--status-color-blue-foreground);
+}
+
+.grey {
+    background-color: var(--status-color-grey-background);
+    color: var(--status-color-grey-foreground);
+}
+
+.teal {
+    background-color: var(--status-color-teal-background);
+    color: var(--status-color-teal-foreground);
+}
+
+.purple {
+    background-color: var(--status-color-purple-background);
+    color: var(--status-color-purple-foreground);
+}
+
+.sand {
+    background-color: var(--status-color-sand-background);
+    color: var(--status-color-sand-foreground);
+}
+
+.component .label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: normal;
+}
+
+.addon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}

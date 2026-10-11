@@ -8,6 +8,8 @@ export { Tab, Tabs } from './components/Tabs';
 export type { TabProps, TabsProps } from './components/Tabs';
 export { Spinner } from './components/Spinner';
 export type { SpinnerProps } from './components/Spinner';
+export { Status } from './components/Status';
+export type { StatusProps } from './components/Status';
 export { Typography, TypographyText, TypographyTitle, Text, Title } from './components/Typography';
 export type {
     TextProps,
