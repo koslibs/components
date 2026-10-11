@@ -1,5 +1,13 @@
 # @koslibs/components
 
+## 1.8.0
+
+### Minor Changes
+
+- [#9](https://github.com/koslibs/components/pull/9) [`03ecceb`](https://github.com/koslibs/components/commit/03ecceb7d7f6831f6d4e6e85b80373aeb6ffd743) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен Status: размеры 20/24/32/40, формы rectangular/rounded, восемь цветов,
+  декоративные аддоны, подпись message, uppercase (по умолчанию false),
+  сокращение подписи при ограничении ширины и Storybook Docs/Playground.
+
 ## 1.7.0
 
 ### Minor Changes
