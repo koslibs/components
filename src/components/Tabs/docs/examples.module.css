@@ -1,0 +1,15 @@
+.preview {
+    display: grid;
+    gap: var(--size-20);
+    padding: var(--size-24);
+    border-radius: var(--border-radius-12);
+    background: #eae7de;
+    color: #1c1a18;
+    font: 14px/20px var(--font-primary);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-8);
+}

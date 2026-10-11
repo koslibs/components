@@ -11,6 +11,8 @@ import {
     type ReactNode,
 } from 'react';
 
+import { TypographyText } from '../Typography/text';
+
 import styles from './index.module.css';
 
 export type CollapseProps = Omit<HTMLAttributes<HTMLDivElement>, 'onTransitionEnd'> & {
@@ -172,7 +174,7 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
                                 aria-hidden="true"
                             />
                         )}
-                        <span>{label}</span>
+                        <TypographyText size={13}>{label}</TypographyText>
                         {showRightChevron && (
                             <ChevronDownIcon
                                 className={cn(styles.icon, { [styles.rotated]: isExpanded })}

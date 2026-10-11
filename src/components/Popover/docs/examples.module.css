@@ -1,19 +1,19 @@
 @import '../../../styles/theme.css';
 
 .playground {
-    padding: 24px;
+    padding: var(--size-24);
 }
 
 .playgroundContent {
     display: grid;
-    gap: 12px;
+    gap: var(--size-12);
 }
 
 .examples {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px 0;
+    gap: var(--size-16);
+    padding: var(--size-16) var(--size-0);
 }
 
 .width {
@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
-    gap: 12px;
+    gap: var(--size-12);
 }
 
 .heading,
@@ -37,13 +37,13 @@
     flex: 1 1 auto;
     min-height: 0;
     max-height: 280px;
-    gap: 8px;
+    gap: var(--size-8);
     overflow: auto;
 }
 
 .item {
-    padding: 12px;
-    border-radius: 8px;
+    padding: var(--size-12);
+    border-radius: var(--border-radius-8);
     background: #e3d2b4;
     color: #1c1a18;
 }
@@ -56,7 +56,7 @@
     height: 72px;
     overflow: hidden;
     border: 1px dashed #858981;
-    border-radius: 8px;
+    border-radius: var(--border-radius-8);
 }
 .surface {
     box-sizing: border-box;
@@ -65,9 +65,9 @@
     min-width: 0;
     min-height: 0;
     max-height: var(--popover-available-height, none);
-    padding: 12px;
+    padding: var(--size-12);
     border: 1px solid transparent;
-    border-radius: 8px;
+    border-radius: var(--border-radius-8);
     background-color: #f5f3ec;
     color: #1c1a18;
     font-family: var(--font-primary);

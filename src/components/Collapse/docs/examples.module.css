@@ -1,7 +1,7 @@
 .preview {
     width: 480px;
     max-width: 100%;
-    padding: 16px;
+    padding: var(--size-16);
     box-sizing: border-box;
 }
 
@@ -9,10 +9,10 @@
     --collapse-color: #f5f3ec;
     --collapse-hover-color: #e0dbce;
 
-    padding: 16px;
+    padding: var(--size-16);
     background: #1c1a18;
     color: #f5f3ec;
-    border-radius: 8px;
+    border-radius: var(--border-radius-8);
 }
 
 .dialog {
@@ -20,9 +20,9 @@
     max-width: calc(100vw - 48px);
     max-height: calc(100vh - 48px);
     box-sizing: border-box;
-    padding: 24px;
+    padding: var(--size-24);
     border: 0;
-    border-radius: 12px;
+    border-radius: var(--border-radius-12);
     font-family: var(--font-primary);
 
     &::backdrop {

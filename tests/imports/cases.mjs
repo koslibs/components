@@ -1,6 +1,27 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Tabs',
+        imports: ['Tabs', 'Tab'],
+        render: '<Tabs><Tab id="overview" title="IMPORT_TEST_TABS" count={0} /></Tabs>',
+        includes: {
+            js: [/IMPORT_TEST_TABS/, /Tabs accepts only Tab elements/, /TypographyText/],
+            css: [
+                /--tabs-indicator-color/,
+                /--tabs-hover-indicator-color/,
+                /--typography-font-size-14/,
+                /@font-face/,
+            ],
+            assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
+        },
+        excludes: {
+            js: [
+                /displayName\s*=\s*["'](?:Button|Spinner|Input|Textarea|Popover|Collapse|TypographyTitle)["']/,
+            ],
+            css: [/--button-/, /--spinner-/, /--input-/],
+        },
+    },
+    {
         component: 'Portal',
         render: '<Portal><span>IMPORT_TEST_PORTAL</span></Portal>',
         includes: { js: [/IMPORT_TEST_PORTAL/] },
@@ -58,15 +79,13 @@ export const importCases = [
         component: 'Collapse',
         render: '<Collapse defaultExpanded collapsedLabel="Details" showLeftChevron>IMPORT_TEST_COLLAPSE</Collapse>',
         includes: {
-            js: [/IMPORT_TEST_COLLAPSE/, /M4\.5 6\.75L9 11\.25L13\.5 6\.75/],
+            js: [/IMPORT_TEST_COLLAPSE/, /M4\.5 6\.75L9 11\.25L13\.5 6\.75/, /TypographyText/],
             css: [/--collapse-color/, /grid-template-rows/, /prefers-reduced-motion/, /@font-face/],
             assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
         },
         excludes: {
-            js: [
-                /displayName\s*=\s*["'](?:Button|Spinner|Popover|TypographyText|TypographyTitle)["']/,
-            ],
-            css: [/--button-/, /--spinner-/, /--popover-/, /--typography-/, /--collapse-inverted-/],
+            js: [/displayName\s*=\s*["'](?:Button|Spinner|Popover|TypographyTitle)["']/],
+            css: [/--button-/, /--spinner-/, /--popover-/, /--collapse-inverted-/],
         },
     },
     {
@@ -100,10 +119,11 @@ export const importCases = [
         component: 'Button',
         render: '<Button loading>IMPORT_TEST_BUTTON</Button>',
         includes: {
-            js: [/IMPORT_TEST_BUTTON/, /conic-gradient/],
+            js: [/IMPORT_TEST_BUTTON/, /conic-gradient/, /TypographyText/],
             css: [
                 /--button-primary-background-color/,
                 /--spinner-animation-duration/,
+                /--typography-font-size-18/,
                 /--font-primary\s*:\s*["']Inter["']/,
                 /@font-face/,
             ],
@@ -113,16 +133,22 @@ export const importCases = [
             ],
         },
         excludes: {
-            js: [/displayName\s*=\s*["']Typography(?:Text|Title)["']/],
-            css: [/--typography-/, /--popover-/],
+            js: [/displayName\s*=\s*["']TypographyTitle["']/],
+            css: [/--popover-/],
         },
     },
     {
         component: 'Spinner',
+        cssImports: ['variables.css'],
         render: '<Spinner visible dataTestId="IMPORT_TEST_SPINNER" />',
         includes: {
             js: [/IMPORT_TEST_SPINNER/, /conic-gradient/],
-            css: [/--spinner-animation-duration/],
+            css: [
+                /--spinner-animation-duration/,
+                /--size-24\s*:\s*24px/,
+                /--size-4-neg\s*:\s*-4px/,
+                /--border-radius-pill\s*:\s*99px/,
+            ],
         },
         excludes: {
             js: [/displayName\s*=\s*["'](?:Button|TypographyText|TypographyTitle)["']/],

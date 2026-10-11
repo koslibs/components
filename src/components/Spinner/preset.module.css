@@ -1,5 +1,7 @@
+@import '../../styles/variables.css';
+
 .preset16 {
-    padding: 1px;
+    padding: calc(var(--size-2) / 2);
 }
 
 .preset24 {

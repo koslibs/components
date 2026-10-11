@@ -2,8 +2,8 @@ import cn from 'classnames';
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 
 import { createSizeModifier } from '../../create-size-modifier';
+import { usePopoverPosition } from '../../hooks/use-popover-position';
 import type { PopoverProps } from '../../types';
-import { usePopoverPosition } from '../../use-popover-position';
 
 import styles from '../../index.module.css';
 

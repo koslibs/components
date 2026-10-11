@@ -52,11 +52,13 @@ function Example({
     children: ReactNode;
 }) {
     return (
-        <section id={name} style={{ marginTop: 32 }}>
+        <section id={name} style={{ marginTop: 'var(--size-32)' }}>
             <h2>{title}</h2>
-            <p style={{ margin: '12px 0 20px' }}>{description}</p>
+            <p style={{ margin: 'var(--size-12) var(--size-0) var(--size-20)' }}>{description}</p>
             <Unstyled>
-                <div style={{ display: 'grid', gap: 16, padding: 16 }}>{children}</div>
+                <div style={{ display: 'grid', gap: 'var(--size-16)', padding: 'var(--size-16)' }}>
+                    {children}
+                </div>
             </Unstyled>
         </section>
     );
@@ -84,7 +86,9 @@ function Documentation() {
                 TypographyText по умолчанию рендерит span размером 13 px с весом regular;
                 TypographyTitle — 28 px с весом bold. Для TypographyTitle явно передайте tag: h1–h6
                 или div. Уровень заголовка выбирайте по структуре страницы. Оба компонента наследуют
-                цвет и не добавляют отступов.
+                цвет и не добавляют отступов. Для всех размеров высота строки — normal, как Auto в
+                документации Figma; она определяется метриками шрифта и не переопределяется
+                компонентами библиотеки.
             </p>
             <p>
                 Общие параметры: size, weight, color, caps, monospaceNumbers, rowLimit, className,
@@ -118,7 +122,7 @@ function Documentation() {
                             display: 'flex',
                             flexWrap: 'wrap',
                             alignItems: 'baseline',
-                            gap: 16,
+                            gap: 'var(--size-16)',
                         }}
                     >
                         <TypographyText color="secondary" style={{ width: 110 }}>
@@ -139,9 +143,9 @@ function Documentation() {
             <Example
                 name="text-sizes"
                 title="Размеры текста"
-                description="Полный набор размеров TypographyText. Размеры 16 и 20 px дополняют компактные стили макета для обычного текста."
+                description="Полный набор размеров TypographyText. Размеры 16, 18 и 20 px дополняют компактные стили макета для обычного текста."
             >
-                {([8, 9, 10, 11, 12, 13, 14, 15, 16, 20] as const).map((size) => (
+                {([8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20] as const).map((size) => (
                     <TypographyText key={size} size={size} color="primary">
                         {size} px — История раздач / Hand history
                     </TypographyText>
@@ -180,7 +184,7 @@ function Documentation() {
                     <div
                         key={color}
                         style={{
-                            padding: 12,
+                            padding: 'var(--size-12)',
                             color: '#ff5722',
                             background: color === 'inverse' ? '#1c1a18' : '#f5f3ec',
                         }}

@@ -36,6 +36,10 @@
     font-size: var(--typography-font-size-16);
 }
 
+.size-18 {
+    font-size: var(--typography-font-size-18);
+}
+
 .size-20 {
     font-size: var(--typography-font-size-20);
 }

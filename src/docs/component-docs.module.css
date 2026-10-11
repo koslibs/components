@@ -1,13 +1,15 @@
+@import '../styles/variables.css';
+
 :global(html) {
     scrollbar-gutter: stable;
 }
 
 .tabs[role='tablist'] {
     display: flex;
-    gap: 32px;
+    gap: var(--size-32);
     overflow-x: auto;
     border-bottom: 1px solid #c3c5cc;
-    margin: 24px 0 0;
+    margin: var(--size-24) var(--size-0) var(--size-0);
 }
 
 .tab {
@@ -16,7 +18,7 @@
     appearance: none;
     border: 0;
     background: transparent;
-    padding: 12px 0 16px;
+    padding: var(--size-12) var(--size-0) var(--size-16);
     color: #717580;
     font: inherit;
     font-size: 16px;
@@ -44,10 +46,10 @@
 
 .panel[role='tabpanel'] {
     display: flow-root;
-    padding-top: 24px;
+    padding-top: var(--size-24);
 
     & > :first-child {
-        margin-top: 0;
+        margin-top: var(--size-0);
     }
 }
 

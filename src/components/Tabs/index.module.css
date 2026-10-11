@@ -1,0 +1,94 @@
+@import '../../styles/theme.css';
+@import './vars.css';
+
+.component {
+    min-width: 0;
+    width: 100%;
+    font-family: var(--font-primary);
+}
+
+.list {
+    position: relative;
+    display: flex;
+    gap: var(--tabs-gap);
+    box-shadow: inset 0 -1px var(--tabs-divider-color);
+}
+
+.tab {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: var(--tabs-gap);
+    box-sizing: border-box;
+    margin: var(--size-0);
+    padding: var(--size-0) var(--tabs-padding);
+    border: 0;
+    border-radius: var(--tabs-border-radius);
+    outline: none;
+    background: transparent;
+    color: var(--tabs-muted-color);
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.size40 {
+    height: var(--tabs-height-40);
+}
+
+.size48 {
+    height: var(--tabs-height-48);
+}
+
+.tab::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: var(--tabs-indicator-height);
+    background: transparent;
+    content: '';
+}
+
+.tab:hover:not(:disabled) {
+    color: var(--tabs-color);
+}
+
+.tab:hover:not(:disabled):not(.selected)::after {
+    background: var(--tabs-hover-indicator-color);
+}
+
+.tab.selected,
+.tab .counter {
+    color: var(--tabs-color);
+}
+
+.indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: var(--tabs-indicator-height);
+    background: var(--tabs-indicator-color);
+    pointer-events: none;
+    transition:
+        transform var(--tabs-indicator-transition-duration) ease,
+        width var(--tabs-indicator-transition-duration) ease;
+}
+
+.tab .counter {
+    padding: var(--size-0) var(--tabs-counter-padding);
+    border-radius: var(--tabs-counter-border-radius);
+    background: var(--tabs-counter-background-color);
+}
+
+.tab:disabled,
+.tab:disabled .counter {
+    color: var(--tabs-disabled-color);
+    cursor: default;
+}
+
+.tab:disabled .counter {
+    background: var(--tabs-disabled-counter-background-color);
+}

@@ -39,7 +39,7 @@ const meta = {
         children: { control: 'text', description: 'Содержимое текста.' },
         size: {
             control: 'select',
-            options: [8, 9, 10, 11, 12, 13, 14, 15, 16, 20],
+            options: [8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20],
             description: 'Размер TypographyText в пикселях. По умолчанию 13.',
         },
         weight: {

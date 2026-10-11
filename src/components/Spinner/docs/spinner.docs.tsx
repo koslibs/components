@@ -22,18 +22,18 @@ function Example({
     children: ReactNode;
 }) {
     return (
-        <section id={name} style={{ marginTop: 32 }}>
+        <section id={name} style={{ marginTop: 'var(--size-32)' }}>
             <h2>{title}</h2>
-            <p style={{ margin: '12px 0 20px' }}>{description}</p>
+            <p style={{ margin: 'var(--size-12) var(--size-0) var(--size-20)' }}>{description}</p>
             <div
                 style={{
                     display: 'flex',
                     flexWrap: 'wrap',
                     alignItems: 'center',
-                    gap: 32,
+                    gap: 'var(--size-32)',
                     width: 'fit-content',
                     maxWidth: '100%',
-                    padding: 16,
+                    padding: 'var(--size-16)',
                 }}
             >
                 {children}
@@ -64,7 +64,10 @@ function Documentation() {
                 description="Размеры 16, 24 и 48 px включают внутренние отступы. Диаметр самого SVG — 14, 20 и 40 px соответственно. По умолчанию используется размер 24."
             >
                 {([16, 24, 48] as const).map((size) => (
-                    <div key={size} style={{ display: 'grid', justifyItems: 'center', gap: 12 }}>
+                    <div
+                        key={size}
+                        style={{ display: 'grid', justifyItems: 'center', gap: 'var(--size-12)' }}
+                    >
                         <Spinner visible size={size} />
                         <span>{size} px</span>
                     </div>
@@ -90,7 +93,13 @@ function Documentation() {
                 title="Тёмный фон"
                 description="На тёмном фоне задайте светлый цвет, чтобы индикатор оставался различимым. В примере используется белый спиннер на фоне #121212."
             >
-                <div style={{ background: '#121212', padding: 32, borderRadius: 8 }}>
+                <div
+                    style={{
+                        background: '#121212',
+                        padding: 'var(--size-32)',
+                        borderRadius: 'var(--border-radius-8)',
+                    }}
+                >
                     <Spinner visible style={{ color: '#ffffff' }} />
                 </div>
             </Example>

@@ -4,7 +4,7 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: var(--size-24, 24px);
-    padding: var(--modal-padding) var(--modal-padding) 0;
+    padding: var(--modal-padding) var(--modal-padding) var(--size-0);
 }
 
 .content {
@@ -20,7 +20,7 @@
     flex-shrink: 0;
     width: 48px;
     min-width: 48px;
-    padding: 0;
+    padding: var(--size-0);
 }
 
 .closerLabel {

@@ -31,14 +31,12 @@
     align-items: center;
     gap: var(--size-4, 4px);
     max-width: 100%;
-    margin: 0;
-    padding: var(--size-8, 8px) 0;
+    margin: var(--size-0);
+    padding: var(--size-8, 8px) var(--size-0);
     border: 0;
     background: transparent;
     color: var(--collapse-color);
     font: inherit;
-    font-size: 13px;
-    line-height: 20px;
     text-align: left;
     overflow-wrap: anywhere;
     cursor: pointer;

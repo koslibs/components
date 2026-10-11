@@ -21,6 +21,7 @@ import { ExampleSurface, type ExampleAppearance } from './example-surface';
 import styles from './examples.module.css';
 
 const example = `import { useState } from 'react';
+import '@koslibs/components/variables.css';
 import { Popover } from '@koslibs/components/Popover';
 import { Button } from '@koslibs/components/Button';
 import styles from './content.module.css';
@@ -45,8 +46,8 @@ const handleClose = () => setOpen(false);
     box-sizing: border-box;
     min-height: 0;
     max-height: var(--popover-available-height, none);
-    padding: 12px;
-    border-radius: 8px;
+    padding: var(--size-12);
+    border-radius: var(--border-radius-8);
     background: #212512;
     color: #f5f3ec;
     overflow: auto;

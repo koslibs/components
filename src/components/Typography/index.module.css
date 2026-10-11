@@ -6,7 +6,7 @@
     padding: var(--size-0, 0px);
     font-family: var(--font-primary);
     font-style: normal;
-    line-height: var(--typography-line-height);
+    line-height: normal;
     letter-spacing: var(--typography-letter-spacing);
 }
 

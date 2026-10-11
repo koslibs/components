@@ -48,7 +48,13 @@ const meta = {
         showRightChevron: true,
         showLeftChevron: false,
         children: (
-            <div style={{ display: 'grid', gap: 12, padding: '12px 0' }}>
+            <div
+                style={{
+                    display: 'grid',
+                    gap: 'var(--size-12)',
+                    padding: 'var(--size-12) var(--size-0)',
+                }}
+            >
                 <p>session-01.txt — Imported</p>
                 <p>session-02.txt — Imported</p>
                 <p>session-03.txt — Completed with warnings</p>

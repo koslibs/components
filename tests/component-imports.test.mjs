@@ -21,6 +21,17 @@ test('public component imports', async (context) => {
         }
     });
 
+    await context.test(
+        'public stylesheet exports resolve to existing files',
+        async (subcontext) => {
+            for (const style of fixture.styles) {
+                await subcontext.test(style.name, async () => {
+                    await access(style.module);
+                });
+            }
+        }
+    );
+
     for (const scenario of importCases) {
         await context.test(scenario.component, async () => {
             const bundle = await readBundle(fixture.output(scenario.component));

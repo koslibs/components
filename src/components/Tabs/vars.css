@@ -1,0 +1,19 @@
+:root {
+    --tabs-color: #1c1a18;
+    --tabs-muted-color: #736554;
+    --tabs-disabled-color: #9da099;
+    --tabs-indicator-color: #d95300;
+    --tabs-hover-indicator-color: #c8beaa;
+    --tabs-counter-background-color: #e0dbce;
+    --tabs-disabled-counter-background-color: rgb(224 219 206 / 45%);
+    --tabs-divider-color: #e0dbce;
+    --tabs-height-40: 40px;
+    --tabs-height-48: 48px;
+    --tabs-padding: var(--size-12);
+    --tabs-gap: var(--size-8);
+    --tabs-border-radius: var(--border-radius-4);
+    --tabs-indicator-height: 2px;
+    --tabs-indicator-transition-duration: 200ms;
+    --tabs-counter-padding: var(--size-6);
+    --tabs-counter-border-radius: var(--border-radius-pill);
+}
