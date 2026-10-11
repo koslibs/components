@@ -1,5 +1,28 @@
 # @koslibs/components
 
+## 1.7.0
+
+### Minor Changes
+
+- [#8](https://github.com/koslibs/components/pull/8) [`5b8e35c`](https://github.com/koslibs/components/commit/5b8e35cdfc7d0586b93d986661ff0ddcafa97452) Thanks [@holypower777](https://github.com/holypower777)! - Добавлены Tabs и дочерний Tab по документации Figma: selectedId/defaultSelectedId,
+  onChange(event, { selectedId }), размеры 40/48, счётчики, controlled/uncontrolled,
+  плавное перемещение активного индикатора. Ряд вкладок должен помещаться в доступную
+  ширину; горизонтальная прокрутка и перенос не поддерживаются. Содержимое выбранной вкладки
+  отображается отдельно в приложении.
+  В документации показаны props обоих компонентов: Tabs и Tab.
+  Tab отображает кнопку вкладки; Tabs управляет общим состоянием через внутренний контекст.
+
+    Текст Tabs, Button и Collapse использует общий TypographyText. Добавлен размер
+    18 px для TypographyText; сохранены размеры текста. Все размеры Typography используют
+    line-height: normal по документации Figma Auto. Удалены локальные переопределения
+    высоты строки в Tabs, Button, Collapse, а также подписях, подсказках и счётчиках
+    Input и Textarea.
+
+    Добавлен импорт @koslibs/components/variables.css со шкалами --size-_ и
+    --border-radius-_. Общая тема включает переменные автоматически; отступы и
+    скругления компонентов используют эти шкалы. Использование и переопределение
+    задокументированы в README и Storybook.
+
 ## 1.6.0
 
 ### Minor Changes
