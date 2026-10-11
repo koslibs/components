@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 
 import { Spinner } from '../Spinner';
+import { TypographyText } from '../Typography/text';
 
 import colorStyles from './colors.module.css';
 import styles from './index.module.css';
@@ -121,25 +122,35 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         const showLoader = loading || !loaderTimePassed;
 
         const showHint = hint && [56, 64, 72].includes(size);
+        const textSize = ({ 32: 14, 40: 14, 48: 16, 56: 16, 64: 18, 72: 18 } as const)[size];
 
         const { disabled, type = 'button', ...restButtonProps } = restProps;
 
         const buttonChildren = (
             <React.Fragment>
-                {leftAddon && <span className={styles.addons}>{leftAddon}</span>}
+                {leftAddon && (
+                    <TypographyText size={textSize} weight="medium" className={styles.addons}>
+                        {leftAddon}
+                    </TypographyText>
+                )}
                 {children && (
-                    <span
+                    <TypographyText
+                        size={textSize}
+                        weight="medium"
                         className={cn(styles.label, labelClassName, {
                             [styles.stretchText]: !(leftAddon || rightAddon),
                         })}
                     >
                         {children}
                         {showHint && (
-                            <span className={cn(styles.hint, colorStyles.hint, hintClassName)}>
+                            <TypographyText
+                                size={14}
+                                className={cn(styles.hint, colorStyles.hint, hintClassName)}
+                            >
                                 {hint}
-                            </span>
+                            </TypographyText>
                         )}
-                    </span>
+                    </TypographyText>
                 )}
 
                 {showLoader && (
@@ -151,7 +162,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     />
                 )}
 
-                {rightAddon && <span className={styles.addons}>{rightAddon}</span>}
+                {rightAddon && (
+                    <TypographyText size={textSize} weight="medium" className={styles.addons}>
+                        {rightAddon}
+                    </TypographyText>
+                )}
             </React.Fragment>
         );
 

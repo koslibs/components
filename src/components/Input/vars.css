@@ -14,8 +14,8 @@
     --input-disabled-background-color: #cfd1cb;
     --input-disabled-color: #858981;
     --input-read-only-border-color: #c8beaa;
-    --input-border-radius: 8px;
-    --input-gap: 8px;
+    --input-border-radius: var(--border-radius-8);
+    --input-gap: var(--size-8);
     --input-icon-size: 16px;
     --input-width: 320px;
     --input-font-size-40: 13px;
@@ -23,9 +23,9 @@
     --input-font-size-56: 14px;
     --input-font-size-64: 14px;
     --input-font-size-72: 16px;
-    --input-padding-40: 12px;
-    --input-padding-48: 12px;
-    --input-padding-56: 16px;
-    --input-padding-64: 16px;
-    --input-padding-72: 20px;
+    --input-padding-40: var(--size-12);
+    --input-padding-48: var(--size-12);
+    --input-padding-56: var(--size-16);
+    --input-padding-64: var(--size-16);
+    --input-padding-72: var(--size-20);
 }

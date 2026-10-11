@@ -2,7 +2,7 @@
 @import './vars.css';
 
 .component {
-    padding: 0;
+    padding: var(--size-0);
     margin: auto;
     border: none;
     border-radius: var(--border-radius-12, 12px);
@@ -41,5 +41,5 @@
     height: 100dvh;
     max-width: none;
     max-height: none;
-    border-radius: 0;
+    border-radius: var(--border-radius-0);
 }

@@ -1,4 +1,4 @@
-import { Controls, Description, Primary } from '@koslibs/builder/storybook/blocks';
+import { Controls, Description, Primary, Unstyled } from '@koslibs/builder/storybook/blocks';
 import type { CSSProperties, ReactNode } from 'react';
 
 import { ComponentDocs } from '../../../docs/component-docs';
@@ -16,7 +16,12 @@ import { Button } from '..';
 
 const sizes = [32, 40, 48, 56, 64, 72] as const;
 const views = ['primary', 'secondary', 'accent', 'outlined', 'transparent', 'text'] as const;
-const row: CSSProperties = { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 24 };
+const row: CSSProperties = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: 'var(--size-24)',
+};
 const addon = <span aria-hidden="true">★</span>;
 
 function Example({
@@ -31,12 +36,21 @@ function Example({
     children: ReactNode;
 }) {
     return (
-        <section id={name} style={{ marginTop: 32 }}>
+        <section id={name} style={{ marginTop: 'var(--size-32)' }}>
             <h2>{title}</h2>
-            <p style={{ margin: '12px 0 20px' }}>{description}</p>
-            <div style={{ ...row, width: 'fit-content', maxWidth: '100%', padding: 16 }}>
-                {children}
-            </div>
+            <p style={{ margin: 'var(--size-12) var(--size-0) var(--size-20)' }}>{description}</p>
+            <Unstyled>
+                <div
+                    style={{
+                        ...row,
+                        width: 'fit-content',
+                        maxWidth: '100%',
+                        padding: 'var(--size-16)',
+                    }}
+                >
+                    {children}
+                </div>
+            </Unstyled>
         </section>
     );
 }
@@ -92,7 +106,7 @@ function Documentation() {
                 title="Недоступность и загрузка"
                 description="disabled блокирует нажатие и меняет оформление. loading показывает спиннер, скрывает текст и аддоны без изменения ширины и тоже блокирует нажатие. Спиннер виден не менее 500 мс, даже если действие завершилось быстрее; aria-busy сообщает о загрузке."
             >
-                <div style={{ display: 'grid', gap: 24 }}>
+                <div style={{ display: 'grid', gap: 'var(--size-24)' }}>
                     <div style={row}>
                         {views.map((view) => (
                             <Button key={view} view={view} disabled>

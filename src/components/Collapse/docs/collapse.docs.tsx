@@ -40,9 +40,9 @@ function Example({
     children: ReactNode;
 }) {
     return (
-        <section id={name} style={{ marginTop: 32 }}>
+        <section id={name} style={{ marginTop: 'var(--size-32)' }}>
             <h2>{title}</h2>
-            <p style={{ margin: '12px 0 20px' }}>{description}</p>
+            <p style={{ margin: 'var(--size-12) var(--size-0) var(--size-20)' }}>{description}</p>
             <Unstyled>
                 <div className={styles.preview}>{children}</div>
             </Unstyled>
@@ -84,7 +84,13 @@ function DynamicExample() {
                 dataTestId="dynamic-collapse"
                 onTransitionEnd={() => setTransitions((count) => count + 1)}
             >
-                <div style={{ display: 'grid', gap: 12, padding: '12px 0' }}>
+                <div
+                    style={{
+                        display: 'grid',
+                        gap: 'var(--size-12)',
+                        padding: 'var(--size-12) var(--size-0)',
+                    }}
+                >
                     {Array.from({ length: rows }, (_, index) => (
                         <p key={index}>Файл {index + 1}.txt</p>
                     ))}
@@ -143,7 +149,13 @@ function DialogExample() {
                 <h2 id={titleId}>Импорт завершён</h2>
                 <p>3 файла обработано. В одном файле есть предупреждение.</p>
                 <Collapse collapsedLabel="Показать файлы (3)" expandedLabel="Скрыть файлы">
-                    <div style={{ display: 'grid', gap: 12, padding: '12px 0' }}>
+                    <div
+                        style={{
+                            display: 'grid',
+                            gap: 'var(--size-12)',
+                            padding: 'var(--size-12) var(--size-0)',
+                        }}
+                    >
                         <p>session-01.txt — Imported</p>
                         <p>session-02.txt — Imported</p>
                         <p>session-03.txt — Completed with warnings</p>
@@ -181,7 +193,7 @@ function Documentation() {
                     expandedLabel="Скрыть подробности"
                     dataTestId="uncontrolled-collapse"
                 >
-                    <div style={{ padding: '12px 0' }}>
+                    <div style={{ padding: 'var(--size-12) var(--size-0)' }}>
                         <label>
                             Заметка{' '}
                             <input aria-label="Заметка" defaultValue="Проверить предупреждения" />

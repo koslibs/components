@@ -88,7 +88,7 @@
     gap: var(--input-gap);
     width: 100%;
     height: var(--field-height);
-    padding: 0 var(--field-padding);
+    padding: var(--size-0) var(--field-padding);
     border-radius: var(--input-border-radius);
     background: var(--field-background);
     box-shadow: inset 0 0 0 1px var(--field-border);
@@ -142,14 +142,9 @@
     flex-shrink: 0;
     margin-left: auto;
     color: var(--field-label-color);
-    line-height: 16px;
     white-space: nowrap;
     text-align: right;
     font-variant-numeric: tabular-nums;
-}
-
-.innerHeader .counter {
-    line-height: 15px;
 }
 
 .label {
@@ -159,7 +154,6 @@
     color: var(--field-label-color);
     overflow-wrap: anywhere;
     font-size: 13px;
-    line-height: 16px;
     cursor: inherit;
 }
 
@@ -168,16 +162,13 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: var(--field-font-size);
-    line-height: var(--field-line-height);
     transform: translateY(7.5px);
     transition:
         transform 180ms ease,
-        font-size 180ms ease,
-        line-height 180ms ease;
+        font-size 180ms ease;
 
     & > span {
         font-size: inherit;
-        line-height: inherit;
     }
 }
 
@@ -185,12 +176,11 @@
 .component[data-inner-label]:not([data-disabled], [data-read-only]) .value:focus-within .label,
 .component[data-inner-label] .value:has(.input:autofill) .label {
     font-size: 12px;
-    line-height: 15px;
     transform: translateY(0);
 }
 
 .component[data-inner-label] .input {
-    margin-top: 15px;
+    margin-top: calc(var(--size-30) / 2);
 
     &::placeholder {
         opacity: 0;
@@ -203,7 +193,7 @@
 }
 
 .component[data-inner-counter]:not([data-inner-label]) .input {
-    margin-top: 15px;
+    margin-top: calc(var(--size-30) / 2);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -219,10 +209,10 @@
     width: 100%;
     min-width: 0;
     height: var(--field-line-height);
-    margin: 0;
-    padding: 0;
+    margin: var(--size-0);
+    padding: var(--size-0);
     border: 0;
-    border-radius: 0;
+    border-radius: var(--border-radius-0);
     outline: none;
     background: transparent;
     color: var(--field-color);
@@ -274,8 +264,8 @@
     min-width: 0;
     height: 24px;
     min-height: 0;
-    margin: 0 -4px;
-    padding: 0;
+    margin: var(--size-0) var(--size-4-neg);
+    padding: var(--size-0);
     background: transparent;
     color: var(--field-icon-color);
 
@@ -298,7 +288,6 @@
 
 .component .message {
     color: var(--input-hint-color);
-    line-height: 15px;
     overflow-wrap: anywhere;
 }
 

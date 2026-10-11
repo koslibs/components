@@ -152,11 +152,27 @@ export function ImportTestUnusedComponent() {
             };
         });
 
+        const styleNames = Object.keys(metadata.exports)
+            .filter((name) => name.endsWith('.css'))
+            .map((name) => name.slice(2));
+        await write(
+            consumer,
+            'resolve-styles.mjs',
+            `console.log(JSON.stringify(${JSON.stringify(styleNames)}.map((name) => ({ name, module: import.meta.resolve(${JSON.stringify(metadata.name)} + '/' + name) }))));`
+        );
+        const styles = JSON.parse(
+            execFileSync(process.execPath, [join(consumer, 'resolve-styles.mjs')], {
+                cwd: consumer,
+                encoding: 'utf8',
+            })
+        ).map((style) => ({ ...style, module: fileURLToPath(style.module) }));
+
         for (const scenario of scenarios) {
             await write(
                 consumer,
                 `src/${scenario.component}.tsx`,
-                `import { ${scenario.component} } from '${metadata.name}/${scenario.component}';
+                `${(scenario.cssImports ?? []).map((name) => `import '${metadata.name}/${name}';`).join('\n')}
+import { ${(scenario.imports ?? [scenario.component]).join(', ')} } from '${metadata.name}/${scenario.component}';
 import { createRoot } from 'react-dom/client';
 createRoot(document.getElementById('root')!).render(${scenario.render});
 `
@@ -192,6 +208,7 @@ export default {
         build(root, consumer, 'ui:build');
         return {
             components,
+            styles,
             cleanup,
             output: (name) => join(consumer, 'dist', name),
         };

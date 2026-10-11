@@ -1,7 +1,7 @@
 import { createPopper, type Modifier } from '@popperjs/core';
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 
-import type { PopoverPosition } from './types';
+import type { PopoverPosition } from '../types';
 
 type PositionState = {
     styles: CSSProperties;

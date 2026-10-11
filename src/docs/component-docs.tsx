@@ -1,11 +1,14 @@
 import { ArgTypes, Markdown, Source, Title } from '@koslibs/builder/storybook/blocks';
 import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 
+import globalVariables from '../styles/variables.css?raw';
+
 import styles from './component-docs.module.css';
 
 type CssSource = { name: string; content: string };
 type ComponentDocsProps = {
     componentName: string;
+    importNames?: string[];
     documentation: ReactNode;
     props?: ReactNode;
     changelog: string;
@@ -43,6 +46,7 @@ function cssVariables(sources: CssSource[]) {
 
 export function ComponentDocs({
     componentName,
+    importNames = [componentName],
     documentation,
     props,
     changelog,
@@ -51,7 +55,10 @@ export function ComponentDocs({
     const [activeTab, setActiveTab] = useState(0);
     const id = useId();
     const buttons = useRef<(HTMLButtonElement | null)[]>([]);
-    const variables = cssVariables(cssSources);
+    const variables = cssVariables([
+        { name: 'styles/variables.css', content: globalVariables },
+        ...cssSources,
+    ]);
 
     function handleKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
         let next: number;
@@ -109,7 +116,7 @@ export function ComponentDocs({
                 <>
                     <h2>Подключение</h2>
                     <Source
-                        code={`import { ${componentName} } from '@koslibs/components/${componentName}';`}
+                        code={`import { ${importNames.join(', ')} } from '@koslibs/components/${componentName}';`}
                         language="tsx"
                     />
                     <h2>Props</h2>

@@ -13,8 +13,7 @@
     flex-wrap: nowrap;
     vertical-align: middle;
 
-    font-family: var(--font-ubuntu, 'Ubuntu', sans-serif);
-    font-size: var(--size-16, 16px);
+    font: inherit;
     text-align: center;
     text-decoration: none;
 
@@ -32,14 +31,6 @@
     user-select: none;
 }
 
-.size-32,
-.size-40 {
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 500;
-    font-family: var(--font-family-system, system-ui, sans-serif);
-}
-
 .size-32 {
     min-width: 80px;
     min-height: 32px;
@@ -54,14 +45,6 @@
     padding: var(--size-0, 0px) var(--size-20, 20px);
 }
 
-.size-48,
-.size-56 {
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 500;
-    font-family: var(--font-family-system, system-ui, sans-serif);
-}
-
 .size-48 {
     min-width: 104px;
     min-height: 48px;
@@ -74,14 +57,6 @@
     min-height: 56px;
 
     padding: var(--size-0, 0px) var(--size-28, 28px);
-}
-
-.size-64,
-.size-72 {
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 500;
-    font-family: var(--font-family-system, system-ui, sans-serif);
 }
 
 .size-64 {
@@ -245,10 +220,6 @@
 }
 
 .hint {
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 400;
-    font-family: var(--font-primary);
     color: var(--button-hint-color);
 
     display: block;

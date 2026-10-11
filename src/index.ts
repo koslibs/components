@@ -4,6 +4,8 @@ export { Input } from './components/Input';
 export type { InputProps } from './components/Input';
 export { Textarea } from './components/Textarea';
 export type { TextareaProps } from './components/Textarea';
+export { Tab, Tabs } from './components/Tabs';
+export type { TabProps, TabsProps } from './components/Tabs';
 export { Spinner } from './components/Spinner';
 export type { SpinnerProps } from './components/Spinner';
 export { Typography, TypographyText, TypographyTitle, Text, Title } from './components/Typography';

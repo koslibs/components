@@ -1,5 +1,12 @@
 # Typography
 
+## 1.7.0
+
+- В TypographyText добавлен размер 18 px для текста больших кнопок.
+- Для всех размеров Text и Title высота строки задана внутри Typography как normal
+  по документации Figma Auto. Удалена переменная --typography-line-height и её
+  переопределения в компонентах библиотеки.
+
 ## 1.1.0
 
 - Перенесён Typography из core-components GullEye: Text и Title с независимым

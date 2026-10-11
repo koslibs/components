@@ -1,5 +1,4 @@
 :root {
-    --typography-line-height: normal;
     --typography-letter-spacing: 0;
 
     --typography-regular-font-weight: 400;
@@ -22,6 +21,7 @@
     --typography-font-size-14: 14px;
     --typography-font-size-15: 15px;
     --typography-font-size-16: 16px;
+    --typography-font-size-18: 18px;
     --typography-font-size-20: 20px;
     --typography-font-size-24: 24px;
     --typography-font-size-28: 28px;
