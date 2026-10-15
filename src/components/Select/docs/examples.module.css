@@ -1,0 +1,26 @@
+@import '../../../styles/theme.css';
+
+.examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: var(--size-24);
+    padding: var(--size-24);
+    border-radius: var(--border-radius-12);
+    background: #e9e6de;
+}
+
+.example {
+    display: grid;
+    align-content: start;
+    gap: var(--size-12);
+    min-width: 0;
+}
+
+.scroll {
+    max-width: 100%;
+    overflow-x: auto;
+}
+.narrow {
+    width: 260px;
+    max-width: 100%;
+}
