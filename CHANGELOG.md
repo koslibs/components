@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.10.0
+
+### Minor Changes
+
+- [#11](https://github.com/koslibs/components/pull/11) [`85e4c4b`](https://github.com/koslibs/components/commit/85e4c4b523847d339a773b63fcf7916098f28327) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен Space для горизонтальной и вертикальной раскладки: обязательные size и children, единый положительный отступ из --size-\*, align, wrap и fullWidth. Компонент использует CSS gap, сохраняет прямые дочерние элементы и доступен через @koslibs/components/Space. Добавлены Storybook Docs и Playground.
+
 ## 1.9.0
 
 ### Minor Changes
