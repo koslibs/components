@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.9.0
+
+### Minor Changes
+
+- [#10](https://github.com/koslibs/components/pull/10) [`01aa734`](https://github.com/koslibs/components/commit/01aa734718eb2b649cc8ec361368b825fc8432d6) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен Select по документации Figma: одиночный и множественный выбор, локальный поиск с внутренним состоянием запроса и сообщением при отсутствии совпадений, список на Popover, форма и примеры Storybook. Выбранные значения отображаются через запятую с однострочным многоточием. Выбранные строки отличаются от поиска и hover; внутренний label плавно перемещается по аналогии с Input. Очистка использует тонкий крестик 14×14 px с постоянным label «close».
+
 ## 1.8.0
 
 ### Minor Changes
