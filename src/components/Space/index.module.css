@@ -1,0 +1,37 @@
+@import '../../styles/variables.css';
+
+.component {
+    box-sizing: border-box;
+    display: inline-flex;
+    min-width: 0;
+    gap: var(--space-gap);
+}
+
+.vertical {
+    flex-direction: column;
+}
+.horizontal {
+    flex-direction: row;
+}
+.start {
+    align-items: flex-start;
+}
+.center {
+    align-items: center;
+}
+.end {
+    align-items: flex-end;
+}
+.stretch {
+    align-items: stretch;
+}
+.baseline {
+    align-items: baseline;
+}
+.wrap {
+    flex-wrap: wrap;
+}
+.fullWidth {
+    display: flex;
+    width: 100%;
+}

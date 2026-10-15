@@ -1,0 +1,27 @@
+.item {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 40px;
+    padding: var(--size-0) var(--size-12);
+    border-radius: var(--border-radius-6);
+    background: #e0dbce;
+    color: #1c1a18;
+}
+
+.tall {
+    height: 64px;
+}
+.wrapped {
+    width: 260px;
+}
+.panel {
+    padding: var(--size-16);
+    border-radius: var(--border-radius-8);
+    background: #f5f3ec;
+}
+.scroll {
+    overflow-x: auto;
+}
