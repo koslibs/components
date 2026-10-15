@@ -68,6 +68,27 @@ export const importCases = [
         },
     },
     {
+        component: 'Select',
+        render: '<Select label="IMPORT_TEST_SELECT" options={[{ id: "cash", label: "Кэш" }]} multiple searchable clear defaultValue={["cash"]} />',
+        includes: {
+            js: [/IMPORT_TEST_SELECT/, /Поиск по списку/, /availableSize/],
+            css: [
+                /--select-options-gap/,
+                /--input-primary-background-color/,
+                /--popover-available-height/,
+                /text-overflow:\s*ellipsis/,
+                /@font-face/,
+            ],
+            assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
+        },
+        excludes: {
+            js: [
+                /displayName\s*=\s*["'](?:Textarea|Modal|Collapse|Tabs|Status|TypographyTitle)["']/,
+            ],
+            css: [/--modal-/, /--collapse-/, /--tabs-/, /--status-/, /--textarea-/],
+        },
+    },
+    {
         component: 'Textarea',
         render: '<Textarea label="IMPORT_TEST_TEXTAREA" defaultValue="Value" clear autosize />',
         includes: {

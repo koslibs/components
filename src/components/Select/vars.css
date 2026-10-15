@@ -1,0 +1,33 @@
+@import '../Input/vars.css';
+
+:root {
+    --select-primary-background-color: var(--input-primary-background-color);
+    --select-secondary-background-color: var(--input-secondary-background-color);
+    --select-color: var(--input-color);
+    --select-placeholder-color: var(--input-placeholder-color);
+    --select-label-color: var(--input-label-color);
+    --select-hint-color: var(--input-hint-color);
+    --select-icon-color: var(--input-icon-color);
+    --select-hover-border-color: var(--input-hover-border-color);
+    --select-focus-border-color: var(--input-focus-border-color);
+    --select-error-border-color: var(--input-error-border-color);
+    --select-error-message-color: var(--input-error-message-color);
+    --select-disabled-background-color: var(--input-disabled-background-color);
+    --select-disabled-color: var(--input-disabled-color);
+    --select-read-only-border-color: var(--input-read-only-border-color);
+    --select-option-hover-color: var(--input-secondary-background-color);
+    --select-option-selected-color: #e0dbce;
+    --select-marker-selected-color: #e0dbce;
+    --select-border-radius: var(--input-border-radius);
+    --select-option-border-radius: var(--border-radius-6);
+    --select-gap: var(--input-gap);
+    --select-options-gap: var(--size-4);
+    --select-width: var(--input-width);
+    --select-options-max-height: 240px;
+    --select-dropdown-shadow: 0 4px 8px rgb(0 0 0 / 12%);
+    --select-padding-40: var(--input-padding-40);
+    --select-padding-48: var(--input-padding-48);
+    --select-padding-56: var(--input-padding-56);
+    --select-padding-64: var(--input-padding-64);
+    --select-padding-72: var(--input-padding-72);
+}
