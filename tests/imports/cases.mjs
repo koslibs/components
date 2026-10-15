@@ -1,6 +1,19 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Space',
+        render: '<Space direction="horizontal" size={12} wrap><span>IMPORT_TEST_SPACE</span><span>Second</span></Space>',
+        includes: {
+            js: [/IMPORT_TEST_SPACE/],
+            css: [/display:\s*inline-flex/, /--space-gap/, /--size-12/],
+        },
+        excludes: {
+            js: [/displayName\s*=\s*["'](?:Button|Spinner|Input|Select|TypographyText)["']/],
+            css: [/--button-/, /--input-/, /--select-/, /--typography-/, /@font-face/],
+            assets: [/\.woff2$/m],
+        },
+    },
+    {
         component: 'Status',
         render: '<Status color="sand" message="IMPORT_TEST_STATUS" uppercase />',
         includes: {
