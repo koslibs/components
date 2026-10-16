@@ -1,0 +1,58 @@
+.card {
+    box-sizing: border-box;
+    max-width: 972px;
+    padding: var(--size-32);
+    border-radius: var(--border-radius-8);
+    background: #f5f3ec;
+}
+
+.media {
+    height: 176px;
+}
+
+.title {
+    width: calc(100% * 420 / 908);
+    height: 24px;
+}
+
+.line {
+    height: 16px;
+}
+
+.lastLine {
+    width: calc(100% * 650 / 908);
+    height: 16px;
+}
+
+.examples {
+    width: 100%;
+    max-width: 640px;
+}
+
+.custom {
+    --skeleton-background-color: #c4b9f6;
+
+    width: 60%;
+    height: 48px;
+    border-radius: 12px;
+}
+
+.dark {
+    --skeleton-background-color: #736554;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--size-24);
+    border-radius: var(--border-radius-8);
+    background: #1c1a18;
+}
+
+.scroll {
+    overflow-x: auto;
+}
+
+@media (width <= 480px) {
+    .card {
+        padding: var(--size-16);
+    }
+}

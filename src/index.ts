@@ -15,6 +15,8 @@ export { Tab, Tabs } from './components/Tabs';
 export type { TabProps, TabsProps } from './components/Tabs';
 export { Spinner } from './components/Spinner';
 export type { SpinnerProps } from './components/Spinner';
+export { Skeleton } from './components/Skeleton';
+export type { SkeletonProps } from './components/Skeleton';
 export { Status } from './components/Status';
 export type { StatusProps } from './components/Status';
 export { Space } from './components/Space';

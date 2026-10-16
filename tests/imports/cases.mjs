@@ -1,6 +1,19 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Skeleton',
+        render: '<Skeleton dataTestId="IMPORT_TEST_SKELETON" style={{ height: 176 }} />',
+        includes: {
+            js: [/IMPORT_TEST_SKELETON/],
+            css: [/--skeleton-background-color/, /--skeleton-animation-duration/],
+        },
+        excludes: {
+            js: [/displayName\s*=\s*["'](?:Button|Spinner|Space|Input|TypographyText)["']/],
+            css: [/--button-/, /--spinner-/, /--input-/, /--typography-/, /@font-face/],
+            assets: [/\.woff2$/m],
+        },
+    },
+    {
         component: 'Space',
         render: '<Space direction="horizontal" size={12} wrap><span>IMPORT_TEST_SPACE</span><span>Second</span></Space>',
         includes: {
