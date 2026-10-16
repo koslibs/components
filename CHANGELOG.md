@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.11.0
+
+### Minor Changes
+
+- [#12](https://github.com/koslibs/components/pull/12) [`563c38f`](https://github.com/koslibs/components/commit/563c38f0dcaf306c4993e50d5e7f5e4ddd44368d) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен Skeleton: CSS-пульсация с управлением через animated, настраиваемые размеры и скругление через стили, CSS-переменные фона, радиуса и длительности. Доступны ref, нативные атрибуты div, dataTestId, Storybook Docs и Playground.
+
 ## 1.10.0
 
 ### Minor Changes
