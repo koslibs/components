@@ -1,0 +1,5 @@
+:root {
+    --skeleton-background-color: #e0dbce;
+    --skeleton-border-radius: var(--border-radius-8, 8px);
+    --skeleton-animation-duration: 1.6s;
+}
