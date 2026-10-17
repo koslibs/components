@@ -27,4 +27,4 @@ jobs:
             - run: npm pack --dry-run --ignore-scripts
     changeset:
         if: github.event_name == 'pull_request'
-        uses: koslibs/configs/.github/workflows/changeset-check.yml@v1.0.0
+        uses: koslibs/configs/.github/workflows/changeset-check.yml@v2.0.0
