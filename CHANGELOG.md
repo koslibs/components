@@ -1,5 +1,13 @@
 # @koslibs/components
 
+## 1.11.1
+
+### Patch Changes
+
+- [#13](https://github.com/koslibs/components/pull/13) [`02a80ad`](https://github.com/koslibs/components/commit/02a80ad207cb62f8084cacc343d5d1cb24861db2) Thanks [@holypower777](https://github.com/holypower777)! - Use @koslibs/builder 2 and @koslibs/configs 2 for development, builds and validation, and pin reusable Changeset and release workflows to configs v2.0.0.
+
+    Update @koslibs/icons to 1.2.1.
+
 ## 1.11.0
 
 ### Minor Changes
