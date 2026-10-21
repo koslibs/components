@@ -67,6 +67,30 @@ function Documentation() {
                 {'{ value, selectedOptions }'}. defaultValue включает неуправляемый выбор. Очистка,
                 как у Input, вызывает только onClear; управляемый value обновляет приложение.
             </p>
+            <h2>Outline при фокусе и раскрытии</h2>
+            <p>
+                По умолчанию outline выключен. Передайте <code>{'hasOutline={true}'}</code>, чтобы
+                показывать outline поля при фокусе и раскрытии. Для отключения используйте{' '}
+                <code>{'hasOutline={false}'}</code>. Настройка также применяется к поисковому Input.
+            </p>
+            <Unstyled>
+                <div className={styles.examples}>
+                    <Select
+                        options={options}
+                        label="Без outline"
+                        hasOutline={false}
+                        searchable
+                        dataTestId="outline-off"
+                    />
+                    <Select
+                        options={options}
+                        label="С outline"
+                        searchable
+                        hasOutline={true}
+                        dataTestId="outline-on"
+                    />
+                </div>
+            </Unstyled>
             <h2>Размеры и view</h2>
             <p>
                 Высоты 40/48/56/64/72, текст 13/13/14/14/16 px, горизонтальные отступы

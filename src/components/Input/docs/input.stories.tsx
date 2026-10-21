@@ -53,9 +53,11 @@ const meta = {
         disabled: false,
         readOnly: false,
         block: false,
+        hasOutline: false,
         dataTestId: 'input',
     },
     argTypes: {
+        hasOutline: { control: 'boolean' },
         view: { control: 'select', options: ['primary', 'secondary'] },
         size: { control: 'select', options: [40, 48, 56, 64, 72] },
         labelView: { control: 'select', options: ['outer', 'inner'] },

@@ -277,6 +277,18 @@ function Documentation() {
             >
                 <DialogExample />
             </Example>
+            <Example
+                name="outline"
+                title="Outline при фокусе"
+                description="По умолчанию outline выключен. Передайте hasOutline={true}, чтобы показывать outline кнопки при клавиатурном фокусе; hasOutline={false} — чтобы отключить."
+            >
+                <Collapse collapsedLabel="Без outline" hasOutline={false} dataTestId="outline-off">
+                    <p>Дополнительная информация.</p>
+                </Collapse>
+                <Collapse collapsedLabel="С outline" hasOutline={true} dataTestId="outline-on">
+                    <p>Дополнительная информация.</p>
+                </Collapse>
+            </Example>
             <h2>Клавиатура и анимация</h2>
             <p>
                 Enter и Space активируют кнопку. aria-expanded и aria-controls связывают её с

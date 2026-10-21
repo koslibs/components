@@ -101,13 +101,13 @@
     }
 }
 
-.component:not([data-disabled]) .field:focus-within {
+.component[data-has-outline]:not([data-disabled]) .field:focus-within {
     box-shadow: none;
     outline: 2px solid var(--input-focus-border-color);
     outline-offset: 0;
 }
 
-.component[data-error]:not([data-disabled]) .field:focus-within {
+.component[data-has-outline][data-error]:not([data-disabled]) .field:focus-within {
     outline-color: var(--input-error-border-color);
 }
 
@@ -274,16 +274,16 @@
         color: var(--field-icon-color);
     }
 
-    &:focus-visible {
-        outline: 2px solid var(--input-focus-border-color);
-        outline-offset: 2px;
-    }
-
     & svg {
         display: block;
         width: var(--input-icon-size);
         height: var(--input-icon-size);
     }
+}
+
+.component[data-has-outline] .clear:focus-visible {
+    outline: 2px solid var(--input-focus-border-color);
+    outline-offset: 2px;
 }
 
 .component .message {

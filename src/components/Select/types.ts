@@ -40,6 +40,7 @@ type CommonProps = Pick<
     | 'view'
     | 'size'
     | 'block'
+    | 'hasOutline'
     | 'hint'
     | 'error'
     | 'clear'

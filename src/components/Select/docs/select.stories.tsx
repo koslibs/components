@@ -73,9 +73,11 @@ const meta = {
         multiple: false,
         searchable: true,
         clear: true,
+        hasOutline: false,
         dataTestId: 'select',
     },
     argTypes: {
+        hasOutline: { control: 'boolean' },
         view: { control: 'select', options: ['primary', 'secondary'] },
         size: { control: 'select', options: [40, 48, 56, 64, 72] },
         labelView: { control: 'select', options: ['outer', 'inner'] },

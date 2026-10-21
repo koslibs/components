@@ -55,6 +55,7 @@ test('forwards the native ref, attributes and callbacks without leaking componen
             view="secondary"
             size={56}
             block
+            hasOutline={true}
             clear
             className="wrapper"
             inputClassName="native"
@@ -75,7 +76,16 @@ test('forwards the native ref, attributes and callbacks without leaking componen
     expect(input.dataset.testId).toBe('email');
     expect(input.classList.contains('native')).toBe(true);
     expect(container.querySelector('.wrapper')?.getAttribute('style')).toContain('width: 250px');
-    for (const attribute of ['view', 'size', 'block', 'clear', 'label', 'hint', 'dataTestId']) {
+    for (const attribute of [
+        'view',
+        'size',
+        'block',
+        'clear',
+        'label',
+        'hint',
+        'dataTestId',
+        'hasOutline',
+    ]) {
         expect(input.hasAttribute(attribute)).toBe(false);
     }
     act(() => {

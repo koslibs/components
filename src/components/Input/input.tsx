@@ -25,6 +25,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             view = 'primary',
             size = 40,
             block = false,
+            hasOutline = false,
             label,
             labelView = 'outer',
             hint,
@@ -155,6 +156,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 style={style}
                 data-view={view}
                 data-block={block || undefined}
+                data-has-outline={hasOutline || undefined}
                 data-disabled={disabled || undefined}
                 data-read-only={readOnly || undefined}
                 data-error={hasError || undefined}

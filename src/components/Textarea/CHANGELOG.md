@@ -1,5 +1,11 @@
 # Textarea
 
+## 1.12.0
+
+- Добавлен `hasOutline` с дефолтом `false`: outline поля при фокусе включается
+  через `hasOutline={true}`, отключается через `hasOutline={false}`.
+- В Storybook добавлены переключатель `hasOutline` и примеры с outline и без него.
+
 ## 1.7.0
 
 - Подпись, подсказка и счётчик используют автоматическую высоту строки Typography

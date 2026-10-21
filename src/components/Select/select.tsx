@@ -24,6 +24,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>((props, ref) =>
         label,
         labelView = 'outer',
         block = false,
+        hasOutline = false,
         placeholder = 'Выберите значение',
         hint,
         error,
@@ -87,6 +88,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>((props, ref) =>
                 className
             )}
             style={style}
+            data-has-outline={hasOutline || undefined}
             data-test-id={getDataTestId('form-control')}
         >
             {hasLabel && labelView === 'outer' && (
@@ -201,6 +203,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>((props, ref) =>
                     state={state}
                     multiple={multiple}
                     searchable={searchable}
+                    hasOutline={hasOutline}
                     searchPlaceholder={searchPlaceholder}
                     noResultsText={noResultsText}
                     dataTestId={dataTestId}

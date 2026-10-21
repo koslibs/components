@@ -47,6 +47,7 @@ const meta = {
         expandedLabel: 'Скрыть файлы',
         showRightChevron: true,
         showLeftChevron: false,
+        hasOutline: false,
         children: (
             <div
                 style={{
@@ -63,6 +64,7 @@ const meta = {
         ),
     },
     argTypes: {
+        hasOutline: { control: 'boolean' },
         expanded: { control: 'boolean', description: 'Состояние controlled-компонента.' },
         defaultExpanded: {
             control: 'boolean',

@@ -1,5 +1,11 @@
 # Collapse
 
+## 1.12.0
+
+- Добавлен `hasOutline` с дефолтом `false`: outline кнопки при клавиатурном фокусе
+  включается через `hasOutline={true}`, отключается через `hasOutline={false}`.
+- В Storybook добавлены переключатель `hasOutline` и примеры с outline и без него.
+
 ## 1.7.0
 
 - Подпись встроенной кнопки использует TypographyText с размером 13 px

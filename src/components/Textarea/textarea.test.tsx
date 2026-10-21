@@ -46,6 +46,7 @@ test('forwards native ref and events, applies defaults and keeps component props
             label="Комментарий"
             maxLength={200}
             showValueLength
+            hasOutline={true}
             dataTestId="comment"
             onChange={onChange}
             onFocus={onFocus}
@@ -67,6 +68,7 @@ test('forwards native ref and events, applies defaults and keeps component props
         'resize',
         'clear',
         'showValueLength',
+        'hasOutline',
         'label',
     ])
         expect(textarea.hasAttribute(prop)).toBe(false);

@@ -26,6 +26,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {
             view = 'primary',
             block = false,
+            hasOutline = false,
             label,
             labelView = 'outer',
             hint,
@@ -157,6 +158,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 style={{ '--textarea-rows': rows, ...style } as CSSProperties}
                 data-view={view}
                 data-block={block || undefined}
+                data-has-outline={hasOutline || undefined}
                 data-disabled={disabled || undefined}
                 data-read-only={readOnly || undefined}
                 data-error={Boolean(error) || undefined}
