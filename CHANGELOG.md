@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.12.0
+
+### Minor Changes
+
+- [#14](https://github.com/koslibs/components/pull/14) [`242a16c`](https://github.com/koslibs/components/commit/242a16ca5c8ba04bdfab319bf75752a9c4b62826) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен проп `hasOutline` для Input, Textarea, Select и Collapse. Outline при фокусе и раскрытии Select теперь включается явно через `hasOutline={true}`; по умолчанию он выключен. Для отключения используется `hasOutline={false}`. Select передаёт настройку поисковому Input. В Storybook добавлены переключатели и примеры.
+
 ## 1.11.1
 
 ### Patch Changes
