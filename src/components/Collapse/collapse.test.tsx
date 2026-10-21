@@ -117,6 +117,7 @@ test('forwards root attributes and ref while keeping content IDs unique', () => 
         <>
             <Collapse
                 collapsedLabel="First details"
+                hasOutline={true}
                 ref={ref}
                 id="first-collapse"
                 className="custom-root"
@@ -135,6 +136,7 @@ test('forwards root attributes and ref while keeping content IDs unique', () => 
     expect(ref.current?.classList.contains('custom-root')).toBe(true);
     expect(ref.current?.style.color).toBe('red');
     expect(ref.current?.getAttribute('aria-label')).toBe('Additional details');
+    expect(ref.current?.hasAttribute('hasOutline')).toBe(false);
     expect(ref.current?.querySelector('.custom-content')?.textContent).toBe('Details');
     const buttons = [...container.querySelectorAll('button')];
     expect(content(buttons[0]).id).not.toBe(content(buttons[1]).id);

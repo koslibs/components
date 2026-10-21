@@ -13,7 +13,7 @@ import styles from '../index.module.css';
 
 type Props = Pick<
     SelectProps,
-    'multiple' | 'searchable' | 'searchPlaceholder' | 'noResultsText' | 'dataTestId'
+    'multiple' | 'searchable' | 'searchPlaceholder' | 'noResultsText' | 'dataTestId' | 'hasOutline'
 > & {
     state: SelectState;
 };
@@ -22,6 +22,7 @@ export function SelectDropdown({
     state,
     multiple,
     searchable,
+    hasOutline,
     searchPlaceholder = 'Поиск по списку',
     noResultsText = 'Ничего не найдено',
     dataTestId,
@@ -40,6 +41,7 @@ export function SelectDropdown({
                 <Input
                     block
                     autoFocus
+                    hasOutline={hasOutline}
                     size={40}
                     view="secondary"
                     value={search}

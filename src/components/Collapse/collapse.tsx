@@ -50,6 +50,12 @@ export type CollapseProps = Omit<HTMLAttributes<HTMLDivElement>, 'onTransitionEn
     showLeftChevron?: boolean;
 
     /**
+     * Показывает outline кнопки при клавиатурном фокусе.
+     * @default false
+     */
+    hasOutline?: boolean;
+
+    /**
      * Запрос изменения состояния. В controlled-режиме обновите expanded.
      */
     onExpandedChange?: (expanded: boolean) => void;
@@ -79,6 +85,7 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
             expandedLabel,
             showRightChevron = true,
             showLeftChevron = false,
+            hasOutline = false,
             onExpandedChange,
             onTransitionEnd,
             expandedContentClassName,
@@ -154,6 +161,7 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
                 {...restProps}
                 ref={ref}
                 className={cn(styles.component, className)}
+                data-has-outline={hasOutline || undefined}
                 data-test-id={dataTestId}
             >
                 {label && (

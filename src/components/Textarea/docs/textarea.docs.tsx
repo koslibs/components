@@ -100,6 +100,18 @@ function Documentation() {
                 управляемом режиме обновите value сами. Неуправляемое поле очищается автоматически.
                 Enter добавляет новую строку.
             </p>
+            <h2>Outline при фокусе</h2>
+            <p>
+                По умолчанию outline выключен. Передайте <code>{'hasOutline={true}'}</code>, чтобы
+                показывать outline поля при фокусе. Для отключения используйте{' '}
+                <code>{'hasOutline={false}'}</code>.
+            </p>
+            <Unstyled>
+                <div className={styles.examples}>
+                    <Textarea label="Без outline" hasOutline={false} dataTestId="outline-off" />
+                    <Textarea label="С outline" hasOutline={true} dataTestId="outline-on" />
+                </div>
+            </Unstyled>
             <h2>View и геометрия</h2>
             <p>
                 По умолчанию view="primary", labelView="outer", minRows=3, autosize=false,

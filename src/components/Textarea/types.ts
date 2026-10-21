@@ -39,6 +39,12 @@ export type TextareaProps = Omit<
     block?: boolean;
 
     /**
+     * Показывает outline поля при фокусе.
+     * @default false
+     */
+    hasOutline?: boolean;
+
+    /**
      * Название поля. Клик переводит фокус в textarea.
      */
     label?: ReactNode;

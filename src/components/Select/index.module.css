@@ -86,15 +86,15 @@
     }
 }
 
-.component:not(.disabled) .field:focus-within,
-.component.open .field {
+.component[data-has-outline]:not(.disabled) .field:focus-within,
+.component[data-has-outline].open .field {
     box-shadow: none;
     outline: 2px solid var(--select-focus-border-color);
     outline-offset: 0;
 }
 
-.component.error:not(.disabled) .field:focus-within,
-.component.error.open .field {
+.component[data-has-outline].error:not(.disabled) .field:focus-within,
+.component[data-has-outline].error.open .field {
     outline-color: var(--select-error-border-color);
 }
 

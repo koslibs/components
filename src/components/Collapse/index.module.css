@@ -34,6 +34,7 @@
     margin: var(--size-0);
     padding: var(--size-8, 8px) var(--size-0);
     border: 0;
+    outline: none;
     background: transparent;
     color: var(--collapse-color);
     font: inherit;
@@ -49,12 +50,12 @@
         text-decoration: underline;
         text-underline-offset: 3px;
     }
+}
 
-    &:focus-visible {
-        outline: 2px solid var(--collapse-focus-color);
-        outline-offset: 2px;
-        border-radius: var(--border-radius-4, 4px);
-    }
+.component[data-has-outline] .toggle:focus-visible {
+    outline: 2px solid var(--collapse-focus-color);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-4, 4px);
 }
 
 .icon {

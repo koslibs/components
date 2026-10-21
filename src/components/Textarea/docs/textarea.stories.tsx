@@ -55,9 +55,11 @@ const meta = {
         disabled: false,
         readOnly: false,
         block: false,
+        hasOutline: false,
         dataTestId: 'textarea',
     },
     argTypes: {
+        hasOutline: { control: 'boolean' },
         view: { control: 'select', options: ['primary', 'secondary'] },
         labelView: { control: 'select', options: ['outer', 'inner'] },
         label: { control: 'text' },

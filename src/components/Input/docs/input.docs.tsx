@@ -83,6 +83,30 @@ function Documentation() {
                 поля. onChange получает событие и {'{ value }'}. Очистка вызывает только onClear: в
                 управляемом режиме обновите value сами. Неуправляемое поле очищается автоматически.
             </p>
+            <h2>Outline при фокусе</h2>
+            <p>
+                По умолчанию outline выключен. Передайте <code>{'hasOutline={true}'}</code>, чтобы
+                показывать outline поля при фокусе и кнопки очистки при клавиатурном фокусе. Для
+                отключения используйте <code>{'hasOutline={false}'}</code>.
+            </p>
+            <Unstyled>
+                <div className={styles.examples}>
+                    <Input
+                        label="Без outline"
+                        hasOutline={false}
+                        defaultValue="Александр"
+                        clear
+                        dataTestId="outline-off"
+                    />
+                    <Input
+                        label="С outline"
+                        defaultValue="Александр"
+                        clear
+                        hasOutline={true}
+                        dataTestId="outline-on"
+                    />
+                </div>
+            </Unstyled>
             <h2>Размеры и view</h2>
             <p>
                 Высота относится только к полю. Текст 13 px для 40/48, 14 px для 56/64, 16 px для

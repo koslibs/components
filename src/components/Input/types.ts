@@ -47,6 +47,12 @@ export type InputProps = Omit<
     block?: boolean;
 
     /**
+     * Показывает outline при фокусе.
+     * @default false
+     */
+    hasOutline?: boolean;
+
+    /**
      * Название поля. Связывается с input через htmlFor и id.
      */
     label?: ReactNode;

@@ -69,6 +69,7 @@ test('forwards the button ref and native attributes without exposing internal pr
             label="Формат игры"
             aria-describedby="help"
             accessKey="f"
+            hasOutline={true}
             className="wrapper"
         />
     );
@@ -86,9 +87,24 @@ test('forwards the button ref and native attributes without exposing internal pr
         'multiple',
         'searchable',
         'readOnly',
+        'hasOutline',
         'dataTestId',
     ])
         expect(part().hasAttribute(name)).toBe(false);
+});
+
+test('keeps the search outline in sync with the Select while the portal stays open', async () => {
+    await render(<Select options={options} searchable defaultOpen dataTestId="select" />);
+    expect(part('search-form-control').hasAttribute('data-has-outline')).toBe(false);
+    await render(
+        <Select options={options} searchable defaultOpen hasOutline={true} dataTestId="select" />
+    );
+    expect(part('search-form-control').hasAttribute('data-has-outline')).toBe(true);
+    expect(part('search').hasAttribute('hasOutline')).toBe(false);
+    await render(
+        <Select options={options} searchable defaultOpen hasOutline={false} dataTestId="select" />
+    );
+    expect(part('search-form-control').hasAttribute('data-has-outline')).toBe(false);
 });
 
 test('single selection reports ids and options, closes and preserves a repeated selection', async () => {
