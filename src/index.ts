@@ -42,6 +42,18 @@ export {
 } from './components/Modal';
 export { Portal } from './components/Portal';
 export type { PortalProps } from './components/Portal';
+export {
+    Sidepanel,
+    Header as SidepanelHeader,
+    Content as SidepanelContent,
+    Footer as SidepanelFooter,
+} from './components/Sidepanel';
+export type {
+    SidepanelProps,
+    HeaderProps as SidepanelHeaderProps,
+    ContentProps as SidepanelContentProps,
+    FooterProps as SidepanelFooterProps,
+} from './components/Sidepanel';
 export type {
     ModalProps,
     HeaderProps as ModalHeaderProps,

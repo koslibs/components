@@ -1,0 +1,31 @@
+.component {
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--size-16);
+    min-height: var(--size-80);
+    padding: var(--sidepanel-padding);
+}
+
+.title {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.component > .closer {
+    flex-shrink: 0;
+    width: var(--size-24);
+    min-width: var(--size-24);
+    height: var(--size-32);
+    min-height: var(--size-32);
+    padding: var(--size-0);
+}
+
+.closerLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

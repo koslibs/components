@@ -86,7 +86,7 @@
 .tab:disabled,
 .tab:disabled .counter {
     color: var(--tabs-disabled-color);
-    cursor: default;
+    cursor: not-allowed;
 }
 
 .tab:disabled .counter {

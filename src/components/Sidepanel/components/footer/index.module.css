@@ -1,0 +1,56 @@
+.component {
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: var(--sidepanel-padding);
+}
+
+.component:not(.column) > button[data-block='true'] {
+    flex: 1 1 0;
+}
+
+.start {
+    justify-content: flex-start;
+}
+
+.end {
+    justify-content: flex-end;
+}
+
+.center {
+    justify-content: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-between > :only-child {
+    margin-left: auto;
+}
+
+.column {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.column > button {
+    width: 100%;
+}
+
+.gap-12 {
+    gap: var(--size-12);
+}
+
+.gap-16 {
+    gap: var(--size-16);
+}
+
+.gap-24 {
+    gap: var(--size-24);
+}
+
+.gap-32 {
+    gap: var(--size-32);
+}

@@ -43,6 +43,8 @@
         --field-label-color: var(--input-disabled-color);
         --field-placeholder-color: var(--input-disabled-color);
         --field-icon-color: var(--input-disabled-color);
+
+        cursor: not-allowed;
     }
 }
 

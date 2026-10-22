@@ -42,6 +42,8 @@
         --field-icon-color: var(--select-disabled-color);
         --field-placeholder-color: var(--select-disabled-color);
         --field-border: transparent;
+
+        cursor: not-allowed;
     }
 }
 
@@ -208,10 +210,11 @@
     }
 }
 
-.component.disabled .trigger {
+.component.disabled .trigger,
+.component.disabled .label {
     cursor: not-allowed;
 }
-.component.readOnly .trigger {
+.component.readOnly:not(.disabled) .trigger {
     cursor: default;
 }
 .component .message {
