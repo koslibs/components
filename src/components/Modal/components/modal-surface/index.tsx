@@ -10,9 +10,9 @@ import {
     type SyntheticEvent,
 } from 'react';
 
+import { lockScroll } from '../../../../utils/lock-scroll';
 import { ModalContext } from '../../context';
 import type { ModalProps } from '../../types';
-import { lockScroll } from '../../utils/lock-scroll';
 
 import colorStyles from '../../colors.module.css';
 import styles from '../../index.module.css';

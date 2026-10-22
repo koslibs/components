@@ -1,6 +1,37 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Sidepanel',
+        imports: ['Sidepanel', 'Header', 'Content', 'Footer'],
+        render: '<Sidepanel open aria-label="Import test"><Header title="IMPORT_TEST_SIDEPANEL" /><Content>Content</Content><Footer primary={() => <button>Save</button>} secondary={() => <button>Cancel</button>} /></Sidepanel>',
+        includes: {
+            js: [/IMPORT_TEST_SIDEPANEL/, /showModal/, /SidepanelFooter/, /TypographyText/],
+            css: [
+                /--sidepanel-background-color/,
+                /--sidepanel-animation-duration/,
+                /--sidepanel-scrollbar-color/,
+                /::-webkit-scrollbar-button/,
+                /translate(?:X)?\(100%\)/,
+                /::backdrop/,
+                /@font-face/,
+            ],
+            assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
+        },
+        excludes: {
+            js: [
+                /data-sidepanel-footer-sticky/,
+                /displayName\s*=\s*["'](?:Select|Input|Textarea|Collapse|Popover|TypographyTitle)["']/,
+            ],
+            css: [
+                /data-sidepanel-footer-sticky/,
+                /--select-/,
+                /--input-/,
+                /--popover-/,
+                /--collapse-/,
+            ],
+        },
+    },
+    {
         component: 'Skeleton',
         render: '<Skeleton dataTestId="IMPORT_TEST_SKELETON" style={{ height: 176 }} />',
         includes: {

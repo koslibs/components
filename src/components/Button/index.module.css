@@ -29,6 +29,10 @@
     border: none;
     outline: none;
     user-select: none;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
 }
 
 .size-32 {

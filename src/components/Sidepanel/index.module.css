@@ -1,0 +1,71 @@
+@import '../../styles/theme.css';
+@import './vars.css';
+
+.component {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    flex-direction: column;
+    width: 500px;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: none;
+    min-width: 0;
+    margin: var(--size-0);
+    padding: var(--size-0);
+    border: 0;
+    border-radius: var(--border-radius-0);
+    outline: none;
+    overflow: hidden;
+    background: var(--sidepanel-background-color);
+    color: var(--sidepanel-color);
+    font-family: var(--font-primary);
+    transform: translateX(100%);
+    transition: transform var(--sidepanel-animation-duration) ease-in-out;
+
+    &[open] {
+        display: flex;
+    }
+
+    &:has(> .nonStickyFooter) {
+        overflow: auto;
+        overscroll-behavior: contain;
+
+        & > .header {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: var(--sidepanel-background-color);
+        }
+
+        & > .content {
+            flex: 1 0 auto;
+            overflow: visible;
+        }
+    }
+
+    &[data-state='open'] {
+        transform: translateX(0);
+    }
+
+    &::backdrop {
+        background: var(--sidepanel-backdrop-color);
+        backdrop-filter: blur(var(--sidepanel-backdrop-blur));
+        opacity: 0;
+        transition: opacity var(--sidepanel-animation-duration) ease-in-out;
+    }
+
+    &[data-state='open']::backdrop {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .component,
+    .component::backdrop {
+        transition-duration: 0s;
+    }
+}

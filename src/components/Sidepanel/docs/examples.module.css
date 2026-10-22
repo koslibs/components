@@ -1,0 +1,15 @@
+.examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-12);
+}
+
+.scroll {
+    max-width: 100%;
+    overflow: auto;
+}
+
+.paragraph {
+    flex-shrink: 0;
+    line-height: 24px;
+}

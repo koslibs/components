@@ -1,0 +1,11 @@
+@import '../Modal/vars.css';
+
+:root {
+    --sidepanel-background-color: var(--modal-background-color);
+    --sidepanel-color: var(--modal-color);
+    --sidepanel-backdrop-color: var(--modal-backdrop-color);
+    --sidepanel-backdrop-blur: var(--modal-backdrop-blur);
+    --sidepanel-padding: var(--size-24);
+    --sidepanel-scrollbar-color: #a49b89;
+    --sidepanel-animation-duration: 200ms;
+}
