@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.14.0
+
+### Minor Changes
+
+- [#16](https://github.com/koslibs/components/pull/16) [`45a76bb`](https://github.com/koslibs/components/commit/45a76bb4b230b95762017468d9497c37d63e2855) Thanks [@holypower777](https://github.com/holypower777)! - Tabs больше не скрывает ряд, когда все вкладки disabled: заголовки и счётчики остаются видимыми без активного индикатора. Удалён проп emptyState: уберите его из вызовов Tabs и отображайте пустое состояние данных в приложении. Без дочерних Tab компонент возвращает null. Добавлены регрессионные тесты и пример в Storybook.
+
 ## 1.13.0
 
 ### Minor Changes
