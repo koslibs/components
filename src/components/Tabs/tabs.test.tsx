@@ -101,6 +101,53 @@ test('falls forward then backward when selection is removed or disabled without 
     expect(onChange).not.toHaveBeenCalled();
 });
 
+[false, true].forEach((controlled) => {
+    test(`keeps all-disabled tabs visible and restores selection (${controlled ? 'controlled' : 'uncontrolled'})`, () => {
+        const onChange = rstest.fn();
+        const disabledItems = items.map((item) => ({ ...item, disabled: true }));
+        const example = (nextItems: TabProps[]) => (
+            <Tabs
+                selectedId={controlled ? 'second' : undefined}
+                defaultSelectedId="second"
+                dataTestId="tabs"
+                onChange={onChange}
+            >
+                {tabs(nextItems)}
+            </Tabs>
+        );
+
+        render(example(disabledItems));
+        const list = container.querySelector('[data-test-id="tabs-list"]');
+        expect(list).not.toBeNull();
+        expect(list?.querySelectorAll('button').length).toBe(items.length);
+        expect(container.textContent).toBe('First0Disabled3Second2Last');
+        expect(selected()).toBeUndefined();
+        expect(container.querySelector('[data-test-id="tabs-indicator"]')).toBeNull();
+        const second = tab('second');
+        for (const item of disabledItems) {
+            expect(tab(item.id).disabled).toBe(true);
+            act(() => tab(item.id).click());
+        }
+        expect(onChange).not.toHaveBeenCalled();
+
+        render(example(disabledItems.map((item) => ({ ...item, disabled: item.id !== 'second' }))));
+        expect(tab('second')).toBe(second);
+        expect(second.disabled).toBe(false);
+        expect(selected()).toBe('Second2');
+        const indicator = container.querySelector('[data-test-id="tabs-indicator"]');
+        expect(indicator).not.toBeNull();
+
+        render(example(disabledItems));
+        expect(container.querySelector('[data-test-id="tabs-list"]')).toBe(list);
+        expect(tab('second')).toBe(second);
+        expect(second.disabled).toBe(true);
+        expect(selected()).toBeUndefined();
+        expect(indicator?.isConnected).toBe(false);
+        expect(container.querySelector('[data-test-id="tabs-indicator"]')).toBeNull();
+        expect(onChange).not.toHaveBeenCalled();
+    });
+});
+
 test('first enabled/default/unknown values and empty sets have deterministic fallbacks', () => {
     const disabledFirst = items.map((item) =>
         item.id === 'first' ? { ...item, disabled: true } : item
@@ -109,16 +156,11 @@ test('first enabled/default/unknown values and empty sets have deterministic fal
     expect(selected()).toBe('Second2');
     render(<Tabs children={tabs(items)} selectedId="unknown" />);
     expect(selected()).toBe('Second2');
-    render(<Tabs children={tabs([])} emptyState="No tabs" dataTestId="tabs" />);
-    expect(container.textContent).toBe('No tabs');
+    render(<Tabs children={tabs([])} dataTestId="tabs" />);
+    expect(container.childNodes.length).toBe(0);
     expect(container.querySelector('[data-test-id="tabs-list"]')).toBeNull();
-    render(
-        <Tabs
-            children={tabs(items.map((item) => ({ ...item, disabled: true })))}
-            emptyState="No enabled tabs"
-        />
-    );
-    expect(container.textContent).toBe('No enabled tabs');
+    render(<Tabs children={tabs(items.map((item) => ({ ...item, disabled: true })))} />);
+    expect(container.textContent).toBe('First0Disabled3Second2Last');
     render(<Tabs children={tabs(items)} />);
     expect(selected()).toBe('First0');
 });
@@ -151,6 +193,34 @@ test('forwards DOM props/ref and hides invalid counters', () => {
     expect(tab('with space').textContent).toBe('Zero0');
     for (let index = 0; index < 4; index += 1)
         expect(tab(String(index)).textContent).toBe('Unknown');
+});
+
+test('renders no wrapper for empty conditional children and restores DOM and ref when tabs appear', () => {
+    const ref = createRef<HTMLDivElement>();
+    const onChange = rstest.fn();
+    const example = (populated: boolean) => (
+        <Tabs ref={ref} dataTestId="tabs" onChange={onChange}>
+            <>
+                {null}
+                {false}
+                {populated && tabs(items)}
+                {[]}
+            </>
+        </Tabs>
+    );
+    render(example(false));
+    expect(container.childNodes.length).toBe(0);
+    expect(ref.current).toBeNull();
+    render(example(true));
+    expect(ref.current).toBe(container.firstElementChild);
+    expect(selected()).toBe('First0');
+    render(example(false));
+    expect(ref.current).toBeNull();
+    expect(container.childNodes.length).toBe(0);
+    render(example(true));
+    expect(ref.current).toBe(container.firstElementChild);
+    expect(selected()).toBe('First0');
+    expect(onChange).not.toHaveBeenCalled();
 });
 
 test('leaves external content and its focus under the parent control', () => {
@@ -331,7 +401,7 @@ test('tracks title resizing without interrupting transitions on identical resize
     expect(indicator.style.transform).toBe('translateX(250px)');
     expect(indicator.style.width).toBe('170px');
     expect(indicator.style.transition).toBe('none');
-    render(<Tabs dataTestId="tabs" emptyState="No tabs" />);
+    render(<Tabs dataTestId="tabs" />);
     expect(disconnect).toHaveBeenCalled();
     render(
         <Tabs selectedId="second" dataTestId="tabs">

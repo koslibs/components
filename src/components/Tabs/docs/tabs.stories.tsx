@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@koslibs/builder/storybook';
 import { useEffect, useState } from 'react';
 
-import { TabsDocs } from './tabs.docs';
+import { AllDisabledExample, TabsDocs } from './tabs.docs';
 
 import { Tab, Tabs, type TabsProps } from '..';
 
@@ -59,7 +59,6 @@ const meta = {
         defaultSelectedId: { control: false },
         size: { control: 'select', options: [40, 48] },
         onChange: { action: 'changed' },
-        emptyState: { control: false },
         ref: { table: { disable: true } },
     },
 } satisfies Meta<typeof Tabs>;
@@ -69,4 +68,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
     render: (args) => <PlaygroundExample {...args} />,
+};
+
+export const AllDisabled: Story = {
+    parameters: { controls: { include: ['size'] } },
+    render: ({ size }) => <AllDisabledExample size={size} />,
 };
