@@ -54,11 +54,6 @@ export type TabsProps = Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onCha
     size?: 40 | 48;
 
     /**
-     * Общее пустое состояние, когда нет доступных вкладок.
-     */
-    emptyState?: ReactNode;
-
-    /**
      * Класс ряда заголовков.
      */
     listClassName?: string;

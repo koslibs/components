@@ -85,7 +85,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
             defaultSelectedId,
             onChange,
             size = 40,
-            emptyState,
             listClassName,
             dataTestId,
             className,
@@ -126,6 +125,8 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
             onChange?.(event, { selectedId: id });
         };
 
+        if (items.length === 0) return null;
+
         return (
             <div
                 {...restProps}
@@ -133,37 +134,35 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
                 className={cn(styles.component, className)}
                 data-test-id={dataTestId}
             >
-                {selectedValue === undefined ? (
-                    emptyState
-                ) : (
-                    <TabsContext.Provider
-                        value={{
-                            selectedId: selectedValue,
-                            size,
-                            dataTestId,
-                            registerTab: (id, button) => {
-                                if (button) buttons.current.set(id, button);
-                                else buttons.current.delete(id);
-                            },
-                            selectTab: select,
-                        }}
+                <TabsContext.Provider
+                    value={{
+                        selectedId: selectedValue,
+                        size,
+                        dataTestId,
+                        registerTab: (id, button) => {
+                            if (button) buttons.current.set(id, button);
+                            else buttons.current.delete(id);
+                        },
+                        selectTab: select,
+                    }}
+                >
+                    <div
+                        ref={listRef}
+                        className={cn(styles.list, listClassName)}
+                        data-test-id={getDataTestId('list')}
                     >
-                        <div
-                            ref={listRef}
-                            className={cn(styles.list, listClassName)}
-                            data-test-id={getDataTestId('list')}
-                        >
-                            {items.map((item) => (
-                                <Tab key={item.id} {...item} />
-                            ))}
+                        {items.map((item) => (
+                            <Tab key={item.id} {...item} />
+                        ))}
+                        {selectedValue !== undefined && (
                             <div
                                 ref={indicatorRef}
                                 className={styles.indicator}
                                 data-test-id={getDataTestId('indicator')}
                             />
-                        </div>
-                    </TabsContext.Provider>
-                )}
+                        )}
+                    </div>
+                </TabsContext.Provider>
             </div>
         );
     }

@@ -115,6 +115,26 @@ function DynamicExample() {
     );
 }
 
+export function AllDisabledExample({ size = 40 }: Pick<TabsProps, 'size'>) {
+    const [disabled, setDisabled] = useState(true);
+    return (
+        <>
+            <Tabs size={size} dataTestId="all-disabled-tabs">
+                <Tab id="active" title="Active" count={5} disabled />
+                <Tab id="archived" title="Archived" count={2} disabled={disabled} />
+                <Tab id="empty" title="Без сессий" count={0} disabled />
+            </Tabs>
+            <Button
+                view="secondary"
+                onClick={() => setDisabled((current) => !current)}
+                dataTestId="toggle-disabled-tabs"
+            >
+                {disabled ? 'Включить Archived' : 'Отключить Archived'}
+            </Button>
+        </>
+    );
+}
+
 function ContentExample() {
     const [selectedId, setSelectedId] = useState('active');
     const handleChange: TabsProps['onChange'] = (_event, payload) =>
@@ -151,6 +171,10 @@ function Documentation() {
                 Все вкладки должны помещаться в доступную ширину. Tabs не поддерживает
                 горизонтальную прокрутку и перенос ряда; количество и длину заголовков выбирайте с
                 учётом места в интерфейсе.
+            </p>
+            <p>
+                Если children не содержат Tab, компонент ничего не рендерит. Пустое состояние данных
+                отображайте в содержимом выбранной вкладки, под управлением приложения.
             </p>
             <h2>Параметры Tabs</h2>
             <Controls />
@@ -190,10 +214,10 @@ function Documentation() {
                 <DynamicExample />
             </Example>
             <Example
-                title="Пустое состояние"
-                description="По умолчанию выбирается первая доступная вкладка; defaultSelectedId задаёт начальный выбор. Если доступных вкладок нет, вместо ряда показывается emptyState."
+                title="Все вкладки отключены"
+                description="Если все Tab имеют disabled, заголовки и счётчики остаются видимыми. Активной вкладки и оранжевого индикатора нет. После включения вкладки она выбирается по обычным правилам; автоматический выбор не вызывает onChange."
             >
-                <Tabs emptyState={<p>Нет доступных вкладок.</p>} dataTestId="empty-tabs" />
+                <AllDisabledExample />
             </Example>
         </>
     );
