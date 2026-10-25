@@ -92,7 +92,7 @@ function panel(props: Partial<SidepanelProps> & { ref?: Ref<HTMLDialogElement> }
             <Content>
                 <input defaultValue="Initial" />
             </Content>
-            <Footer primary={SaveButton} />
+            <Footer primary={<SaveButton />} />
         </Sidepanel>
     );
 }
@@ -364,8 +364,8 @@ test('parts inherit and override test IDs and omit an empty Header', () => {
             <Footer
                 dataTestId="actions"
                 layout="column"
-                secondary={CancelButton}
-                primary={SaveButton}
+                secondary={<CancelButton />}
+                primary={<SaveButton />}
             />
         </Sidepanel>
     );
@@ -386,7 +386,7 @@ test('Header renders when either title or closer is present, and omits blank tit
 
 test('Footer consumes layout props without adding a sticky data attribute to the DOM', () => {
     for (const sticky of [true, false]) {
-        render(<Footer sticky={sticky} primary={SaveButton} gap={24} layout="center" />);
+        render(<Footer sticky={sticky} primary={<SaveButton />} gap={24} layout="center" />);
         const footer = container.firstElementChild!;
         for (const attribute of [
             'sticky',
@@ -398,6 +398,35 @@ test('Footer consumes layout props without adding a sticky data attribute to the
             expect(footer.hasAttribute(attribute)).toBe(false);
         }
     }
+});
+
+test('Footer accepts JSX buttons with caller handlers, styling and refs', () => {
+    const handleSubmit = rstest.fn();
+    const handleClose = rstest.fn();
+    const buttonRef = createRef<HTMLButtonElement>();
+    render(
+        <Footer
+            primary={
+                <Button
+                    ref={buttonRef}
+                    onClick={handleSubmit}
+                    view="accent"
+                    style={{ borderRadius: 24 }}
+                >
+                    Create profile
+                </Button>
+            }
+            secondary={<Button onClick={handleClose}>Cancel</Button>}
+        />
+    );
+    const buttons = container.querySelectorAll('button');
+    expect([...buttons].map((button) => button.textContent)).toEqual(['Cancel', 'Create profile']);
+    expect(buttonRef.current).toBe(buttons[1]);
+    expect(buttons[1].style.borderRadius).toBe('24px');
+    act(() => buttons[0].click());
+    act(() => buttons[1].click());
+    expect(handleClose).toHaveBeenCalledTimes(1);
+    expect(handleSubmit).toHaveBeenCalledTimes(1);
 });
 
 test('Footer renders supplied components in order and preserves primary state when layout changes', () => {
@@ -426,7 +455,7 @@ test('Footer renders supplied components in order and preserves primary state wh
             </Button>
         );
     }
-    render(<Footer ref={ref} id="actions" primary={Primary} secondary={Secondary} />);
+    render(<Footer ref={ref} id="actions" primary={<Primary />} secondary={<Secondary />} />);
     const buttons = container.querySelectorAll('button');
     expect([...buttons].map((button) => button.textContent)).toEqual(['Cancel', 'Save 0']);
     expect(ref.current?.id).toBe('actions');
@@ -441,7 +470,7 @@ test('Footer renders supplied components in order and preserves primary state wh
     expect(buttons[1].getAttribute('data-block')).toBe('true');
     act(() => buttons[1].click());
     expect(onSave).toHaveBeenCalledTimes(1);
-    render(<Footer primary={Primary} layout="center" gap={32} />);
+    render(<Footer primary={<Primary />} layout="center" gap={32} />);
     expect(container.querySelectorAll('button').length).toBe(1);
     expect(container.querySelector('button')?.textContent).toBe('Save 1');
 });

@@ -35,8 +35,8 @@ const handleClose = () => setOpen(false);
     <Header title="Настройки профиля" hasCloser={true} />
     <Content>{children}</Content>
     <Footer
-        primary={() => <Button onClick={handleSubmit}>Сохранить</Button>}
-        secondary={() => <Button view="secondary" onClick={handleClose}>Отмена</Button>}
+        primary={<Button onClick={handleSubmit}>Сохранить</Button>}
+        secondary={<Button view="secondary" onClick={handleClose}>Отмена</Button>}
     />
 </Sidepanel>`;
 
@@ -118,12 +118,12 @@ function Documentation() {
             </Unstyled>
             <h2>Footer: только кнопки</h2>
             <p>
-                primary — обязательный компонент кнопки, secondary — необязательный. Оба имеют тип
-                ComponentType&lt;ButtonProps&gt;: передавайте компоненты, а внешний вид, текст и
-                обработчики задавайте внутри них. Footer не назначает view. children у Footer
-                отсутствует. В строке secondary находится слева от primary; в column — над ним.
-                Компоненты со своим состоянием объявляйте стабильно, чтобы изменение настроек
-                раскладки не пересоздавало их.
+                primary — обязательный JSX-элемент кнопки, secondary — необязательный. Оба имеют тип
+                ReactElement&lt;ButtonProps&gt;: передавайте готовые элементы Button или своих
+                компонентов кнопок. Внешний вид, текст, обработчики и ref задаются непосредственно
+                на переданных элементах. Footer не изменяет их пропсы и не назначает view. children
+                у Footer отсутствует. В строке secondary находится слева от primary; в column — над
+                ним.
             </p>
             <p>
                 gap принимает 12, 16, 24 или 32; по умолчанию 12. layout по умолчанию space-between:
@@ -133,34 +133,29 @@ function Documentation() {
                 sticky по умолчанию true; sticky=false отключает закрепление.
             </p>
             <pre className={styles.scroll}>
-                <code>{`function PrimaryButton() {
-    return <Button view="accent" size={48} onClick={handleSubmit}>Сохранить</Button>;
-}
+                <code>{`const primary = <Button view="accent" size={48} onClick={handleSubmit}>Сохранить</Button>;
+const secondary = <Button view="outlined" size={48} onClick={handleClose}>Отмена</Button>;
 
-function SecondaryButton() {
-    return <Button view="outlined" size={48} onClick={handleClose}>Отмена</Button>;
-}
-
-<Footer primary={PrimaryButton} secondary={SecondaryButton} />
+<Footer primary={primary} secondary={secondary} />
 
 <Footer
     layout="center"
     gap={24}
-    primary={PrimaryButton}
-    secondary={SecondaryButton}
+    primary={primary}
+    secondary={secondary}
 />
 
 <Footer
     layout="column"
-    primary={PrimaryButton}
-    secondary={SecondaryButton}
+    primary={primary}
+    secondary={secondary}
 />`}</code>
             </pre>
             <pre className={styles.scroll}>
                 <code>{`<Footer
     sticky={false}
-    primary={PrimaryButton}
-    secondary={SecondaryButton}
+    primary={primary}
+    secondary={secondary}
 />`}</code>
             </pre>
             <Unstyled>
@@ -226,7 +221,7 @@ function SecondaryButton() {
     <Content>
         <Select options={options} getPortalContainer={() => panelRef.current} />
     </Content>
-    <Footer primary={() => <Button onClick={handleClose}>Готово</Button>} />
+    <Footer primary={<Button onClick={handleClose}>Готово</Button>} />
 </Sidepanel>`}</code>
             </pre>
             <Unstyled>

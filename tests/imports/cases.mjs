@@ -3,7 +3,7 @@ export const importCases = [
     {
         component: 'Sidepanel',
         imports: ['Sidepanel', 'Header', 'Content', 'Footer'],
-        render: '<Sidepanel open aria-label="Import test"><Header title="IMPORT_TEST_SIDEPANEL" /><Content>Content</Content><Footer primary={() => <button>Save</button>} secondary={() => <button>Cancel</button>} /></Sidepanel>',
+        render: '<Sidepanel open aria-label="Import test"><Header title="IMPORT_TEST_SIDEPANEL" /><Content>Content</Content><Footer primary={<button>Save</button>} secondary={<button>Cancel</button>} /></Sidepanel>',
         includes: {
             js: [/IMPORT_TEST_SIDEPANEL/, /showModal/, /SidepanelFooter/, /TypographyText/],
             css: [
