@@ -22,6 +22,7 @@ export function useDialogTransition(
 ) {
     const [active, setActive] = useState(open);
     const latest = useRef({ open, onExited });
+    const phase = useRef<'open' | 'closing' | 'closed'>('closed');
 
     useLayoutEffect(() => {
         latest.current = { open, onExited };
@@ -29,7 +30,9 @@ export function useDialogTransition(
 
     const finishClosing = useCallback(() => {
         const dialog = dialogRef.current;
-        if (!dialog || latest.current.open) return;
+        if (!dialog || latest.current.open || phase.current !== 'closing') return;
+        // Consume this exit before closing the dialog or notifying the caller.
+        phase.current = 'closed';
         if (dialog.open) dialog.close();
         setActive(false);
         latest.current.onExited();
@@ -42,8 +45,10 @@ export function useDialogTransition(
 
         let frame: number | undefined;
         let timeout: number | undefined;
+        let cancelled = false;
 
         if (open) {
+            phase.current = 'open';
             if (!dialog.open) {
                 dialog.dataset.state = 'closed';
                 dialog.showModal();
@@ -54,17 +59,25 @@ export function useDialogTransition(
             frame = view.requestAnimationFrame(() => {
                 dialog.dataset.state = 'open';
             });
-        } else if (dialog.open && dialog.dataset.state === 'open') {
-            dialog.dataset.state = 'closed';
-            const duration = transitionTime(dialog);
-            if (duration === 0) finishClosing();
-            // Also finish if transitionend is suppressed, e.g. in a background tab.
-            else timeout = view.setTimeout(finishClosing, duration + 50);
-        } else {
-            finishClosing();
+        } else if (phase.current !== 'closed') {
+            phase.current = 'closing';
+            if (dialog.open && dialog.dataset.state === 'open') {
+                dialog.dataset.state = 'closed';
+                const duration = transitionTime(dialog);
+                if (duration === 0) finishClosing();
+                // Also finish if transitionend is suppressed, e.g. in a background tab.
+                else {
+                    timeout = view.setTimeout(() => {
+                        if (!cancelled) finishClosing();
+                    }, duration + 50);
+                }
+            } else {
+                finishClosing();
+            }
         }
 
         return () => {
+            cancelled = true;
             if (frame !== undefined) view.cancelAnimationFrame(frame);
             if (timeout !== undefined) view.clearTimeout(timeout);
         };
@@ -73,6 +86,7 @@ export function useDialogTransition(
     useLayoutEffect(() => {
         const dialog = dialogRef.current;
         return () => {
+            phase.current = 'closed';
             if (dialog?.open) dialog.close();
         };
     }, [dialogRef]);

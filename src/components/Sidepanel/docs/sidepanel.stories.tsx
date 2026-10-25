@@ -86,6 +86,7 @@ const meta = {
         backdropClick: { control: 'boolean' },
         lockScroll: { control: 'boolean' },
         onClose: { action: 'close requested' },
+        onExited: { action: 'exit completed' },
         children: { control: false },
         getPortalContainer: { control: false },
     },

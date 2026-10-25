@@ -18,6 +18,11 @@ export type SidepanelProps = Omit<
     onClose?: VoidFunction;
 
     /**
+     * Вызывается после завершения закрытия панели.
+     */
+    onExited?: VoidFunction;
+
+    /**
      * Разрешает запрос закрытия по Escape.
      * @default true
      */
