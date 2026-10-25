@@ -1,5 +1,13 @@
 # @koslibs/components
 
+## 1.15.0
+
+### Minor Changes
+
+- [#18](https://github.com/koslibs/components/pull/18) [`d845497`](https://github.com/koslibs/components/commit/d845497056e4d88881bb25814102fe9fb4bb9e07) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен Sidepanel.onExited?: VoidFunction для уведомления после анимации ухода и фактического закрытия dialog. При reduced motion callback вызывается сразу после закрытия. Повторное открытие отменяет прежнее завершение; первоначальное open=false, ререндер и принудительное размонтирование не вызывают callback. onClose остаётся запросом закрытия.
+
+    Добавлены тесты закрытия, отмены, reduced motion и StrictMode, а также документация и пример удаления экземпляра панели менеджером приложения через onExited.
+
 ## 1.14.2
 
 ### Patch Changes
