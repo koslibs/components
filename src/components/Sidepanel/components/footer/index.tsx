@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { forwardRef, useContext, type ComponentType, type HTMLAttributes } from 'react';
+import { forwardRef, useContext, type HTMLAttributes, type ReactElement } from 'react';
 
 import { useDataTestId } from '../../../../hooks/use-data-test-id';
 import type { ButtonProps } from '../../../Button';
@@ -13,16 +13,16 @@ export type FooterProps = Omit<
     'children' | 'dangerouslySetInnerHTML'
 > & {
     /**
-     * Компонент основной кнопки. Обязателен; располагается после secondary (справа в строке).
-     * Внешний вид и обработчики задаются внутри переданного компонента.
+     * JSX-элемент основной кнопки. Обязателен; располагается после secondary (справа в строке).
+     * Внешний вид, обработчики и ref задаются непосредственно на кнопке.
      */
-    primary: ComponentType<ButtonProps>;
+    primary: ReactElement<ButtonProps>;
 
     /**
-     * Компонент вторичной кнопки. Располагается перед primary (слева в строке).
+     * JSX-элемент вторичной кнопки. Располагается перед primary (слева в строке).
      * Не выводится, если проп не передан.
      */
-    secondary?: ComponentType<ButtonProps>;
+    secondary?: ReactElement<ButtonProps>;
 
     /**
      * Минимальное расстояние между кнопками в пикселях из общей шкалы отступов.
@@ -52,8 +52,8 @@ export type FooterProps = Omit<
 export const Footer = forwardRef<HTMLDivElement, FooterProps>(
     (
         {
-            primary: Primary,
-            secondary: Secondary,
+            primary,
+            secondary,
             gap = 12,
             sticky = true,
             layout = 'space-between',
@@ -79,8 +79,8 @@ export const Footer = forwardRef<HTMLDivElement, FooterProps>(
                 )}
                 data-test-id={getDataTestId('footer')}
             >
-                {Secondary && <Secondary />}
-                <Primary />
+                {secondary}
+                {primary}
             </div>
         );
     }

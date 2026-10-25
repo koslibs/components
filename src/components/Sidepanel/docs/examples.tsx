@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { useDataTestId } from '../../../hooks/use-data-test-id';
 import { Button } from '../../Button';
@@ -37,27 +37,6 @@ export function DemoPanel({
 }: DemoProps) {
     const ref = useRef<HTMLDialogElement>(null);
     const getDataTestId = useDataTestId(props.dataTestId);
-    const PrimaryButton = useCallback(
-        () => (
-            <Button block={footerBlock} onClick={onClose} dataTestId={getDataTestId('save')}>
-                Сохранить
-            </Button>
-        ),
-        [footerBlock, getDataTestId, onClose]
-    );
-    const SecondaryButton = useCallback(
-        () => (
-            <Button
-                view="secondary"
-                block={footerBlock}
-                onClick={onClose}
-                dataTestId={getDataTestId('cancel')}
-            >
-                Отмена
-            </Button>
-        ),
-        [footerBlock, getDataTestId, onClose]
-    );
     return (
         <Sidepanel {...props} ref={ref} onClose={onClose} aria-label={title || 'Боковая панель'}>
             <Header title={title} hasCloser={hasCloser} />
@@ -107,8 +86,27 @@ export function DemoPanel({
                 sticky={footerSticky}
                 layout={footerLayout}
                 gap={footerGap}
-                primary={PrimaryButton}
-                secondary={hasSecondary ? SecondaryButton : undefined}
+                primary={
+                    <Button
+                        block={footerBlock}
+                        onClick={onClose}
+                        dataTestId={getDataTestId('save')}
+                    >
+                        Сохранить
+                    </Button>
+                }
+                secondary={
+                    hasSecondary ? (
+                        <Button
+                            view="secondary"
+                            block={footerBlock}
+                            onClick={onClose}
+                            dataTestId={getDataTestId('cancel')}
+                        >
+                            Отмена
+                        </Button>
+                    ) : undefined
+                }
             />
         </Sidepanel>
     );
