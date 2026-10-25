@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.14.1
+
+### Patch Changes
+
+- [`ea1a3d1`](https://github.com/koslibs/components/commit/ea1a3d1be5c397c4b5d56d761bef4abf8c885149) Thanks [@holypower777](https://github.com/holypower777)! - Обновлены @koslibs/builder и @koslibs/configs до 3.0.0, @koslibs/icons до 1.2.2. Обновлены транзитивные зависимости для устранения уязвимостей Happy DOM, Storybook, Vite и fast-uri. CI и release используют workflows configs v3.0.0. Тесты Modal, Sidepanel, Spinner и Typography адаптированы к jsdom без изменения API и поведения компонентов.
+
 ## 1.14.0
 
 ### Minor Changes
