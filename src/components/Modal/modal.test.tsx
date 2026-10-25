@@ -96,6 +96,11 @@ test('locks the portal owner document rather than the global document', () => {
     const iframe = document.createElement('iframe');
     document.body.append(iframe);
     const body = iframe.contentDocument!.body;
+    // jsdom gives each iframe its own dialog prototype, as a browser does.
+    Object.defineProperties(Object.getPrototypeOf(body.ownerDocument.createElement('dialog')), {
+        showModal: Object.getOwnPropertyDescriptor(HTMLDialogElement.prototype, 'showModal')!,
+        close: Object.getOwnPropertyDescriptor(HTMLDialogElement.prototype, 'close')!,
+    });
     body.style.overflow = 'scroll';
     render(<Modal open getPortalContainer={() => body} />);
     expect(body.querySelector('dialog')?.open).toBe(true);

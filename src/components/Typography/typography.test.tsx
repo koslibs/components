@@ -81,7 +81,7 @@ test('passes HTML attributes, custom styles and events to the root element', () 
     expect(text.id).toBe('session-result');
     expect(text.dataset.testId).toBe('result');
     expect(text.classList.contains('custom-text')).toBe(true);
-    expect(text.style.color).toBe('#1679a3');
+    expect(text.style.color).toBe('rgb(22, 121, 163)');
     expect(text.style.margin).toBe('8px');
     expect(text.getAttribute('aria-label')).toBe('Session result');
     act(() => text.click());

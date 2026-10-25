@@ -54,7 +54,7 @@ test('supports standalone color, className and DOM identifiers', () => {
     expect(spinner.id).toBe('sync-spinner');
     expect(spinner.dataset.testId).toBe('sync');
     expect(spinner.classList.contains('custom-spinner')).toBe(true);
-    expect(spinner.style.color).toBe('#1679a3');
+    expect(spinner.style.color).toBe('rgb(22, 121, 163)');
     expect(spinner.style.margin).toBe('8px');
 });
 

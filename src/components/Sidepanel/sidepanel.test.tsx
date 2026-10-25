@@ -288,6 +288,11 @@ test('uses the portal owner document and supports opting out of scroll locking',
     const iframe = document.createElement('iframe');
     document.body.append(iframe);
     const body = iframe.contentDocument!.body;
+    // Apply the existing dialog test double to the iframe's separate DOM realm.
+    Object.defineProperties(Object.getPrototypeOf(body.ownerDocument.createElement('dialog')), {
+        showModal: Object.getOwnPropertyDescriptor(HTMLDialogElement.prototype, 'showModal')!,
+        close: Object.getOwnPropertyDescriptor(HTMLDialogElement.prototype, 'close')!,
+    });
     render(panel({ getPortalContainer: () => body }));
     expect(body.querySelector('dialog')!.open).toBe(true);
     expect(body.style.overflow).toBe('hidden');
