@@ -19,7 +19,7 @@ import componentStyles from '../index.module.css?raw';
 import scrollbarStyles from '../scrollbar.module.css?raw';
 import variables from '../vars.css?raw';
 
-import { PanelExample } from './examples';
+import { ManagedPanelExample, PanelExample } from './examples';
 
 import styles from './examples.module.css';
 
@@ -68,6 +68,41 @@ function Documentation() {
                 размонтируется, поэтому неуправляемая форма при следующем открытии начинается
                 заново.
             </p>
+            <h3>Удаление экземпляра после закрытия</h3>
+            <p>
+                onExited вызывается без аргументов один раз после анимации ухода и фактического
+                закрытия dialog. Менеджер приложения может удалить экземпляр панели в этом
+                обработчике. При reduced motion уведомление приходит сразу после закрытия, без
+                ожидания анимации. Повторное открытие во время ухода отменяет прежнее завершение.
+                Начальное open=false, обычный ререндер и принудительное размонтирование не вызывают
+                onExited.
+            </p>
+            <pre className={styles.scroll}>
+                <code>{`const [present, setPresent] = useState(false);
+const [open, setOpen] = useState(false);
+
+const handleOpen = () => {
+    setPresent(true);
+    setOpen(true);
+};
+
+<Button onClick={handleOpen}>Открыть</Button>
+{present && (
+    <Sidepanel
+        open={open}
+        onClose={() => setOpen(false)}
+        onExited={() => setPresent(false)}
+        aria-label="Настройки профиля"
+    >
+        <Header title="Настройки профиля" />
+        <Content>{children}</Content>
+        <Footer primary={<Button onClick={() => setOpen(false)}>Готово</Button>} />
+    </Sidepanel>
+)}`}</code>
+            </pre>
+            <Unstyled>
+                <ManagedPanelExample />
+            </Unstyled>
             <h2>Header</h2>
             <p>
                 title необязателен; hasCloser по умолчанию true. Если нет ни заголовка, ни крестика,

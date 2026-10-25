@@ -6,7 +6,7 @@ import { SidepanelSurface } from './components/sidepanel-surface';
 import type { SidepanelProps } from './types';
 
 export const Sidepanel = forwardRef<HTMLDialogElement, SidepanelProps>(
-    ({ open, getPortalContainer, ...restProps }, ref) => {
+    ({ open, onExited, getPortalContainer, ...restProps }, ref) => {
         const [mounted, setMounted] = useState(open);
 
         useLayoutEffect(() => {
@@ -14,8 +14,9 @@ export const Sidepanel = forwardRef<HTMLDialogElement, SidepanelProps>(
         }, [open]);
 
         const handleExited = useCallback(() => {
-            if (!open) setMounted(false);
-        }, [open]);
+            setMounted(false);
+            onExited?.();
+        }, [onExited]);
 
         return mounted ? (
             <Portal getPortalContainer={getPortalContainer}>

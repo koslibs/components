@@ -203,6 +203,153 @@ test('Escape and the closer request controlled closing and respect escapeKeyDown
     expect(onClose).toHaveBeenCalledTimes(2);
 });
 
+test('onExited runs once after the dialog closes, independently of onClose', () => {
+    rstest.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] });
+    const onClose = rstest.fn();
+    const ref = createRef<HTMLDialogElement>();
+    const onExited = rstest.fn(() => expect(ref.current!.open).toBe(false));
+    render(panel({ ref, onClose, onExited }));
+    animateIn();
+    const dialog = ref.current!;
+    act(() => dialog.querySelector<HTMLButtonElement>('[data-test-id="panel-closer"]')!.click());
+    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(onExited).not.toHaveBeenCalled();
+    render(panel({ open: false, ref, onClose, onExited }));
+    expect(onExited).not.toHaveBeenCalled();
+    endTransition(dialog.querySelector('input')!);
+    endTransition(dialog, 'opacity');
+    expect(onExited).not.toHaveBeenCalled();
+    endTransition(dialog);
+    endTransition(dialog);
+    act(() => rstest.advanceTimersByTime(500));
+    expect(onExited.mock.calls).toEqual([[]]);
+    expect(onClose).toHaveBeenCalledTimes(1);
+});
+
+test('onExited uses the latest callback without restarting the exit fallback', () => {
+    rstest.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] });
+    const previous = rstest.fn();
+    const dialogRef = createRef<HTMLDialogElement>();
+    const current = rstest.fn(() => expect(dialogRef.current!.open).toBe(false));
+    render(panel({ ref: dialogRef, onExited: previous }));
+    animateIn();
+    render(panel({ open: false, ref: dialogRef, onExited: previous }));
+    act(() => rstest.advanceTimersByTime(150));
+    render(panel({ open: false, ref: dialogRef, onExited: current }));
+    act(() => rstest.advanceTimersByTime(100));
+    expect(previous).not.toHaveBeenCalled();
+    expect(current).toHaveBeenCalledTimes(1);
+    act(() => rstest.advanceTimersByTime(500));
+    expect(current).toHaveBeenCalledTimes(1);
+});
+
+test('onExited follows dialog.close immediately when reduced motion sets duration to zero', () => {
+    const ref = createRef<HTMLDialogElement>();
+    const onExited = rstest.fn(() => expect(ref.current!.open).toBe(false));
+    // jsdom does not apply media queries; emulate the reduced-motion CSS duration.
+    const props = { ref, onExited, style: { transitionDuration: '0s' } };
+    render(panel(props));
+    animateIn();
+    render(panel({ ...props, open: false }));
+    expect(onExited.mock.calls).toEqual([[]]);
+    expect(document.querySelector('dialog')).toBeNull();
+});
+
+test('onExited ignores initial closed state, rerenders and forced unmounts', () => {
+    rstest.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] });
+    const onExited = rstest.fn();
+    render(panel({ open: false, onExited }));
+    render(panel({ open: false, onExited }));
+    render(panel({ onExited }));
+    animateIn();
+    render(panel({ onExited }));
+    render(null);
+    expect(onExited).not.toHaveBeenCalled();
+    render(panel({ onExited }));
+    animateIn();
+    render(panel({ open: false, onExited }));
+    render(null);
+    act(() => rstest.advanceTimersByTime(500));
+    expect(onExited).not.toHaveBeenCalled();
+});
+
+test('onExited cancels the previous exit on reopening and completes only the next exit', () => {
+    rstest.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] });
+    const previous = rstest.fn();
+    const current = rstest.fn();
+    render(panel({ onExited: previous }));
+    animateIn();
+    const dialog = document.querySelector('dialog')!;
+    render(panel({ open: false, onExited: previous }));
+    act(() => rstest.advanceTimersByTime(100));
+    render(panel({ onExited: current }));
+    animateIn();
+    endTransition(dialog);
+    render(panel({ open: false, onExited: current }));
+    // The old fallback would fire here, before the new exit finishes.
+    act(() => rstest.advanceTimersByTime(150));
+    expect(dialog.open).toBe(true);
+    expect(previous).not.toHaveBeenCalled();
+    expect(current).not.toHaveBeenCalled();
+    endTransition(dialog);
+    act(() => rstest.advanceTimersByTime(500));
+    expect(previous).not.toHaveBeenCalled();
+    expect(current).toHaveBeenCalledTimes(1);
+});
+
+test('onExited reports each real closing once in StrictMode and ignores effect cleanup', () => {
+    const onExited = rstest.fn();
+    const strictPanel = (open: boolean) => <StrictMode>{panel({ open, onExited })}</StrictMode>;
+    render(strictPanel(false));
+    render(strictPanel(true));
+    animateIn();
+    expect(onExited).not.toHaveBeenCalled();
+    render(strictPanel(false));
+    endTransition(document.querySelector('dialog')!);
+    expect(onExited).toHaveBeenCalledTimes(1);
+    render(strictPanel(false));
+    render(strictPanel(true));
+    animateIn();
+    render(strictPanel(false));
+    endTransition(document.querySelector('dialog')!);
+    expect(onExited).toHaveBeenCalledTimes(2);
+    render(strictPanel(true));
+    render(null);
+    expect(onExited).toHaveBeenCalledTimes(2);
+});
+
+test('onExited lets a manager remove the panel instance after closing', () => {
+    function Manager() {
+        const [present, setPresent] = useState(true);
+        const [open, setOpen] = useState(true);
+        return present ? (
+            <Sidepanel
+                open={open}
+                onClose={() => setOpen(false)}
+                onExited={() => setPresent(false)}
+                style={{ transitionDuration: '200ms' }}
+            >
+                <Header title="Managed panel" />
+            </Sidepanel>
+        ) : (
+            <span>Instance removed</span>
+        );
+    }
+    render(
+        <StrictMode>
+            <Manager />
+        </StrictMode>
+    );
+    animateIn();
+    const dialog = document.querySelector('dialog')!;
+    act(() => dialog.querySelector<HTMLButtonElement>('button')!.click());
+    expect(container.textContent).not.toContain('Instance removed');
+    expect(dialog.open).toBe(true);
+    endTransition(dialog);
+    expect(dialog.open).toBe(false);
+    expect(container.textContent).toBe('Instance removed');
+});
+
 test('requires both pointerdown and click on the backdrop and respects prevented events', () => {
     const onClose = rstest.fn();
     render(panel({ onClose }));

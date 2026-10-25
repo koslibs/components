@@ -123,3 +123,32 @@ export function PanelExample({ label, ...props }: Omit<DemoProps, 'open'> & { la
         </>
     );
 }
+
+export function ManagedPanelExample() {
+    const [present, setPresent] = useState(false);
+    const [open, setOpen] = useState(false);
+    return (
+        <>
+            <Button
+                dataTestId="managed-panel-open"
+                onClick={() => {
+                    setPresent(true);
+                    setOpen(true);
+                }}
+            >
+                Открыть панель через менеджер
+            </Button>
+            <p data-test-id="managed-panel-status">
+                {present ? 'Экземпляр в дереве React' : 'Экземпляр удалён'}
+            </p>
+            {present && (
+                <DemoPanel
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    onExited={() => setPresent(false)}
+                    dataTestId="managed-panel"
+                />
+            )}
+        </>
+    );
+}
