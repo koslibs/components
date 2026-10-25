@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.14.2
+
+### Patch Changes
+
+- [#17](https://github.com/koslibs/components/pull/17) [`b2d48a4`](https://github.com/koslibs/components/commit/b2d48a4827770b38f6320f3e760eb568b3cc6b1d) Thanks [@holypower777](https://github.com/holypower777)! - Исправлен Sidepanel Footer: primary и secondary принимают готовые JSX-элементы кнопок вместо типов компонентов. Пропсы, обработчики и ref кнопок задаются снаружи и сохраняются. primary остаётся обязательным, secondary — необязательным; gap, layout и sticky работают как прежде. Обновлены типы, Storybook и тесты.
+
 ## 1.14.1
 
 ### Patch Changes
