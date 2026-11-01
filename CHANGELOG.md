@@ -1,5 +1,13 @@
 # @koslibs/components
 
+## 1.16.0
+
+### Minor Changes
+
+- [#19](https://github.com/koslibs/components/pull/19) [`0f37bcd`](https://github.com/koslibs/components/commit/0f37bcdcecf865db07cd16ed4d711473b142b87c) Thanks [@holypower777](https://github.com/holypower777)! - Добавлены Datepicker и самостоятельная DatepickerPanel для выбора одной даты или включительного диапазона: ручной ввод, проверка дат, черновик с Apply/Cancel, непрерывная прокрутка календаря со связанной навигацией месяцев, формы и документация Storybook.
+
+    Обновлён @koslibs/icons до 1.3.0: Datepicker использует CalendarIcon, ChevronLeftIcon и ChevronRightIcon из библиотеки. У полос прокрутки убраны кнопки-стрелки.
+
 ## 1.15.0
 
 ### Minor Changes
