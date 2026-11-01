@@ -1,0 +1,260 @@
+@import '../../styles/theme.css';
+@import './vars.css';
+
+.component {
+    --field-background: var(--input-primary-background-color);
+    --field-color: var(--input-color);
+    --field-label-color: var(--input-label-color);
+    --field-icon-color: var(--input-icon-color);
+    --field-border: transparent;
+
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--input-gap);
+    width: var(--datepicker-width);
+    max-width: 100%;
+    min-width: 0;
+    vertical-align: top;
+    font-family: var(--font-primary);
+
+    &.block {
+        display: flex;
+        width: 100%;
+    }
+
+    &.secondary {
+        --field-background: var(--input-secondary-background-color);
+    }
+
+    &.readOnly {
+        --field-border: var(--input-read-only-border-color);
+    }
+
+    &.error {
+        --field-border: var(--input-error-border-color);
+    }
+
+    &.disabled {
+        --field-background: var(--input-disabled-background-color);
+        --field-color: var(--input-disabled-color);
+        --field-label-color: var(--input-disabled-color);
+        --field-icon-color: var(--input-disabled-color);
+        --field-border: transparent;
+        cursor: not-allowed;
+    }
+}
+
+.size-40 {
+    --field-height: 40px;
+    --field-padding: var(--input-padding-40);
+}
+
+.size-48 {
+    --field-height: 48px;
+    --field-padding: var(--input-padding-48);
+}
+
+.size-56 {
+    --field-height: 56px;
+    --field-padding: var(--input-padding-56);
+}
+
+.size-64 {
+    --field-height: 64px;
+    --field-padding: var(--input-padding-64);
+}
+
+.size-72 {
+    --field-height: 72px;
+    --field-padding: var(--input-padding-72);
+}
+
+.field {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--input-gap);
+    height: var(--field-height);
+    padding: 0 var(--field-padding);
+    border-radius: var(--input-border-radius);
+    background: var(--field-background);
+    box-shadow: inset 0 0 0 1px var(--field-border);
+    color: var(--field-color);
+}
+
+@media (hover: hover) {
+    .component:not(.disabled, .readOnly, .error) .field:hover {
+        box-shadow: inset 0 0 0 1px var(--input-hover-border-color);
+    }
+}
+
+.component.hasOutline:not(.disabled) .field:focus-within,
+.component.hasOutline.open .field {
+    box-shadow: none;
+    outline: 2px solid var(--input-focus-border-color);
+    outline-offset: 0;
+}
+
+.component.hasOutline.error .field:focus-within,
+.component.hasOutline.error.open .field {
+    outline-color: var(--input-error-border-color);
+}
+
+.trigger {
+    flex: 1;
+    min-width: 0;
+    align-self: stretch;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    appearance: none;
+}
+
+.trigger::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+.valueColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--size-2);
+    min-width: 0;
+    height: 100%;
+}
+
+.value {
+    width: 100%;
+    min-width: 0;
+    color: var(--field-color);
+}
+
+.placeholder {
+    color: var(--input-placeholder-color);
+}
+
+.label,
+.innerLabel {
+    min-width: 0;
+    color: var(--field-label-color);
+    overflow-wrap: anywhere;
+}
+
+.innerLabel {
+    transform: translateY(calc(50% + var(--size-2) / 2));
+    transition:
+        transform 180ms ease,
+        font-size 180ms ease;
+}
+
+.component.labelRaised .innerLabel {
+    transform: translateY(0);
+}
+
+.component.hasInnerLabel .value {
+    opacity: 0;
+    transition: opacity 180ms ease;
+}
+
+.component.hasInnerLabel.labelRaised .value {
+    opacity: 1;
+}
+
+.icon {
+    display: block;
+    flex-shrink: 0;
+    pointer-events: none;
+    color: var(--field-icon-color);
+}
+
+.component .clear {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    min-width: 0;
+    height: 24px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    color: var(--field-icon-color);
+}
+
+.component .clear:hover,
+.component .clear:active {
+    color: var(--field-icon-color);
+}
+
+.component.hasOutline .clear:focus-visible {
+    outline: 2px solid var(--input-focus-border-color);
+}
+
+.component.disabled .trigger,
+.component.disabled .label {
+    cursor: not-allowed;
+}
+
+.component.disabled .placeholder {
+    color: var(--input-disabled-color);
+}
+
+.component.readOnly:not(.disabled) .trigger {
+    cursor: default;
+}
+
+.component .message {
+    color: var(--input-hint-color);
+    overflow-wrap: anywhere;
+}
+
+.component.error .message {
+    color: var(--input-error-message-color);
+}
+
+.component.disabled .message {
+    color: var(--input-disabled-color);
+}
+
+.popup {
+    --popover-shadow: none;
+}
+
+.panelContainer {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    max-height: inherit;
+}
+
+@media (max-height: 700px) {
+    .popup.rangePopup {
+        /* A full calendar cannot fit beside the field in a short viewport. */
+        top: 8px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        max-height: calc(100dvh - 16px);
+    }
+
+    .popup.rangePopup .panelContainer {
+        --datepicker-popup-calendar-height: max(96px, calc(100dvh - 230px));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .innerLabel,
+    .component.hasInnerLabel .value {
+        transition: none;
+    }
+}

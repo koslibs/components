@@ -1,6 +1,32 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Datepicker',
+        imports: ['Datepicker', 'DatepickerPanel'],
+        render: '<><Datepicker label="IMPORT_TEST_DATEPICKER" defaultValue="2026-10-25" /><DatepickerPanel mode="range" defaultValue={{ from: "2026-12-28", to: "2027-01-04" }} /></>',
+        includes: {
+            js: [
+                /IMPORT_TEST_DATEPICKER/,
+                /Choose dates/,
+                /Datepicker/,
+                /M5\.625 2\.25V3\.9375/,
+                /M12\.375 2\.25L5\.625 9L12\.375 15\.75/,
+            ],
+            css: [
+                /--datepicker-panel-width/,
+                /--datepicker-selected-background/,
+                /::-webkit-scrollbar-button/,
+                /--input-/,
+                /--button-/,
+                /--popover-/,
+            ],
+        },
+        excludes: {
+            js: [/displayName\s*=\s*["'](?:Select|Modal|Sidepanel)["']/],
+            css: [/--select-/, /--modal-/, /--sidepanel-/],
+        },
+    },
+    {
         component: 'Sidepanel',
         imports: ['Sidepanel', 'Header', 'Content', 'Footer'],
         render: '<Sidepanel open aria-label="Import test"><Header title="IMPORT_TEST_SIDEPANEL" /><Content>Content</Content><Footer primary={<button>Save</button>} secondary={<button>Cancel</button>} /></Sidepanel>',

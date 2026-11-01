@@ -1,0 +1,25 @@
+@import '../Input/vars.css';
+
+:root {
+    --datepicker-width: 320px;
+    --datepicker-panel-width: 360px;
+    --datepicker-range-width: 560px;
+    --datepicker-panel-padding: var(--size-20);
+    --datepicker-panel-radius: var(--border-radius-12);
+    --datepicker-panel-shadow: 0 12px 32px -8px rgb(0 0 0 / 20%);
+    --datepicker-background: #ffffff;
+    --datepicker-color: var(--input-color);
+    --datepicker-muted-color: var(--input-label-color);
+    --datepicker-hover-background: #f5f3ec;
+    --datepicker-selected-background: #fdde9b;
+    --datepicker-range-background: #f5f3ec;
+    --datepicker-month-selected-background: #e0dbce;
+    --datepicker-focus-color: var(--input-focus-border-color);
+    --datepicker-scrollbar-color: #c8beaa;
+    --datepicker-day-height: 32px;
+    --datepicker-day-radius: var(--border-radius-8);
+    --datepicker-week-gap: var(--size-4);
+    --datepicker-months-width: 168px;
+    --datepicker-months-extra-height: 36px;
+    --datepicker-range-calendar-height: 420px;
+}
