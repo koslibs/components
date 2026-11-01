@@ -1,0 +1,18 @@
+:root {
+    --chips-gap: var(--size-8);
+    --chips-height: var(--size-32);
+    --chips-padding-x: var(--size-12);
+    --chips-padding-y: var(--size-6);
+    --chips-radius: var(--border-radius-pill);
+    --chips-color: #1c1a18;
+    --chips-background: transparent;
+    --chips-hover-background: #e9e4d9;
+    --chips-active-background: #dcd4c5;
+    --chips-selected-background: #fdde9b;
+    --chips-selected-hover-background: #f4d38d;
+    --chips-selected-active-background: #e9c479;
+    --chips-disabled-background: #cfd1cb;
+    --chips-disabled-selected-background: #f7e6c2;
+    --chips-disabled-color: #858981;
+    --chips-focus-color: #ff6b0a;
+}
