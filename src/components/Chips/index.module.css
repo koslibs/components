@@ -1,0 +1,100 @@
+@import '../../styles/theme.css';
+@import './vars.css';
+
+.component {
+    box-sizing: border-box;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: var(--chips-color);
+    font-family: var(--font-primary);
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--chips-gap);
+    align-items: flex-start;
+}
+
+.item {
+    position: relative;
+    display: inline-flex;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.input {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.chip {
+    box-sizing: border-box;
+    display: block;
+    min-width: 0;
+    min-height: var(--chips-height);
+    padding: var(--chips-padding-y) var(--chips-padding-x);
+    border-radius: var(--chips-radius);
+    background: var(--chips-background);
+    color: var(--chips-color);
+    line-height: 20px;
+    text-align: center;
+    overflow-wrap: anywhere;
+    transition:
+        background-color 0.1s ease-in-out,
+        color 0.1s ease-in-out;
+}
+
+.input:checked + .chip {
+    background: var(--chips-selected-background);
+}
+
+@media (hover: hover) {
+    .input:not(:disabled):hover + .chip {
+        background: var(--chips-hover-background);
+    }
+
+    .input:not(:disabled):checked:hover + .chip {
+        background: var(--chips-selected-hover-background);
+    }
+}
+
+.input:not(:disabled):active + .chip {
+    background: var(--chips-active-background);
+}
+
+.input:not(:disabled):checked:active + .chip {
+    background: var(--chips-selected-active-background);
+}
+
+.input:focus-visible + .chip {
+    outline: 2px solid var(--chips-focus-color);
+    outline-offset: 2px;
+}
+
+.input:disabled {
+    cursor: not-allowed;
+}
+
+.input:disabled + .chip {
+    background: var(--chips-disabled-background);
+    color: var(--chips-disabled-color);
+}
+
+.input:disabled:checked + .chip {
+    background: var(--chips-disabled-selected-background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chip {
+        transition: none;
+    }
+}

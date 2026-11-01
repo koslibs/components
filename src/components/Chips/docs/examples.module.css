@@ -1,0 +1,16 @@
+.examples {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px 0;
+}
+
+.narrow {
+    max-width: 260px;
+}
+
+.example {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

@@ -1,5 +1,7 @@
 export { Button } from './components/Button';
 export type { ButtonProps } from './components/Button';
+export { Chips } from './components/Chips';
+export type { ChipsProps, ChipsItem, ChipsChangePayload } from './components/Chips';
 export { Input } from './components/Input';
 export type { InputProps } from './components/Input';
 export { Datepicker, DatepickerPanel } from './components/Datepicker';

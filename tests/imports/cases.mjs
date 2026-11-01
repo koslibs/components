@@ -1,6 +1,24 @@
 // Keep representative bundle scenarios here; public entrypoint checks cover every component.
 export const importCases = [
     {
+        component: 'Chips',
+        render: '<Chips items={[{ value: "co", label: "IMPORT_TEST_CHIPS" }, { value: "btn", label: "BTN" }]} multiselect defaultValue={["co"]} />',
+        includes: {
+            js: [/IMPORT_TEST_CHIPS/, /TypographyText/],
+            css: [
+                /--chips-selected-background/,
+                /--chips-disabled-selected-background/,
+                /flex-wrap:\s*wrap/,
+                /@font-face/,
+            ],
+            assets: [/inter-latin-wght-normal[^/\\]*\.woff2$/m],
+        },
+        excludes: {
+            js: [/displayName\s*=\s*["'](?:Button|Spinner|Input|Select|Datepicker|Popover)["']/],
+            css: [/--button-/, /--input-/, /--select-/, /--datepicker-/, /--popover-/],
+        },
+    },
+    {
         component: 'Datepicker',
         imports: ['Datepicker', 'DatepickerPanel'],
         render: '<><Datepicker label="IMPORT_TEST_DATEPICKER" defaultValue="2026-10-25" /><DatepickerPanel mode="range" defaultValue={{ from: "2026-12-28", to: "2027-01-04" }} /></>',
