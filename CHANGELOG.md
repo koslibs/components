@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.17.0
+
+### Minor Changes
+
+- [#20](https://github.com/koslibs/components/pull/20) [`ea31f0a`](https://github.com/koslibs/components/commit/ea31f0a1ece96d62c21f943de86459946fb1a5fe) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен Chips: одиночный и множественный выбор, управляемые и внутренние значения, блокировка группы и пунктов, состояния из Figma с плавными переходами, перенос полных подписей, нативные формы, Storybook и публичные типы. All обрабатывается как обычный пункт.
+
 ## 1.16.0
 
 ### Minor Changes
