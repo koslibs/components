@@ -1,0 +1,19 @@
+.scroll {
+    max-width: 100%;
+    overflow: auto;
+}
+
+.panels {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 24px 0;
+}
+
+.fields {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 24px;
+}
