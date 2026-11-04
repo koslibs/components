@@ -190,4 +190,7 @@ type MultipleProps = {
     onChange?: (event: SelectChangeEvent, payload: SelectChangePayload<string[]>) => void;
 };
 
-export type SelectProps = CommonProps & (SingleProps | MultipleProps);
+export type SelectSingleProps = CommonProps & SingleProps;
+export type SelectMultipleProps = CommonProps & MultipleProps;
+
+export type SelectProps = SelectSingleProps | SelectMultipleProps;
