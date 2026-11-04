@@ -1,5 +1,9 @@
 # Select
 
+## 1.18.0
+
+- Типы `SelectSingleProps` и `SelectMultipleProps` доступны из `@koslibs/components` и `@koslibs/components/Select`. С их помощью можно типизировать отдельный обработчик `onChange` для нужного режима выбора.
+
 ## 1.13.0
 
 - Курсор `not-allowed` в disabled-состоянии применяется ко всему компоненту, включая подпись, подсказку и шеврон.
