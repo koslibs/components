@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.18.0
+
+### Minor Changes
+
+- [#21](https://github.com/koslibs/components/pull/21) [`0c010e3`](https://github.com/koslibs/components/commit/0c010e36657f39517053465e5d4864936b11f164) Thanks [@holypower777](https://github.com/holypower777)! - Export `SelectSingleProps` and `SelectMultipleProps` from the package root and the `Select` entry point so consumers can type change handlers for either selection mode directly.
+
 ## 1.17.0
 
 ### Minor Changes
