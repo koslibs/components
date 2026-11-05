@@ -20,8 +20,8 @@ export const importCases = [
     },
     {
         component: 'Datepicker',
-        imports: ['Datepicker', 'DatepickerPanel'],
-        render: '<><Datepicker label="IMPORT_TEST_DATEPICKER" defaultValue="2026-10-25" /><DatepickerPanel mode="range" defaultValue={{ from: "2026-12-28", to: "2027-01-04" }} /></>',
+        imports: ['Datepicker', 'DatepickerPanel', 'DatepickerPopover'],
+        render: '<><Datepicker label="IMPORT_TEST_DATEPICKER" defaultValue="2026-10-25" /><DatepickerPanel mode="range" defaultValue={{ from: "2026-12-28", to: "2027-01-04" }} /><DatepickerPopover open={false} anchorElement={null} /></>',
         includes: {
             js: [
                 /IMPORT_TEST_DATEPICKER/,

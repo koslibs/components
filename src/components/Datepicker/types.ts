@@ -101,6 +101,18 @@ export type DatepickerPanelProps = DatepickerValueProps & {
     dataTestId?: string;
 };
 
+export type DatepickerPopoverProps = DatepickerPanelProps &
+    Pick<
+        PopoverProps,
+        'open' | 'anchorElement' | 'position' | 'getPortalContainer' | 'outsideClick'
+    > & {
+        /**
+         * Запрос закрытия при клике снаружи или Escape. Cancel и Escape внутри панели
+         * используют onCancel, если он задан. Видимость меняется через open.
+         */
+        onClose?: VoidFunction;
+    };
+
 type FieldProps = Pick<
     InputProps,
     | 'view'

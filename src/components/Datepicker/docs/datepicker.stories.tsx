@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@koslibs/builder/storybook';
 import { useEffect, useState, type MouseEvent } from 'react';
 
+import { Button } from '../../Button';
+
 import {
     Datepicker,
     DatepickerPanel,
+    DatepickerPopover,
     type DatepickerChangePayload,
     type DatepickerProps,
     type DatepickerRange,
@@ -155,6 +158,41 @@ function ControlledExample() {
 }
 
 export const Controlled: Story = { render: () => <ControlledExample /> };
+
+function ExternalPopoverExample() {
+    const [anchorElement, setAnchorElement] = useState<HTMLButtonElement | null>(null);
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState<string | null>(null);
+
+    const handleToggle = () => setOpen((current) => !current);
+    const handleClose = () => setOpen(false);
+
+    const handleChange = (
+        _: MouseEvent<HTMLButtonElement>,
+        { value: next }: DatepickerChangePayload
+    ) => {
+        setValue(next);
+        handleClose();
+    };
+
+    return (
+        <>
+            <Button ref={setAnchorElement} onClick={handleToggle}>
+                {value ?? 'Choose a date'}
+            </Button>
+            <DatepickerPopover
+                open={open}
+                anchorElement={anchorElement}
+                value={value}
+                onChange={handleChange}
+                onClose={handleClose}
+                dataTestId="external-datepicker-popover"
+            />
+        </>
+    );
+}
+
+export const ExternalPopover: Story = { render: ExternalPopoverExample };
 export const InnerLabel: Story = { args: { labelView: 'inner', view: 'secondary', size: 56 } };
 export const Disabled: Story = { args: { disabled: true } };
 export const ReadOnly: Story = { args: { readOnly: true } };
