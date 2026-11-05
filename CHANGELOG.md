@@ -1,5 +1,11 @@
 # @koslibs/components
 
+## 1.19.0
+
+### Minor Changes
+
+- [#22](https://github.com/koslibs/components/pull/22) [`0a705c8`](https://github.com/koslibs/components/commit/0a705c882c901841c80288c7aebd4201721681c9) Thanks [@holypower777](https://github.com/holypower777)! - Добавлен DatepickerPopover для подключения к своему триггеру и внешнего управления видимостью календаря.
+
 ## 1.18.0
 
 ### Minor Changes
