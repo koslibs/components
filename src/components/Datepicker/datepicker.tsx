@@ -5,10 +5,10 @@ import { forwardRef, useId, useImperativeHandle, type MouseEvent } from 'react';
 
 import { useDataTestId } from '../../hooks/use-data-test-id';
 import { Button } from '../Button';
-import { Popover } from '../Popover';
 import { TypographyText } from '../Typography/text';
 
 import { DatepickerPanel } from './datepicker-panel';
+import { DatepickerPopoverSurface } from './datepicker-popover';
 import { useDatepickerState } from './hooks/use-datepicker-state';
 import type {
     DatepickerChangePayload,
@@ -21,7 +21,6 @@ import { formatDate } from './utils/date-utils';
 import styles from './index.module.css';
 
 const textSizes = { 40: 13, 48: 13, 56: 14, 64: 14, 72: 16 } as const;
-const offset: [number, number] = [0, 8];
 
 export const Datepicker = forwardRef<HTMLButtonElement, DatepickerProps>((props, ref) => {
     const {
@@ -227,29 +226,26 @@ export const Datepicker = forwardRef<HTMLButtonElement, DatepickerProps>((props,
                         form={form}
                     />
                 ))}
-            <Popover
+            <DatepickerPopoverSurface
                 ref={state.popupRef}
+                mode={state.mode}
                 open={state.open}
                 anchorElement={state.anchor}
-                offset={offset}
                 onClose={handleClose}
                 escapeKeyDown={false}
                 getPortalContainer={getPortalContainer}
-                className={cn(styles.popup, state.mode === 'range' && styles.rangePopup)}
                 dataTestId={getId('popup')}
             >
-                <div className={styles.panelContainer}>
-                    <DatepickerPanel
-                        id={panelId}
-                        key={`${state.mode}-${state.session}`}
-                        {...panelProps}
-                        onChange={handleChange}
-                        onCancel={handleCancel}
-                        className={panelClassName}
-                        dataTestId={getId('panel')}
-                    />
-                </div>
-            </Popover>
+                <DatepickerPanel
+                    id={panelId}
+                    key={`${state.mode}-${state.session}`}
+                    {...panelProps}
+                    onChange={handleChange}
+                    onCancel={handleCancel}
+                    className={panelClassName}
+                    dataTestId={getId('panel')}
+                />
+            </DatepickerPopoverSurface>
         </div>
     );
 });

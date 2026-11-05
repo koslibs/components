@@ -36,6 +36,32 @@ const handleDateChange = (_, { value }) => saveDate(value);
 
 <DatepickerPanel defaultValue="2026-10-25" onChange={handleDateChange} />`;
 
+const popoverExample = `import { useState } from 'react';
+import { DatepickerPopover } from '@koslibs/components/Datepicker';
+
+function DateFilter() {
+    const [anchorElement, setAnchorElement] = useState<HTMLButtonElement | null>(null);
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    return (
+        <>
+            <button type="button" ref={setAnchorElement} onClick={handleOpen}>
+                Choose a date
+            </button>
+            <DatepickerPopover
+                anchorElement={anchorElement}
+                open={open}
+                defaultValue="2026-10-25"
+                onChange={handleClose}
+                onClose={handleClose}
+            />
+        </>
+    );
+}`;
+
 function Documentation() {
     return (
         <>
@@ -61,6 +87,17 @@ function Documentation() {
             </p>
             <pre className={styles.scroll}>
                 <code>{example}</code>
+            </pre>
+            <h2>Поповер со своим триггером</h2>
+            <p>
+                DatepickerPopover привязывается к anchorElement. Приложение задаёт open и решает,
+                когда закрыть поповер. Apply передаёт выбранную дату через onChange. Клик снаружи,
+                Escape и Cancel вызывают onClose, а для Cancel и Escape внутри панели можно передать
+                отдельный onCancel. При закрытии черновик сбрасывается. При использовании
+                defaultValue применённая дата хранится внутри компонента между открытиями.
+            </p>
+            <pre className={styles.scroll}>
+                <code>{popoverExample}</code>
             </pre>
             <h2>Ручной ввод</h2>
             <p>

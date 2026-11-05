@@ -2,7 +2,7 @@ import { afterEach, beforeEach, expect, rstest, test } from '@koslibs/builder/rs
 import { act, createRef, type ReactNode } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 
-import { Datepicker } from '.';
+import { Datepicker, DatepickerPopover } from '.';
 
 import styles from './index.module.css';
 
@@ -31,6 +31,68 @@ function part<T extends HTMLElement = HTMLElement>(suffix = '') {
 async function click(suffix = '') {
     await act(async () => part(suffix).click());
 }
+
+test('standalone popover requests dismissal and waits for the parent to close it', async () => {
+    const anchor = container;
+    const onClose = rstest.fn();
+
+    await render(
+        <DatepickerPopover open anchorElement={anchor} onClose={onClose} dataTestId="picker" />
+    );
+    await click('panel-cancel');
+    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(part('panel')).not.toBeNull();
+
+    await act(async () =>
+        part('panel-date').dispatchEvent(
+            new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true })
+        )
+    );
+    expect(onClose).toHaveBeenCalledTimes(2);
+
+    await act(async () => document.body.dispatchEvent(new Event('pointerdown', { bubbles: true })));
+    expect(onClose).toHaveBeenCalledTimes(3);
+    expect(part('panel')).not.toBeNull();
+
+    await render(
+        <DatepickerPopover
+            open={false}
+            anchorElement={anchor}
+            onClose={onClose}
+            dataTestId="picker"
+        />
+    );
+    expect(part('panel')).toBeNull();
+});
+
+test('standalone popover retains applied values and discards drafts on external close', async () => {
+    const anchor = container;
+    const onChange = rstest.fn();
+
+    const renderPopover = (open: boolean) =>
+        render(
+            <DatepickerPopover
+                open={open}
+                anchorElement={anchor}
+                defaultValue="2026-10-25"
+                onChange={onChange}
+                dataTestId="picker"
+            />
+        );
+
+    await renderPopover(true);
+    await click('panel-day-2026-10-26');
+    expect(onChange).not.toHaveBeenCalled();
+    await click('panel-apply');
+    expect(onChange.mock.calls[0][1]).toEqual({ value: '2026-10-26' });
+    expect(part('panel')).not.toBeNull();
+
+    await click('panel-day-2026-10-27');
+    await renderPopover(false);
+    await renderPopover(true);
+    expect(part<HTMLInputElement>('panel-date').value).toBe('2026-10-26');
+    expect(onChange).toHaveBeenCalledTimes(1);
+});
 
 test('field forwards ref and native attributes and renders labels and dialog', async () => {
     const ref = createRef<HTMLButtonElement>();
